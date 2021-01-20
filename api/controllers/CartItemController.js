@@ -30,7 +30,7 @@ module.exports = {
     const cartItemJsonData = cartItem.toJSON();
     return res.json({
       success: true,
-      data: orderJsonData,
+      data: cartItemJsonData,
     });
   },
 
