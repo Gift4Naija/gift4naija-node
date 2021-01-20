@@ -35,4 +35,8 @@ module.exports.routes = {
 
   // csurf
   "GET /grant/csrf-token": { action: "security/grant-csrf-token" },
+
+  // user
+  "GET /api/v1/user/:id": "UserController.getOne",
+  "GET /api/v1/users": "UserController.getAll",
 };
