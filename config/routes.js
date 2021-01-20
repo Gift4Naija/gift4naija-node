@@ -37,6 +37,13 @@ module.exports.routes = {
   "GET /grant/csrf-token": { action: "security/grant-csrf-token" },
 
   // user
-  "GET /api/v1/user/:id": "UserController.getOne",
   "GET /api/v1/users": "UserController.getAll",
+  "GET /api/v1/user/:id": "UserController.getOne",
+
+  // product
+  "GET /api/v1/products": "ProductController.getAll",
+  "GET /api/v1/product/:id": "ProductController.getOne",
+  "POST /api/v1/product": "ProductController.create",
+  "PUT /api/v1/product": "ProductController.update"
+  "DELETE /api/v1/product": "ProductController.remove"
 };
