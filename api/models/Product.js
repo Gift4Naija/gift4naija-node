@@ -6,24 +6,39 @@
  */
 
 module.exports = {
-
   attributes: {
+    name: {
+      type: "string",
+      required: true,
+    },
 
-    //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
-    //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
-    //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
+    quantity: {
+      type: "number",
+      required: true,
+    },
 
+    price: {
+      type: "number",
+      required: true,
+    },
 
-    //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
-    //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
-    //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
+    categories: {
+      type: "string",
+      required: true,
+    },
 
+    categoryType: {
+      type: "string",
+      // required: true,
+    },
 
-    //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
-    //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
-    //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
+    image: {
+      type: "json",
+      columnType: "array",
+    },
 
+    size: {
+      type: "string",
+    },
   },
-
 };
-
