@@ -102,6 +102,6 @@ and exposed as \`req.me\`.)`,
       await sails.helpers.broadcastSessionChange(this.req);
     }
 
-    return userRecord.toJSON();
+    return { success: true, data: userRecord.toJSON() };
   },
 };
