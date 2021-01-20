@@ -51,6 +51,12 @@ email status until they click the link in the confirmation email.`,
       example: "Mary Sue van der McHenst",
     },
 
+    role: {
+      type: "string",
+      isIn: ["admin", "superAdmin", "vendor", "buyer"],
+      defaultsTo: "buyer",
+    },
+
     isSuperAdmin: {
       type: "boolean",
       description:
@@ -165,42 +171,33 @@ without necessarily having a billing card.`,
       example: 1502844074211,
     },
 
-    //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
-    //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
-    //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
-    // n/a
+    // Assoc.
+    orders: {
+      collection: "order",
+      via: "buyer",
+    },
 
-    //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
-    //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
-    //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    // n/a
+    cartItems: {
+      collection: "cartItem",
+      via: "owner",
+    },
   },
-
-  // Assoc.
 
   // methods
   customToJSON() {
     return _.pick(this, [
-      "createdAt",
-      "updatedAt",
       "id",
+      "fullName",
       "emailAddress",
       "emailStatus",
-      "fullName",
+      "role",
       "lastSeenAt",
+      "createdAt",
+      "updatedAt",
     ]);
   },
 };
-
-[
-  "createdAt",
-  "updatedAt",
-  "id",
-  "emailAddress",
-  "emailStatus",
-  "fullName",
-  "lastSeenAt",
-];
+/*
 {
   // "emailChangeCandidate": "",
   // "password": "$2a$10$g6.nZQDddGwdiNqGKn239u.9MLmSHnh.Msh57Uc2IaTWXfHZyRRzy",
@@ -217,3 +214,4 @@ without necessarily having a billing card.`,
   // "billingCardExpYear": "",
   // "tosAcceptedByIp": "::1",
 }
+*/
