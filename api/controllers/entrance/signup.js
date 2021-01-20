@@ -125,6 +125,6 @@ the account verification message.)`,
       );
     }
 
-    return newUserRecord.toJSON();
+    return { success: true, data: newUserRecord.toJSON() };
   },
 };
