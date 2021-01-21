@@ -35,13 +35,35 @@ module.exports = {
   },
 
   update: async (req, res) => {
-    const newProduct = await Product.update(req.params.id, req.body).fetch();
+    const newProduct = await Product.updateOne({ id: req.params.id }).set(
+      req.body
+    );
+
+    if (!newProduct) {
+      return res.status(402).json({ success: false, msg: "Bad Request" });
+    }
 
     return res.json({ success: true, data: newProduct });
   },
-  remove: async (req, res) => {},
+
+  remove: async (req, res) => {
+    const removedProduct = await Product.destroyOne({ id: req.params.id }).set(
+      req.body
+    );
+
+    if (!removedProduct) {
+      return res.status(402).json({ success: false, msg: "Bad Request" });
+    }
+
+    return res.json({ success: true, data: removedProduct });
+  },
+
   create: async (req, res) => {
     const newProduct = await Product.create(req.body).fetch();
+
+    if (!newProduct) {
+      return res.status(402).json({ success: false, msg: "Bad Request" });
+    }
 
     return res.status(201).json({ success: true, data: newProduct });
   },
