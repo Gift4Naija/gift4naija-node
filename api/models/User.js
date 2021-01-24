@@ -174,7 +174,7 @@ without necessarily having a billing card.`,
     // Assoc.
     orders: {
       collection: "order",
-      via: "buyer",
+      via: "sender",
     },
 
     cartItems: {
