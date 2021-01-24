@@ -43,19 +43,25 @@ module.exports = {
       return res.status(402).json({ success: false, msg: "Bad Request" });
     }
 
-    return res.json({ success: true, data: newProduct });
+    return res.json({
+      success: true,
+      data: newProduct,
+      msg: "Successfully updated a product",
+    });
   },
 
   remove: async (req, res) => {
-    const removedProduct = await Product.destroyOne({ id: req.params.id }).set(
-      req.body
-    );
+    const removedProduct = await Product.destroyOne({ id: req.params.id });
 
     if (!removedProduct) {
       return res.status(402).json({ success: false, msg: "Bad Request" });
     }
 
-    return res.json({ success: true, data: removedProduct });
+    return res.json({
+      success: true,
+      data: removedProduct,
+      msg: "Successfully removed a product",
+    });
   },
 
   create: async (req, res) => {
@@ -65,6 +71,12 @@ module.exports = {
       return res.status(402).json({ success: false, msg: "Bad Request" });
     }
 
-    return res.status(201).json({ success: true, data: newProduct });
+    return res
+      .status(201)
+      .json({
+        success: true,
+        data: newProduct,
+        msg: "Successfully created a product",
+      });
   },
 };
