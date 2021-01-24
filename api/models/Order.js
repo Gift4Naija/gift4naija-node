@@ -24,8 +24,14 @@ module.exports = {
       columnType: "array",
     },
 
-    buyer: {
+    // Assoc.
+    sender: {
       model: "user",
+    },
+
+    receiver: {
+      // model: "user",
+      type: "json",
     },
   },
 };
