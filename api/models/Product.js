@@ -27,9 +27,9 @@ module.exports = {
       required: true,
     },
 
-    categoryType: {
-      type: "string",
-      // required: true,
+    subCategory: {
+      type: "json",
+      columnType: "array",
     },
 
     image: {
