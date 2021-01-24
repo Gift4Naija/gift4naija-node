@@ -44,6 +44,6 @@ module.exports.routes = {
   "GET /api/v1/products": "ProductController.getAll",
   "GET /api/v1/product/:id": "ProductController.getOne",
   "POST /api/v1/product": "ProductController.create",
-  "PUT /api/v1/product": "ProductController.update"
-  "DELETE /api/v1/product": "ProductController.remove"
+  "PUT /api/v1/product/:id": "ProductController.update",
+  "DELETE /api/v1/product/:id": "ProductController.remove",
 };
