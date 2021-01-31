@@ -1,0 +1,189 @@
+openapi: 3.0.0
+info:
+  version: '0.1'
+  title: Gift 2 Naija
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: localhost:3000
+
+paths:
+  /sign-up:
+    post: 
+      summary: Register/create a new user
+      operationId: createUser
+
+      responses:
+        '201':
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /sign-in:
+    post: 
+      summary: Sign-in user
+      operationId: signInUser
+
+      responses:
+        '200':
+          description: User signed-in
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /sign-out:
+    get: 
+      summary: sign-out user
+      operationId: signOutUser
+
+      responses:
+        '200':
+          description: User signed-out
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /user/{getUserById}:
+    get:
+      summary: 'Sample endpoint: Returns details about a particular user'
+      operationId: getUserById
+    
+      responses:
+        '200':
+          description: Details about a user by ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    parameters:
+    - name: getUserById
+      in: path
+      required: true
+      schema: 
+        type: string
+
+  /users:
+    get: 
+      summary: Fetch all users
+      operationId: listUsers
+
+      responses:
+        '200':
+          description: Details about all users
+          content:
+            application/json:
+              schema:                                
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /user/{updateUserById}:
+    put: 
+      summary: Update user info
+      operationId: updateUser
+
+      responses:
+        '200':
+          description: Update user info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    parameters:
+    - name: updateUserById
+      in: path
+      required: true
+      schema: 
+        type: string
+
+  /user/{deleteUserById}:
+    delete: 
+      summary: Delete a user
+      operationId: deleteUser
+
+      responses:
+        '204':
+          description: 'User deleted'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    parameters:
+    - name: deleteUserById
+      in: path
+      required: true
+      schema: 
+        type: string
+
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - id
+        - name
+        - email
+        - phoneNumber
+        - password
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        passwordHash:
+          type: string
+          format: password
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
