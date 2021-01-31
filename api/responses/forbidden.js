@@ -17,6 +17,13 @@ module.exports = function forbidden(data, options) {
   var req = this.req;
   var res = this.res;
 
+  const resData = {
+    success: false,
+    // error: err,
+    errorType: "Forbidden",
+    msg: data,
+  };
+
   // Set status code
-  return res.status(403).json({ success: false, msg: data || "Forbidden" });
+  return res.status(403).json(resData);
 };
