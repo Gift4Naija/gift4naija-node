@@ -30,17 +30,42 @@ module.exports = {
     // const cartItemJsonData = cartItem.toJSON();
     return res.json({
       success: true,
-      data: cartItemJsonData,
+      data: cartItem,
+    });
+  },
+
+  /*
+   * productId - req.body.product
+   * userId - req.user.id
+   */
+  create: async (req, res) => {
+    const productId = req.body.product;
+    const userId = req.user.id;
+    const data = { owner: userId, item: productId };
+
+    // create cart-item
+    const newCartItem = await CartItem.create(data)
+      .fetch()
+      .catch((err) => res.badRequest(err));
+
+    if (!newCartItem) {
+      return res.badRequest();
+    }
+
+    return res.status(201).json({
+      success: true,
+      data: newCartItem,
+      msg: "Successfully created a cart item",
     });
   },
 
   update: async (req, res) => {
-    const cartItemUpdate = await CartItem.updateOne({ id: req.params.id }).set(
-      req.body
-    );
+    const cartItemUpdate = await CartItem.updateOne({ id: req.params.id })
+      .set(req.body)
+      .catch((err) => res.badRequest(err));
 
     if (!cartItemUpdate) {
-      return res.status(402).json({ success: false, msg: "Bad Request" });
+      return res.badRequest();
     }
 
     return res.json({
@@ -51,30 +76,18 @@ module.exports = {
   },
 
   remove: async (req, res) => {
-    const removedCartItem = await CartItem.destroyOne({ id: req.params.id });
+    const removedCartItem = await CartItem.destroyOne({
+      id: req.params.id,
+    }).catch((err) => res.badRequest(err));
 
     if (!removedCartItem) {
-      return res.status(402).json({ success: false, msg: "Bad Request" });
+      return res.badRequest();
     }
 
     return res.json({
       success: true,
       data: removedCartItem,
       msg: "Successfully removed a cart item",
-    });
-  },
-
-  create: async (req, res) => {
-    const newCartItem = await CartItem.create(req.body).fetch();
-
-    if (!newCartItem) {
-      return res.status(402).json({ success: false, msg: "Bad Request" });
-    }
-
-    return res.status(201).json({
-      success: true,
-      data: newCartItem,
-      msg: "Successfully created a cart item",
     });
   },
 };
