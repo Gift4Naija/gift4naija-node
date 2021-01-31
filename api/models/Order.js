@@ -24,14 +24,14 @@ module.exports = {
       columnType: "array",
     },
 
-    // Assoc.
-    sender: {
-      model: "user",
-    },
-
     receiver: {
       // model: "user",
       type: "json",
+    },
+
+    // Assoc.
+    sender: {
+      model: "user",
     },
   },
 };
