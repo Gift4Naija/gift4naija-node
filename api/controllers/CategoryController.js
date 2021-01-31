@@ -40,7 +40,7 @@ module.exports = {
     );
 
     if (!categoryUpdate) {
-      return res.status(402).json({ success: false, msg: "Bad Request" });
+      return res.badRequest(undefined, "Category does not exist");
     }
 
     return res.json({
@@ -54,7 +54,7 @@ module.exports = {
     const removedCategory = await Category.destroyOne({ id: req.params.id });
 
     if (!removedCategory) {
-      return res.status(402).json({ success: false, msg: "Bad Request" });
+      return res.badRequest(undefined, "Category does not exist");
     }
 
     return res.json({
@@ -68,7 +68,7 @@ module.exports = {
     const newCategory = await Category.create(req.body).fetch();
 
     if (!newCategory) {
-      return res.status(402).json({ success: false, msg: "Bad Request" });
+      return res.badRequest();
     }
 
     return res.status(201).json({
