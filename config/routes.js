@@ -46,4 +46,25 @@ module.exports.routes = {
   "POST /api/v1/product": "ProductController.create",
   "PUT /api/v1/product/:id": "ProductController.update",
   "DELETE /api/v1/product/:id": "ProductController.remove",
+
+  // cart item
+  "GET /api/v1/cart-items": "CartItemController.getAll",
+  "GET /api/v1/cart-item/:id": "CartItemController.getOne",
+  "POST /api/v1/cart-item": "CartItemController.create",
+  "PUT /api/v1/cart-item/:id": "CartItemController.update",
+  "DELETE /api/v1/cart-item/:id": "CartItemController.remove",
+
+  // category
+  "GET /api/v1/categories": "CategoryController.getAll",
+  "GET /api/v1/category/:id": "CategoryController.getOne",
+  "POST /api/v1/category": "CategoryController.create",
+  "PUT /api/v1/category/:id": "CategoryController.update",
+  "DELETE /api/v1/category/:id": "CategoryController.remove",
+
+  // order
+  "GET /api/v1/orders": "OrderController.getAll",
+  "GET /api/v1/order/:id": "OrderController.getOne",
+  "POST /api/v1/order": "OrderController.create",
+  "PUT /api/v1/order/:id": "OrderController.update",
+  "DELETE /api/v1/order/:id": "OrderController.remove",
 };
