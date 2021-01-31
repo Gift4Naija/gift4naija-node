@@ -13,7 +13,8 @@ module.exports = {
     },
 
     item: {
-      collection: "product",
+      // one way association
+      model: "product",
     },
 
     owner: {
