@@ -35,12 +35,12 @@ module.exports = {
   },
 
   update: async (req, res) => {
-    const newProduct = await Product.updateOne({ id: req.params.id }).set(
-      req.body
-    );
+    const newProduct = await Product.updateOne({ id: req.params.id })
+      .set(req.body)
+      .catch((err) => res.badRequest(err));
 
     if (!newProduct) {
-      return res.status(402).json({ success: false, msg: "Bad Request" });
+      return res.badRequest();
     }
 
     return res.json({
@@ -51,10 +51,12 @@ module.exports = {
   },
 
   remove: async (req, res) => {
-    const removedProduct = await Product.destroyOne({ id: req.params.id });
+    const removedProduct = await Product.destroyOne({
+      id: req.params.id,
+    }).catch((err) => res.badRequest(err));
 
     if (!removedProduct) {
-      return res.status(402).json({ success: false, msg: "Bad Request" });
+      return res.badRequest();
     }
 
     return res.json({
@@ -64,19 +66,44 @@ module.exports = {
     });
   },
 
+  /*
+   * @categoryId - association for product category
+   */
   create: async (req, res) => {
-    const newProduct = await Product.create(req.body).fetch();
-
-    if (!newProduct) {
-      return res.status(402).json({ success: false, msg: "Bad Request" });
+    // check if category is missing
+    if (!req.body.categoryId) {
+      return res.badRequest(undefined, "Product category is required");
     }
 
-    return res
-      .status(201)
-      .json({
-        success: true,
-        data: newProduct,
-        msg: "Successfully created a product",
-      });
+    // parse categoryID as INT
+    const categoryId = parseInt(req.body.categoryId);
+
+    // attach categoryID as category attribute
+    req.body.category = categoryId;
+
+    // find category
+    const group = await Category.findOne().where({ id: categoryId }); // handle error
+
+    // check if category exist
+    if (!group) {
+      return res.badRequest(undefined, "Invalid category");
+    }
+
+    // create new product with category
+    const newProduct = await Product.create(req.body)
+      .fetch()
+      .catch((err) => res.badRequest(err));
+
+    // check for error
+    if (!newProduct) {
+      return res.badRequest();
+    }
+
+    // send success response
+    return res.status(201).json({
+      success: true,
+      data: newProduct,
+      msg: "Successfully created a product",
+    });
   },
 };
