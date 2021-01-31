@@ -21,17 +21,12 @@ module.exports = {
       type: "number",
       required: true,
     },
-
-    categories: {
-      type: "string",
-      required: true,
-    },
-
+    /*
     subCategory: {
       type: "json",
       columnType: "array",
     },
-
+*/
     image: {
       type: "json",
       columnType: "array",
@@ -39,6 +34,10 @@ module.exports = {
 
     size: {
       type: "string",
+    },
+
+    category: {
+      model: "category",
     },
   },
 };
