@@ -7,18 +7,29 @@
 
 module.exports = {
   getAll: async (req, res) => {
-    const allUsers = await User.find();
-    const usersPublicInfo = await allUsers.map((user) => user.toJSON());
+    const allUsers = await User.find()
+      // .populate(req.query.with)
+      .catch((err) => res.negotiate(err));
 
     return res.json({
       success: true,
-      data: usersPublicInfo,
+      data: allUsers,
     });
   },
 
   getOne: async (req, res) => {
     const queryID = req.params.id;
-    const user = await User.findOne().where({ id: queryID });
+    let user = await User.findOne()
+      .where({ id: queryID })
+      // .populate(req.query.with)
+      .catch((err) => res.negotiate(err));
+
+    /*if (req.query.pick) {
+      user = await user;
+    }*/
+    // limit
+    // skip
+    // sort
 
     if (!user) {
       return res.status(404).json({
