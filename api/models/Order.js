@@ -15,13 +15,18 @@ module.exports = {
 
     status: {
       type: "string",
-      isIn: ["cancled", "pending", "complete"],
-      defaultsTo: "pending",
+      isIn: ["cancled", "pending", "processing", "completed"],
+      defaultsTo: "processing",
     },
 
     items: {
       type: "json",
       columnType: "array",
+    },
+
+    amount: {
+      type: "number",
+      required: true,
     },
 
     receiver: {
