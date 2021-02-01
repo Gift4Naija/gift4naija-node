@@ -7,15 +7,32 @@
 
 module.exports = {
   getAll: async (req, res) => {
-    const allCartItems = await CartItem.find();
-    // const cartItemsJsonData = await allCartItems.map((user) => user.toJSON());
+    const allCartItems = await CartItem.find({
+      owner: req.me.id,
+    }); /*.populate(
+      "item"
+    )*/
+    const productIds = allCartItems.map(({ item }) => item);
+
+    const products = await Product.find({ id: productIds }).populate(
+      "category"
+    );
+
+    const itemsWithCategory = allCartItems.map((cartItem) => {
+      const cartProduct = products.find((elt) => elt.id === cartItem.item);
+      // slice out cartProduct for optimization
+
+      cartItem.item = cartProduct;
+      return cartItem;
+    });
 
     return res.json({
       success: true,
-      data: allCartItems,
+      data: itemsWithCategory,
     });
   },
 
+  //  not yet in use
   getOne: async (req, res) => {
     const queryID = req.params.id;
     const cartItem = await CartItem.findOne().where({ id: queryID });
@@ -40,7 +57,7 @@ module.exports = {
    */
   create: async (req, res) => {
     const productId = req.body.product;
-    const userId = req.user.id;
+    const userId = req.me.id;
     const data = { owner: userId, item: productId };
 
     // create cart-item
