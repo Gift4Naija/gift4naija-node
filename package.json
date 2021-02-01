@@ -6,6 +6,7 @@
   "keywords": [],
   "dependencies": {
     "@sailshq/lodash": "^3.10.3",
+    "nanoid": "^3.1.20",
     "sails": "^1.4.0",
     "sails-hook-organics": "^2.2.0",
     "sails-hook-orm": "^3.0.1",
