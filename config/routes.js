@@ -62,8 +62,14 @@ module.exports.routes = {
   "DELETE /api/v1/category/:id": "CategoryController.remove",
 
   // order
-  "GET /api/v1/orders": "OrderController.getAll",
-  "GET /api/v1/order/:id": "OrderController.getOne",
+  // admins
+  "GET /api/v1/orders/level-up": "OrderController.getAll",
+  "GET /api/v1/order/level-up/:id": "OrderController.getOne",
+
+  // users
+  "GET /api/v1/orders": "OrderController.getUserAll",
+  "GET /api/v1/order/:id": "OrderController.getUserOne",
+
   "POST /api/v1/order": "OrderController.create",
   "PUT /api/v1/order/:id": "OrderController.update",
   "DELETE /api/v1/order/:id": "OrderController.remove",
