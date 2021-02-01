@@ -7,7 +7,7 @@
 
 module.exports = {
   getAll: async (req, res) => {
-    const allProducts = await Product.find();
+    const allProducts = await Product.find().populate("category");
     // const productsJsonData = await allProducts.map((goods) => goods.toJSON());
 
     return res.json({
