@@ -159,7 +159,7 @@ module.exports = {
       via: "sender",
     },
 
-    cartItems: {
+    cart: {
       collection: "cartItem",
       via: "owner",
     },
@@ -173,6 +173,8 @@ module.exports = {
       "emailAddress",
       "emailStatus",
       "role",
+      // "cart",
+      "orders",
       "lastSeenAt",
       "createdAt",
       "updatedAt",
