@@ -65,10 +65,12 @@ module.exports = {
   },
 
   create: async (req, res) => {
-    const newCategory = await Category.create(req.body).fetch();
+    const newCategory = await Category.create(req.body)
+      .fetch()
+      .catch((err) => res.badRequest(err));
 
     if (!newCategory) {
-      return res.badRequest();
+      return res.badRequest(); // use server error
     }
 
     return res.status(201).json({
