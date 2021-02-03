@@ -134,9 +134,10 @@ module.exports = {
      *                                                                          *
      ***************************************************************************/
     cors: {
-      // allowOrigins: [
-      //   'https://example.com',
-      // ]
+      //   allRoutes: false,
+      //   allowOrigins: '*',
+      //   allowOrigins: ['http://gift2naija.com','http://www.gift2naija.com', 'http://api.gift2naija.com'],
+      //   allowCredentials: false,
     },
   },
 
@@ -335,8 +336,9 @@ module.exports = {
    *                                                                         *
    ***************************************************************************/
   custom: {
-    baseUrl: "https://example.com",
-    internalEmailAddress: "support@example.com",
+    baseUrl: process.env.BASE_URL,
+    internalEmailAddress: process.env.INTERNAL_EMAIL_ADDRESS,
+    internalEmailPassword: process.env.INTERNAL_EMAIL_PASSWORD,
 
     // sendgridSecret: 'SG.fake.3e0Bn0qSQVnwb1E4qNPz9JZP5vLZYqjh7sn8S93oSHU',
     // stripeSecret: 'sk_prod__fake_Nfgh82401348jaDa3lkZ0d9Hm',
