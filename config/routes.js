@@ -10,6 +10,7 @@
 
 module.exports.routes = {
   "/api/v1/account/logout": { action: "account/logout" },
+  "GET /api/v1/test/email": "EmailTestController.test",
   "PUT   /api/v1/account/update-password": {
     action: "account/update-password",
   },

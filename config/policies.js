@@ -13,6 +13,7 @@ module.exports.policies = {
   OrderController: { getAll: "is-admin", getOne: "is-admin" },
   ProductController: { "*": "is-admin" },
   CategoryController: { "*": "is-admin" },
+  EmailTestController: { "*": true },
 
   // Bypass the `is-logged-in` policy for:
   "entrance/*": true,
