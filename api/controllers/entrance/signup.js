@@ -110,7 +110,7 @@ the account verification message.)`,
 
     if (sails.config.custom.verifyEmailAddresses) {
       // Send "confirm account" email
-      await sails.helpers.sendTemplateEmail.with({
+      /*await sails.helpers.sendTemplateEmail.with({
         to: newEmailAddress,
         subject: "Please confirm your account",
         template: "email-verify-account",
@@ -118,7 +118,13 @@ the account verification message.)`,
           fullName,
           token: newUserRecord.emailProofToken,
         },
-      });
+      });*/
+
+      await EmailService({
+        to: newEmailAddress,
+        subject: "Please confirm your account",
+        text: `email-verify-account - Dear ${fullName} confirm your email ${newUserRecord.emailProofToken}`,
+      }).catch((err) => console.log(err));
     } else {
       sails.log.info(
         "Skipping new account email verification... (since `verifyEmailAddresses` is disabled)"
