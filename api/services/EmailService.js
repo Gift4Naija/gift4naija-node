@@ -34,5 +34,5 @@ module.exports = async function EmailService(options) {
   console.log("email sent");
   console.log(mailMan.getTestMessageUrl(info));
 
-  transporter.close();
+  return transporter.close();
 };
