@@ -10,12 +10,13 @@ module.exports = {
     name: {
       type: "string",
       required: true,
+      unique: true,
     },
 
-    quantity: {
+    /*    quantity: {
       type: "number",
       required: true,
-    },
+    },*/
 
     price: {
       type: "number",
