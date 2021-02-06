@@ -51,10 +51,9 @@ module.exports = {
       });
     }
 
-    const orderJsonData = order.toJSON();
     return res.json({
       success: true,
-      data: orderJsonData,
+      data: order,
     });
   },
 
@@ -81,6 +80,48 @@ module.exports = {
     });
   },
 
+  // for user
+  // get preview of order from cart
+  preview: async (req, res) => {
+    const body = {};
+    body.status = "pending";
+
+    // get products from user cart,
+    const orderCartItem = await CartItem.find({
+      owner: req.me.id,
+    })
+      .populate("item")
+      .catch((err) => res.negotiate(err));
+
+    // check for items in cart
+    if (orderCartItem.length <= 0) {
+      return res.badRequest(undefined, "No item in cart");
+    }
+
+    // extract items from cart with quantity and amount property
+    const orderProducts = orderCartItem.map((cart) => {
+      const { item } = cart;
+      item.quantity = cart.quantity;
+      item.amount = cart.amount;
+      return item;
+    });
+
+    // calculate order total amount
+    const amount = orderCartItem.reduce((a, b) => a + b.amount, 0);
+
+    // generate order id
+    body.orderId = await sails.helpers.genOrderId();
+    body.items = orderProducts;
+    body.sender = req.me.id;
+    body.amount = amount;
+
+    return res.status(201).json({
+      success: true,
+      data: body,
+      msg: "Order preview",
+    });
+  },
+
   /*
    *
    */
@@ -94,25 +135,81 @@ module.exports = {
       .populate("item")
       .catch((err) => res.negotiate(err));
 
-    const orderProducts = orderCartItem.map(({ item }) => item);
+    // check for items in cart
+    if (orderCartItem.length <= 0) {
+      return res.badRequest(undefined, "No item in cart");
+    }
 
-    const amount = orderProducts.reduce((a, b) => {
-      return a + b.price;
-    }, 0);
-    // generate order id
-    body.orderId = await sails.helpers.genOrderId();
+    // extract items from cart with quantity and amount property
+    const orderProducts = orderCartItem.map((cart) => {
+      const { item } = cart;
+      item.quantity = cart.quantity;
+      item.amount = cart.amount;
+      return item;
+    });
+
+    // calculate order total amount
+    const amount = orderCartItem.reduce((a, b) => a + b.amount, 0);
+
+    /*
+     * set order properties
+     * @orderId
+     * @items
+     * @sender
+     * @amount
+     */
+    body.orderId = await sails.helpers.genOrderId(); // generate order id
     body.items = orderProducts;
     body.sender = req.me.id;
     body.amount = amount;
 
-    // validate receivers information
+    /*
+     * validate receivers information
+     * @email
+     * @phone number
+     * @fullname
+     * @state
+     * @city
+     */
+    const { email, phoneNumber, fullname, state, city } = body.receiver;
+
+    if (!(email || phoneNumber || fullname || state || city)) {
+      return res.badRequest(undefined, "Receivers information is required");
+    }
+
+    /*
+     * process payment
+     * @payerId => @payer_id
+     * @paymentId
+     */
+    const { paymentId, payerId: payer_id } = body;
+    const paymentJson = {
+      payer_id,
+      transactions: [
+        {
+          amount: {
+            currency: "USD",
+            total: amount,
+          },
+        },
+      ],
+    };
+
+    const payment = await PaymentService.execute(paymentJson, paymentId).catch(
+      (err) => {
+        console.log(err);
+        return res.negotiate(err);
+      }
+    );
+
+    body.status = "processing";
 
     const newOrder = await Order.create(body)
       .fetch()
       .catch((err) => res.negotiate(err));
 
     if (!newOrder) {
-      return res.badRequest();
+      return res.badRequest(undefined, "You cannot order from an empty cart");
     }
 
     // empty user cart
@@ -124,6 +221,7 @@ module.exports = {
     return res.status(201).json({
       success: true,
       data: newOrder,
+      diff: { orderCartItem, orderProducts },
       msg: "Successfully created an order",
     });
   },
@@ -131,7 +229,7 @@ module.exports = {
   update: async (req, res) => {
     const newOrder = await Order.updateOne({
       id: req.params.id,
-      sender: req.me.id,
+      // sender: req.me.id,
     }).set(req.body);
 
     if (!newOrder) {
