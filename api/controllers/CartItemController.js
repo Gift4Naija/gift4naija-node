@@ -56,9 +56,51 @@ module.exports = {
    * userId - req.user.id
    */
   create: async (req, res) => {
-    const productId = req.body.product;
+    // grab <productId> and <quantity>
+    const { product: productId, quantity } = req.body;
+    // grab <userId>
     const userId = req.me.id;
-    const data = { owner: userId, item: productId };
+
+    // get user cart with items
+    let cartItemArray = await CartItem.find()
+      .where({ owner: userId })
+      .populate("item");
+
+    // check if <product> already exist in cart
+    // by matching <item> to productID
+    cartItemArray = cartItemArray.filter(({ item }) => {
+      return item.id === parseInt(productId);
+    });
+
+    console.log(cartItemArray);
+
+    if (cartItemArray.length >= 1) {
+      return res.badRequest(undefined, "Item already in cart");
+    }
+
+    // find product
+    const _product = await Product.findOne(productId);
+
+    // check if product exist in DB
+    if (!_product) {
+      return res.badRequest(undefined, "Invalid Item");
+    }
+
+    // check if product exist in DB
+    if (!quantity) {
+      return res.badRequest(undefined, "Quantity must be specified");
+    }
+
+    // calculate price
+    const amount = parseFloat(quantity * _product.price);
+
+    // check if amount is valid
+    if (!amount) {
+      return res.badRequest();
+    }
+
+    // set cartItem <owner> and cartItem <item>
+    const data = { owner: userId, item: productId, amount };
 
     // create cart-item
     const newCartItem = await CartItem.create(data)
@@ -77,8 +119,21 @@ module.exports = {
   },
 
   update: async (req, res) => {
-    const cartItemUpdate = await CartItem.updateOne({ id: req.params.id })
-      .set(req.body)
+    const { quantity } = req.body;
+    const { id } = req.params;
+
+    // find cartItem with product and recalculate amount
+    const cartItem = await CartItem.findOne().where({ id }).populate("item");
+
+    // check if cartItem exist in DB
+    if (!cartItem) {
+      return res.badRequest();
+    }
+
+    const amount = parseFloat(quantity * cartItem.price);
+
+    const cartItemUpdate = await CartItem.updateOne({ id })
+      .set({ quantity, amount })
       .catch((err) => res.badRequest(err));
 
     if (!cartItemUpdate) {
