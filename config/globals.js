@@ -18,8 +18,6 @@ module.exports.globals = {
    ****************************************************************************/
 
   _: require("@sailshq/lodash"),
-  nanoid: require("nanoid/async"),
-  nodemailer: require("nodemailer"),
 
   /****************************************************************************
    *                                                                           *
