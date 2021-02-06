@@ -15,8 +15,13 @@ module.exports = {
 
     status: {
       type: "string",
-      isIn: ["cancled", "pending", "processing", "completed"],
-      defaultsTo: "processing",
+      isIn: [
+        "pending", // pending => not paid
+        "processing", // processing => paid, delivery in progress
+        "cancelled", // cancelled => cancel or aborted
+        "completed", // completed => payment and delivery completed
+      ],
+      defaultsTo: "pending",
     },
 
     items: {
