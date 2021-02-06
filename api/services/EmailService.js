@@ -1,14 +1,21 @@
-module.exports = async function EmailService(options) {
-  const mailMan = sails.config.globals.nodemailer;
+const mailMan = require("nodemailer");
+const {
+  MAIL_SERVER,
+  INTERNAL_EMAIL_ADDRESS,
+  INTERNAL_EMAIL_PASSWORD,
+  APP_NAME,
+  FROM_EMAIL_ADDRESS,
+} = process.env;
 
+module.exports = async function EmailService(options) {
   const transportOptions = {
-    host: process.env.MAIL_SERVER,
+    host: MAIL_SERVER,
     port: 26,
     secure: false,
     tls: { rejectUnauthorized: false },
     auth: {
-      user: process.env.INTERNAL_EMAIL_ADDRESS,
-      pass: process.env.INTERNAL_EMAIL_PASSWORD,
+      user: INTERNAL_EMAIL_ADDRESS,
+      pass: INTERNAL_EMAIL_PASSWORD,
     },
   };
 
@@ -20,7 +27,7 @@ module.exports = async function EmailService(options) {
   const { from, to, cc, bcc, subject, text, html, attachments } = options;
 
   const message = {
-    from: `${process.env.APP_NAME} Team <${process.env.FROM_EMAIL_ADDRESS}>`,
+    from: `${APP_NAME} Team <${FROM_EMAIL_ADDRESS}>`,
     to,
     cc,
     bcc,
