@@ -69,9 +69,14 @@ module.exports.routes = {
 
   // users
   "GET /api/v1/orders": "OrderController.getUserAll",
+  "GET /api/v1/order/preview": "OrderController.preview",
   "GET /api/v1/order/:id": "OrderController.getUserOne",
 
   "POST /api/v1/order": "OrderController.create",
   "PUT /api/v1/order/:id": "OrderController.update",
   "DELETE /api/v1/order/:id": "OrderController.remove",
+
+  // payment test
+  "/api/v1/payment/checkout": "PaymentController.create",
+  "/api/v1/payment/success": "PaymentController.execute",
 };
