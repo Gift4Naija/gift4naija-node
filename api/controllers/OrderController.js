@@ -18,7 +18,7 @@ module.exports = {
 
   // for admin
   getOne: async (req, res) => {
-    const queryID = req.params.id;
+    const queryID = parseInt(req.params.id);
     const order = await Order.findOne().where({ id: queryID });
 
     if (!order) {
@@ -29,27 +29,17 @@ module.exports = {
       });
     }
 
-    const orderJsonData = order.toJSON();
     return res.json({
       success: true,
-      data: orderJsonData,
+      data: order,
     });
   },
 
   // for users
   getUserAll: async (req, res) => {
-    const queryID = req.params.id;
     const order = await Order.findOne().where({
       sender: req.me.id,
     });
-
-    if (!order) {
-      return res.status(404).json({
-        success: false,
-        errorType: "NotFound",
-        msg: "Not Found",
-      });
-    }
 
     return res.json({
       success: true,
@@ -73,10 +63,9 @@ module.exports = {
       });
     }
 
-    const orderJsonData = order.toJSON();
     return res.json({
       success: true,
-      data: orderJsonData,
+      data: order,
     });
   },
 
