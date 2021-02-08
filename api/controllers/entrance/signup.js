@@ -124,7 +124,7 @@ the account verification message.)`,
         to: newEmailAddress,
         subject: "Please confirm your account",
         text: `email-verify-account - Dear ${fullName} confirm your email ${newUserRecord.emailProofToken}`,
-      }).catch((err) => this.res.negotiate(err));
+      }).catch((err) => console.log(err));
     } else {
       sails.log.info(
         "Skipping new account email verification... (since `verifyEmailAddresses` is disabled)"
