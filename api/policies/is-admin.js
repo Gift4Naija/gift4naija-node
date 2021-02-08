@@ -12,12 +12,14 @@ module.exports = async function (req, res, proceed) {
   // First, check whether the request comes from a logged-in user.
   // > For more about where `req.me` comes from, check out this app's
   // > custom hook (`api/hooks/custom/index.js`).
-  if (!req.me) {
+  const { me } = req;
+  if (!me) {
     return res.unauthorized();
   } //•
 
   // Then check that this user is an "admin".
-  if (req.me.role !== "admin") {
+  const isAdminLevel = me.role === "admin" || me.isSuperAdmin;
+  if (!isAdminLevel) {
     return res.forbidden("Access requires elevated privilage");
   } //•
 
