@@ -127,6 +127,7 @@ module.exports = {
    */
   create: async (req, res) => {
     const { body } = req;
+    const { me: user } = req;
 
     // get products from user cart,
     const orderCartItem = await CartItem.find({
@@ -214,14 +215,19 @@ module.exports = {
 
     // empty user cart
     const itemsToRemove = orderProducts.map(({ id }) => id);
-    await CartItem.destroy({ id: { in: itemsToRemove } }).catch((err) =>
+    await CartItem.destroy({ owner: user.id }).catch((err) =>
       res.negotiate(err)
     );
+
+    await EmailService({
+      to: user.emailAddress,
+      subject: "Order confirmation",
+      text: `Order confirmation - Dear ${user.fullName} order id ${newOrder.orderId}`,
+    }).catch((err) => console.log(err));
 
     return res.status(201).json({
       success: true,
       data: newOrder,
-      diff: { orderCartItem, orderProducts },
       msg: "Successfully created an order",
     });
   },
