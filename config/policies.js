@@ -11,6 +11,7 @@
 module.exports.policies = {
   "*": "is-logged-in",
   OrderController: { getAll: "is-admin", getOne: "is-admin" },
+  UserController: { getAll: "is-admin", getOne: "is-admin" },
   ProductController: {
     create: "is-admin",
     update: "is-admin",
