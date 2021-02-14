@@ -33,7 +33,7 @@ module.exports = function badRequest(err, msg) {
 
   const resData = {
     success: false,
-    error: err,
+    // error: err,
     errorType: "Bad Request",
     msg,
   };
