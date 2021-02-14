@@ -8,7 +8,7 @@
 module.exports = {
   // for admin
   getAll: async (req, res) => {
-    const allOrders = await Order.find();
+    const allOrders = await Order.find().populate("sender");
 
     return res.json({
       success: true,
@@ -19,7 +19,9 @@ module.exports = {
   // for admin
   getOne: async (req, res) => {
     const queryID = parseInt(req.params.id);
-    const order = await Order.findOne().where({ id: queryID });
+    const order = await Order.findOne()
+      .where({ id: queryID })
+      .populate("sender");
 
     if (!order) {
       return res.status(404).json({
@@ -161,11 +163,13 @@ module.exports = {
      * @state
      * @city
      */
-    const { email, phoneNumber, fullname, state, city } = body.receiver;
+    const { email, phoneNumber, fullname, state, city } = body;
 
-    if (!(email || phoneNumber || fullname || state || city)) {
+    if (!(email && phoneNumber && fullname && state && city)) {
       return res.badRequest(undefined, "Receivers information is required");
     }
+
+    body.receiver = { email, phoneNumber, fullname, state, city };
 
     /*
      * process payment
@@ -222,10 +226,11 @@ module.exports = {
   },
 
   update: async (req, res) => {
+    const { status } = req.body;
     const newOrder = await Order.updateOne({
       id: req.params.id,
       // sender: req.me.id,
-    }).set(req.body);
+    }).set({ status: status });
 
     if (!newOrder) {
       return res.status(400).json({ success: false, msg: "Bad Request" });
@@ -234,7 +239,7 @@ module.exports = {
     return res.json({
       success: true,
       data: newOrder,
-      msg: "Successfully updated a product",
+      msg: "Successfully updated order status",
     });
   },
 
