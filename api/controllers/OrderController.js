@@ -225,7 +225,7 @@ module.exports = {
     });
   },
 
-  update: async (req, res) => {
+  updateStatus: async (req, res) => {
     const { status } = req.body;
     const newOrder = await Order.updateOne({
       id: req.params.id,
