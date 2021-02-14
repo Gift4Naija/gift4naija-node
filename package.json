@@ -15,6 +15,7 @@
     "sails-hook-organics": "^2.2.0",
     "sails-hook-orm": "^3.0.1",
     "sails-hook-sockets": "^2.0.0",
+    "sails-hook-uploads": "^0.4.3",
     "sails-postgresql": "^2.0.0"
   },
   "devDependencies": {
