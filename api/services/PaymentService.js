@@ -1,13 +1,15 @@
 const paypal = require("paypal-rest-sdk");
 
+const mode = process.env.NODE_ENV === "production" ? "live" : "sandbox";
+
 const configurationOption = {
-  mode: "sandbox", //sandbox or live
+  mode: mode, //sandbox or live
   client_id: process.env.CLIENT_ID,
   client_secret: process.env.CLIENT_SECRET,
 };
 paypal.configure(configurationOption);
 
-async function create(orderItemsArray, totalAmount, description = "") {
+/*async function create(orderItemsArray, totalAmount, description = "") {
   const paymentJson = {
     intent: "sale",
     payer: {
@@ -21,13 +23,13 @@ async function create(orderItemsArray, totalAmount, description = "") {
       {
         item_list: {
           items: orderItemsArray,
-          /*[{
-                "name": "item",
-                "sku": "item",
-                "price": "1.00",
-                "currency": "USD",
-                "quantity": 1
-            }]*/
+          // [{
+          //       "name": "item",
+          //       "sku": "item",
+          //       "price": "1.00",
+          //       "currency": "USD",
+          //       "quantity": 1
+          //   }]
         },
         amount: {
           currency: "USD",
@@ -57,10 +59,12 @@ async function create(orderItemsArray, totalAmount, description = "") {
       }
     });
   });
-}
+}*/
 
 async function execute(paymentJson, paymentId) {
   let execute_payment_json = JSON.stringify(paymentJson);
+
+  // PAYMENT JSON FORMAT
   /*{
     payer_id: "Appended to redirect url",
     transactions: [
@@ -73,15 +77,13 @@ async function execute(paymentJson, paymentId) {
     ],
   };*/
 
-  // "PAYMENT id created in previous step";
-
   return new Promise(function (resolve, reject) {
     paypal.payment.execute(
       paymentId,
       execute_payment_json,
       function (error, payment) {
         if (error) {
-          console.log(error.response);
+          console.log(error);
           return reject(error);
         } else {
           console.log("Get Payment Response");
@@ -94,6 +96,5 @@ async function execute(paymentJson, paymentId) {
 }
 
 module.exports = {
-  create,
   execute,
 };
