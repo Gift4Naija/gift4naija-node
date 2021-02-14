@@ -76,7 +76,7 @@ module.exports.routes = {
   "GET /api/v1/order/preview": "OrderController.preview",
 
   "POST /api/v1/order": "OrderController.create",
-  "PUT /api/v1/order/:id/status-change": "OrderController.update",
+  "PUT /api/v1/order/:id/status-change": "OrderController.updateStatus",
   "DELETE /api/v1/order/:id": "OrderController.remove",
 
   // payment test
