@@ -1,0 +1,4173 @@
+{
+	"info": {
+		"_postman_id": "df49596c-4aed-4f93-8ffa-0184c2845737",
+		"name": "Gift 4 Naija",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Entrance",
+			"item": [
+				{
+					"name": "Sign-up",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "emailAddress",
+									"value": "tester@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "testing123",
+									"type": "text"
+								},
+								{
+									"key": "fullName",
+									"value": "tester de best",
+									"type": "text"
+								},
+								{
+									"key": "_csrf",
+									"value": "{{_csrf}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:1337/api/v1/entrance/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"v1",
+								"entrance",
+								"signup"
+							]
+						},
+						"description": "Register User"
+					},
+					"response": [
+						{
+							"name": "Sign-up",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "emailAddress",
+											"value": "tester@mail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "testing123",
+											"type": "text"
+										},
+										{
+											"key": "fullName",
+											"value": "tester de best",
+											"type": "text"
+										},
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:1337/api/v1/entrance/signup",
+									"host": [
+										"localhost"
+									],
+									"port": "1337",
+									"path": [
+										"api",
+										"v1",
+										"entrance",
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "263",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Sat, 06 Feb 2021 16:00:09 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"107-dIuI6M6NcBKvE1xvicNCa9Vtwqg\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-exit",
+									"value": "success",
+									"name": "x-exit",
+									"description": "Custom header"
+								},
+								{
+									"key": "x-exit-description",
+									"value": "New user account was created successfully.",
+									"name": "x-exit-description",
+									"description": "Custom header"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 2,\n    \"fullName\": \"tester de best\",\n    \"emailAddress\": \"tester@mail.com\",\n    \"emailStatus\": \"unconfirmed\",\n    \"role\": \"buyer\",\n    \"lastSeenAt\": 0,\n    \"createdAt\": 1612627208857,\n    \"updatedAt\": 1612627208857\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Sign-in",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "emailAddress",
+									"value": "tester@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "testing123",
+									"type": "text"
+								},
+								{
+									"key": "fullName",
+									"value": "tester de best",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "_csrf",
+									"value": "{{_csrf}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/entrance/login",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"entrance",
+								"login"
+							]
+						},
+						"description": "Register User"
+					},
+					"response": [
+						{
+							"name": "Sign-in",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "emailAddress",
+											"value": "tester@mail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "testing123",
+											"type": "text"
+										},
+										{
+											"key": "fullName",
+											"value": "tester de best",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/entrance/login",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"entrance",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "275",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 18:03:46 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"113-Rf6x6bKKyECT4xvb7/h51IM8kG4\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-exit",
+									"value": "success",
+									"name": "x-exit",
+									"description": "Custom header"
+								},
+								{
+									"key": "x-exit-description",
+									"value": "The requesting user agent has been successfully logged in.",
+									"name": "x-exit-description",
+									"description": "Custom header"
+								},
+								{
+									"key": "x-exit-extended-description",
+									"value": "Under the covers, this stores the id of the logged-in user in the session as the `userId` key.  The next time this user agent sends a request, assuming it includes a cookie (like a web browser), Sails will automatically make this user id available as req.session.userId in the corresponding action.  (Also note that, thanks to the included \"custom\" hook, when a relevant request is received from a logged-in user, that user's entire record from the database will be fetched and exposed as `req.me`.)",
+									"name": "x-exit-extended-description",
+									"description": "Custom header"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 2,\n    \"fullName\": \"tester de best\",\n    \"emailAddress\": \"tester@mail.com\",\n    \"emailStatus\": \"unconfirmed\",\n    \"role\": \"buyer\",\n    \"lastSeenAt\": 1612639920172,\n    \"createdAt\": 1612628072230,\n    \"updatedAt\": 1612639920172\n  }\n}"
+						},
+						{
+							"name": "Sign-in - wrong or missing CSRF",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "emailAddress",
+											"value": "tester@mail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "testing123",
+											"type": "text"
+										},
+										{
+											"key": "fullName",
+											"value": "tester de best",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/entrance/login",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"entrance",
+										"login"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "76",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 18:01:37 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"4c-rrBJ7MDAnLAzXCNHrVfTY5KOk8c\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"errorType\": \"Forbidden\",\n  \"msg\": \"CSRF mismatch\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Sign-out",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}api/v1/account/logout",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"account",
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Sign-out",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/account/logout",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"account",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "21",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 19:52:31 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"15-gynjM5+Sj4WRAkuw+TjauZwK1Lg\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-exit",
+									"value": "success",
+									"name": "x-exit",
+									"description": "Custom header"
+								},
+								{
+									"key": "x-exit-description",
+									"value": "The requesting user agent has been successfully logged out.",
+									"name": "x-exit-description",
+									"description": "Custom header"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get all users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}api/v1/users?with=cart",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "with",
+									"value": "cart"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/users",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "552",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 19:57:36 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"228-HkL2IEv0lPXQex4sHorWG88vSCo\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"fullName\": \"Ryan Dahl\",\n            \"emailAddress\": \"admin@example.com\",\n            \"emailStatus\": \"confirmed\",\n            \"role\": \"admin\",\n            \"lastSeenAt\": 0,\n            \"createdAt\": 1612535921237,\n            \"updatedAt\": 1612535921237\n        },\n        {\n            \"id\": 2,\n            \"fullName\": \"tester de best\",\n            \"emailAddress\": \"tester@mail.com\",\n            \"emailStatus\": \"unconfirmed\",\n            \"role\": \"buyer\",\n            \"lastSeenAt\": 1612813951780,\n            \"createdAt\": 1612813720172,\n            \"updatedAt\": 1612813951785\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a single users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}api/v1/user/2?pick=cart",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"user",
+								"2"
+							],
+							"query": [
+								{
+									"key": "pick",
+									"value": "cart"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a single users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/user/2",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"user",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "275",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 19:58:58 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"113-CcmTAiCMIRBC6B52LHogRFLoLzg\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 2,\n    \"fullName\": \"tester de best\",\n    \"emailAddress\": \"tester@mail.com\",\n    \"emailStatus\": \"unconfirmed\",\n    \"role\": \"buyer\",\n    \"lastSeenAt\": 1612814256185,\n    \"createdAt\": 1612813720172,\n    \"updatedAt\": 1612814256185\n  }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Create category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Frozen",
+									"type": "text"
+								},
+								{
+									"key": "_csrf",
+									"value": "{{_csrf}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/category",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"category"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create category",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Frozen",
+											"type": "text"
+										},
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/category",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"category"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "180",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Sat, 06 Feb 2021 16:15:17 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"b4-iEN/PGWwpLvASdMJV+Q+pae4QG8\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"createdAt\": 1612628117093,\n    \"updatedAt\": 1612628117093,\n    \"id\": 1,\n    \"name\": \"Frozen\"\n  },\n  \"msg\": \"Successfully created a category\"\n}"
+						},
+						{
+							"name": "Create category",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Frozen",
+											"type": "text"
+										},
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/category",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"category"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "180",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 20:55:27 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"b4-S010AoSw4fUYK91Asc32LoyeINU\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"createdAt\": 1612817727776,\n    \"updatedAt\": 1612817727776,\n    \"id\": 2,\n    \"name\": \"Fabric\"\n  },\n  \"msg\": \"Successfully created a category\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}api/v1/categories",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"categories"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all categories",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/categories",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"categories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "156",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 20:53:32 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"9c-x+gVdqNEaVqHZfiw37Xyu0y9X8k\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"createdAt\": 1612628117093,\n      \"updatedAt\": 1612628117093,\n      \"id\": 1,\n      \"name\": \"Frozen\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Get all categories",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/categories",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"categories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "275",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 20:56:00 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"113-pv036pOm3TxKSYseRy2ntIJXTeo\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"createdAt\": 1612628117093,\n      \"updatedAt\": 1612628117093,\n      \"id\": 1,\n      \"name\": \"Frozen\"\n    },\n    {\n      \"createdAt\": 1612817727776,\n      \"updatedAt\": 1612817727776,\n      \"id\": 2,\n      \"name\": \"Fabric\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a single category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}api/v1/category/1",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a single category",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/category/1",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"category",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "136",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 20:54:01 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"88-qz2Zjm2LiMzM2wwMm9DJbBJ+1VQ\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"createdAt\": 1612628117093,\n    \"updatedAt\": 1612628117093,\n    \"id\": 1,\n    \"name\": \"Frozen\"\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_csrf",
+									"value": "{{_csrf}}",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Frozen food",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/category/2",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"category",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update category",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Textile",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/category/2",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"category",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "181",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 20:57:05 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"b5-dEGpaD0RCTPenP4bK4P9C62KoDQ\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"createdAt\": 1612817727776,\n    \"updatedAt\": 1612817825739,\n    \"id\": 2,\n    \"name\": \"Textile\"\n  },\n  \"msg\": \"Successfully updated a category\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete category",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_csrf",
+									"value": "{{_csrf}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/category/2",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"category",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete category",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/category/2",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"category",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "181",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 20:57:35 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"b5-A0c8WbzkqOJJTkVFCCjNqWT9Udc\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"createdAt\": 1612817727776,\n    \"updatedAt\": 1612817825739,\n    \"id\": 2,\n    \"name\": \"Textile\"\n  },\n  \"msg\": \"Successfully removed a category\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Rice",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "20000",
+									"type": "text"
+								},
+								{
+									"key": "categoryId",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "categoryType",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "25kg",
+									"type": "text"
+								},
+								{
+									"key": "_csrf",
+									"value": "{{_csrf}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/product",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"product"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Pet",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "2000",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "categoryType",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "25kg",
+											"type": "text"
+										},
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/product",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"product"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "253",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 20:27:09 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"fd-X+jjummxSKgSBjpFQkqyhz41ZhQ\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"createdAt\": 1612816029352,\n    \"updatedAt\": 1612816029352,\n    \"id\": 3,\n    \"name\": \"Pet\",\n    \"price\": 2000,\n    \"image\": null,\n    \"size\": \"25kg\",\n    \"category\": 1\n  },\n  \"msg\": \"Successfully created a product\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all Product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}api/v1/products",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all Product",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/products",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "690",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 19:59:45 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"2b2-Cz0Mphky4U54N4pUABVwSp+u+Gs\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"createdAt\": 1612628158158,\n      \"updatedAt\": 1612628158158,\n      \"id\": 1,\n      \"name\": \"Rice\",\n      \"price\": 20000,\n      \"image\": null,\n      \"size\": \"25kg\",\n      \"category\": {\n        \"createdAt\": 1612628117093,\n        \"updatedAt\": 1612628117093,\n        \"id\": 1,\n        \"name\": \"Frozen\"\n      }\n    },\n    {\n      \"createdAt\": 1612628176712,\n      \"updatedAt\": 1612628176712,\n      \"id\": 2,\n      \"name\": \"Chicken\",\n      \"price\": 20000,\n      \"image\": null,\n      \"size\": \"25kg\",\n      \"category\": {\n        \"createdAt\": 1612628117093,\n        \"updatedAt\": 1612628117093,\n        \"id\": 1,\n        \"name\": \"Frozen\"\n      }\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a single product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}api/v1/product/4",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a single product",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/product/2",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"product",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "215",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 20:00:41 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"d7-Mzl6Nb5b9x+9Yh7kb3yZPRY/ihQ\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"createdAt\": 1612628176712,\n    \"updatedAt\": 1612628176712,\n    \"id\": 2,\n    \"name\": \"Chicken\",\n    \"price\": 20000,\n    \"image\": null,\n    \"size\": \"25kg\",\n    \"category\": 1\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Rice",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "quantity",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "25000",
+									"type": "text"
+								},
+								{
+									"key": "categories",
+									"value": "cerels",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "categoryType",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "25kg",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "_csrf",
+									"value": "{{_csrf}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/product/4",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update a product",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Rice",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "quantity",
+											"value": "50",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "25000",
+											"type": "text"
+										},
+										{
+											"key": "categories",
+											"value": "cerels",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "categoryType",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "image",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "25kg",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/product/3",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"product",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "254",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 20:28:22 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"fe-bONoVcCZ3lSZOrRTUz9b3w5gmG4\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"createdAt\": 1612816029352,\n    \"updatedAt\": 1612816102506,\n    \"id\": 3,\n    \"name\": \"Pet\",\n    \"price\": 25000,\n    \"image\": null,\n    \"size\": \"25kg\",\n    \"category\": 1\n  },\n  \"msg\": \"Successfully updated a product\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Upload a product image",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_csrf",
+									"value": "{{_csrf}}",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/product/1/image/upload",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"1",
+								"image",
+								"upload"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Upload a product image",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/product/3/image/upload",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"product",
+										"3",
+										"image",
+										"upload"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "317"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"13d-/fSyzC5Ma1BjExBmSXMQjnzNhy8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Feb 2021 08:00:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"createdAt\": 1613288321431,\n        \"updatedAt\": 1613289624066,\n        \"id\": 3,\n        \"name\": \"Rice\",\n        \"price\": 20000,\n        \"images\": [\n            \"95eea122-6623-4d61-8e83-218f41cb03c3.jpeg\"\n        ],\n        \"size\": \"25kg\",\n        \"category\": 1\n    },\n    \"msg\": \"Successfully uploaded product image(s)\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove a product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Rice",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "quantity",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "25000",
+									"type": "text"
+								},
+								{
+									"key": "categories",
+									"value": "cerels",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "categoryType",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "25kg",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "_csrf",
+									"value": "{{_csrf}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/product/1",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Remove a product",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Rice",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "quantity",
+											"value": "50",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "25000",
+											"type": "text"
+										},
+										{
+											"key": "categories",
+											"value": "cerels",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "categoryType",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "image",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "25kg",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/product/3",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"product",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "254",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 20:29:11 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"fe-DUQqEhjYlYgnBXEJHcbOL+bbRi4\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"createdAt\": 1612816029352,\n    \"updatedAt\": 1612816102506,\n    \"id\": 3,\n    \"name\": \"Pet\",\n    \"price\": 25000,\n    \"image\": null,\n    \"size\": \"25kg\",\n    \"category\": 1\n  },\n  \"msg\": \"Successfully removed a product\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove a product image",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_csrf",
+									"value": "{{_csrf}}",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Rice",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "quantity",
+									"value": "50",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "25000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "categories",
+									"value": "cerels",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "categoryType",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"value": "a5865008-2482-4a48-8e6a-62059ca026b5.jpeg",
+									"type": "text"
+								},
+								{
+									"key": "size",
+									"value": "25kg",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/product/3/image",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"3",
+								"image"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Remove a product image",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Rice",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "quantity",
+											"value": "50",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "price",
+											"value": "25000",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "categories",
+											"value": "cerels",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "categoryType",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "image",
+											"value": "a5865008-2482-4a48-8e6a-62059ca026b5.jpeg",
+											"type": "text"
+										},
+										{
+											"key": "size",
+											"value": "25kg",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/product/3/image",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"product",
+										"3",
+										"image"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "254"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fe-DgmZzgwDeQZkqL+K/EU7Bm8NTmg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Feb 2021 08:14:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"createdAt\": 1613288321431,\n        \"updatedAt\": 1613290470759,\n        \"id\": 3,\n        \"name\": \"Rice\",\n        \"price\": 20000,\n        \"images\": [],\n        \"size\": \"25kg\",\n        \"category\": 1\n    },\n    \"msg\": \"Successfully updated a product\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cart Items",
+			"item": [
+				{
+					"name": "Add to cart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "_csrf",
+									"value": "{{_csrf}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/cart-item",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"cart-item"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add to cart - already in cart",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/cart-item",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"cart-item"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "85",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 20:58:20 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"55-23JH7CW34/r/OyA7k6LxFh+HoYM\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"errorType\": \"Bad Request\",\n  \"msg\": \"Item already in cart\"\n}"
+						},
+						{
+							"name": "Add to cart",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/cart-item",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"cart-item"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "231",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 21:00:16 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"e7-aSl7U0WexV0T4oCa1KoBbo0KOOU\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"createdAt\": 1612818016520,\n    \"updatedAt\": 1612818016520,\n    \"id\": 3,\n    \"quantity\": 1,\n    \"amount\": 100000,\n    \"item\": 2,\n    \"owner\": 2\n  },\n  \"msg\": \"Successfully created a cart item\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get user cart",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}api/v1/cart-items",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"cart-items"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get user cart",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/cart-items",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"cart-items"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "1081",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 20:59:25 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"439-NzdNf2BgRvxWtPzwu2TRJ5qBHIw\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"createdAt\": 1612639260857,\n      \"updatedAt\": 1612639260857,\n      \"id\": 1,\n      \"quantity\": 1,\n      \"amount\": 20000,\n      \"item\": {\n        \"createdAt\": 1612628158158,\n        \"updatedAt\": 1612628158158,\n        \"id\": 1,\n        \"name\": \"Rice\",\n        \"price\": 20000,\n        \"image\": null,\n        \"size\": \"25kg\",\n        \"category\": {\n          \"createdAt\": 1612628117093,\n          \"updatedAt\": 1612628117093,\n          \"id\": 1,\n          \"name\": \"Frozen\"\n        }\n      },\n      \"owner\": 2\n    },\n    {\n      \"createdAt\": 1612639741106,\n      \"updatedAt\": 1612639741106,\n      \"id\": 2,\n      \"quantity\": 1,\n      \"amount\": 100000,\n      \"item\": {\n        \"createdAt\": 1612628176712,\n        \"updatedAt\": 1612628176712,\n        \"id\": 2,\n        \"name\": \"Chicken\",\n        \"price\": 20000,\n        \"image\": null,\n        \"size\": \"25kg\",\n        \"category\": {\n          \"createdAt\": 1612628117093,\n          \"updatedAt\": 1612628117093,\n          \"id\": 1,\n          \"name\": \"Frozen\"\n        }\n      },\n      \"owner\": 2\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete item from cart",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "_csrf",
+									"value": "{{_csrf}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/cart-item/1",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"cart-item",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete item from cart",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product",
+											"value": "3",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/cart-item/2",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"cart-item",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "231",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 20:59:52 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"e7-Y/9Kd2rn+p6/4w2Su6SlFh1lOXc\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"createdAt\": 1612639741106,\n    \"updatedAt\": 1612639741106,\n    \"id\": 2,\n    \"quantity\": 1,\n    \"amount\": 100000,\n    \"item\": 2,\n    \"owner\": 2\n  },\n  \"msg\": \"Successfully removed a cart item\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Open order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_csrf",
+									"value": "{{_csrf}}",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "test order",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "testReceiver@mail.com",
+									"description": "Receivers email",
+									"type": "text"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "2340000000001",
+									"description": "Receivers telephone number",
+									"type": "text"
+								},
+								{
+									"key": "fullname",
+									"value": "Receiver tester",
+									"description": "Receivers fullname",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "AK",
+									"description": "Receivers state of residence",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "Uyo",
+									"description": "Receivers city of residence",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/order",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"order"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Open order",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "test order",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "testReceiver@mail.com",
+											"description": "Receivers email",
+											"type": "text"
+										},
+										{
+											"key": "phoneNumber",
+											"value": "2340000000001",
+											"description": "Receivers telephone number",
+											"type": "text"
+										},
+										{
+											"key": "fullname",
+											"value": "Receiver tester",
+											"description": "Receivers fullname",
+											"type": "text"
+										},
+										{
+											"key": "state",
+											"value": "AK",
+											"description": "Receivers state of residence",
+											"type": "text"
+										},
+										{
+											"key": "city",
+											"value": "Uyo",
+											"description": "Receivers city of residence",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/order",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"order"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "734"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2de-RvnQbUJr5V1O3U09RsfwKAeMXF0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Feb 2021 09:02:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"createdAt\": 1613293365112,\n        \"updatedAt\": 1613293365112,\n        \"id\": 1,\n        \"orderId\": \"1sCcuePj2V9remPIyrMRM\",\n        \"status\": \"processing\",\n        \"items\": [\n            {\n                \"createdAt\": 1613288321431,\n                \"updatedAt\": 1613290470759,\n                \"id\": 3,\n                \"name\": \"Rice\",\n                \"price\": 20000,\n                \"images\": [],\n                \"size\": \"25kg\",\n                \"category\": 1,\n                \"quantity\": 1,\n                \"amount\": 40000\n            }\n        ],\n        \"amount\": 40000,\n        \"receiver\": {\n            \"email\": \"testReceiver@mail.com\",\n            \"phoneNumber\": \"2340000000001\",\n            \"fullname\": \"Receiver tester\",\n            \"state\": \"AK\",\n            \"city\": \"Uyo\"\n        },\n        \"sender\": 1\n    },\n    \"msg\": \"Successfully created an order\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update order status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_csrf",
+									"value": "{{_csrf}}",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "cancelled",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/order/1/status-change",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"order",
+								"1",
+								"status-change"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update order status",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "cancelled",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/order/1/status-change",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"order",
+										"1",
+										"status-change"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "737"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e1-whB9NPz9aGnLtQKtBhdy/6kHunA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Feb 2021 09:13:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"createdAt\": 1613293365112,\n        \"updatedAt\": 1613293999331,\n        \"id\": 1,\n        \"orderId\": \"1sCcuePj2V9remPIyrMRM\",\n        \"status\": \"cancelled\",\n        \"items\": [\n            {\n                \"createdAt\": 1613288321431,\n                \"updatedAt\": 1613290470759,\n                \"id\": 3,\n                \"name\": \"Rice\",\n                \"price\": 20000,\n                \"images\": [],\n                \"size\": \"25kg\",\n                \"category\": 1,\n                \"quantity\": 1,\n                \"amount\": 40000\n            }\n        ],\n        \"amount\": 40000,\n        \"receiver\": {\n            \"email\": \"testReceiver@mail.com\",\n            \"phoneNumber\": \"2340000000001\",\n            \"fullname\": \"Receiver tester\",\n            \"state\": \"AK\",\n            \"city\": \"Uyo\"\n        },\n        \"sender\": 1\n    },\n    \"msg\": \"Successfully updated order status\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete order",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_csrf",
+									"value": "{{_csrf}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/order/1",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"order",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete order",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/order/1",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"order",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "733"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2dd-UrZhZPOjXwxk6ctrlRTviycox/g\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Feb 2021 09:13:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"createdAt\": 1613293365112,\n        \"updatedAt\": 1613293999331,\n        \"id\": 1,\n        \"orderId\": \"1sCcuePj2V9remPIyrMRM\",\n        \"status\": \"cancelled\",\n        \"items\": [\n            {\n                \"createdAt\": 1613288321431,\n                \"updatedAt\": 1613290470759,\n                \"id\": 3,\n                \"name\": \"Rice\",\n                \"price\": 20000,\n                \"images\": [],\n                \"size\": \"25kg\",\n                \"category\": 1,\n                \"quantity\": 1,\n                \"amount\": 40000\n            }\n        ],\n        \"amount\": 40000,\n        \"receiver\": {\n            \"email\": \"testReceiver@mail.com\",\n            \"phoneNumber\": \"2340000000001\",\n            \"fullname\": \"Receiver tester\",\n            \"state\": \"AK\",\n            \"city\": \"Uyo\"\n        },\n        \"sender\": 1\n    },\n    \"msg\": \"Successfully removed an order\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}api/v1/orders",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all orders",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/orders",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "692"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b4-YmaPptMCLMM8ZaHILxE3HKBDZZY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Feb 2021 09:10:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"createdAt\": 1613293365112,\n        \"updatedAt\": 1613293365112,\n        \"id\": 1,\n        \"orderId\": \"1sCcuePj2V9remPIyrMRM\",\n        \"status\": \"processing\",\n        \"items\": [\n            {\n                \"createdAt\": 1613288321431,\n                \"updatedAt\": 1613290470759,\n                \"id\": 3,\n                \"name\": \"Rice\",\n                \"price\": 20000,\n                \"images\": [],\n                \"size\": \"25kg\",\n                \"category\": 1,\n                \"quantity\": 1,\n                \"amount\": 40000\n            }\n        ],\n        \"amount\": 40000,\n        \"receiver\": {\n            \"email\": \"testReceiver@mail.com\",\n            \"phoneNumber\": \"2340000000001\",\n            \"fullname\": \"Receiver tester\",\n            \"state\": \"AK\",\n            \"city\": \"Uyo\"\n        },\n        \"sender\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a single order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}api/v1/order/1",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"order",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a single order",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/order/1",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"order",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "692"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b4-YmaPptMCLMM8ZaHILxE3HKBDZZY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Feb 2021 09:09:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"createdAt\": 1613293365112,\n        \"updatedAt\": 1613293365112,\n        \"id\": 1,\n        \"orderId\": \"1sCcuePj2V9remPIyrMRM\",\n        \"status\": \"processing\",\n        \"items\": [\n            {\n                \"createdAt\": 1613288321431,\n                \"updatedAt\": 1613290470759,\n                \"id\": 3,\n                \"name\": \"Rice\",\n                \"price\": 20000,\n                \"images\": [],\n                \"size\": \"25kg\",\n                \"category\": 1,\n                \"quantity\": 1,\n                \"amount\": 40000\n            }\n        ],\n        \"amount\": 40000,\n        \"receiver\": {\n            \"email\": \"testReceiver@mail.com\",\n            \"phoneNumber\": \"2340000000001\",\n            \"fullname\": \"Receiver tester\",\n            \"state\": \"AK\",\n            \"city\": \"Uyo\"\n        },\n        \"sender\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a single order quote (preview)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}api/v1/order/preview",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"order",
+								"preview"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Order quote/preview",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/order/preview",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"order",
+										"preview"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "734",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Sat, 06 Feb 2021 19:32:00 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"2de-oYYSdNTOnRrBy/ecFFzj+17Y6lU\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"status\": \"pending\",\n    \"orderId\": \"mFJ88oFH80CcsXKBAMslz\",\n    \"items\": [\n      {\n        \"createdAt\": 1612628158158,\n        \"updatedAt\": 1612628158158,\n        \"id\": 1,\n        \"name\": \"Rice\",\n        \"price\": 20000,\n        \"image\": null,\n        \"size\": \"25kg\",\n        \"category\": 1,\n        \"quantity\": 1,\n        \"amount\": 20000\n      },\n      {\n        \"createdAt\": 1612628176712,\n        \"updatedAt\": 1612628176712,\n        \"id\": 2,\n        \"name\": \"Chicken\",\n        \"price\": 20000,\n        \"image\": null,\n        \"size\": \"25kg\",\n        \"category\": 1,\n        \"quantity\": 1,\n        \"amount\": 100000\n      }\n    ],\n    \"sender\": 2,\n    \"amount\": 120000\n  },\n  \"msg\": \"Order preview\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a single order (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}api/v1/order/1/level-up",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"order",
+								"1",
+								"level-up"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a single order (Admin)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/order/1/level-up",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"order",
+										"1",
+										"level-up"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "951"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b7-Pw/kV9KrRR4EcWf7Q58hGQ5452c\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Feb 2021 09:06:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"createdAt\": 1613293365112,\n        \"updatedAt\": 1613293365112,\n        \"id\": 1,\n        \"orderId\": \"1sCcuePj2V9remPIyrMRM\",\n        \"status\": \"processing\",\n        \"items\": [\n            {\n                \"createdAt\": 1613288321431,\n                \"updatedAt\": 1613290470759,\n                \"id\": 3,\n                \"name\": \"Rice\",\n                \"price\": 20000,\n                \"images\": [],\n                \"size\": \"25kg\",\n                \"category\": 1,\n                \"quantity\": 1,\n                \"amount\": 40000\n            }\n        ],\n        \"amount\": 40000,\n        \"receiver\": {\n            \"email\": \"testReceiver@mail.com\",\n            \"phoneNumber\": \"2340000000001\",\n            \"fullname\": \"Receiver tester\",\n            \"state\": \"AK\",\n            \"city\": \"Uyo\"\n        },\n        \"sender\": {\n            \"id\": 1,\n            \"fullName\": \"John Deo\",\n            \"emailAddress\": \"john@mail.com\",\n            \"emailStatus\": \"confirmed\",\n            \"role\": \"buyer\",\n            \"lastSeenAt\": 1613293605072,\n            \"createdAt\": 1613036375896,\n            \"updatedAt\": 1613293605075\n        }\n    }\n}"
+						},
+						{
+							"name": "Get a single order (Admin)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/order/level-up/1",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"order",
+										"level-up",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "805",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 20:52:14 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"325-CIF3dTSI6ufhBCD+idsFHPNJHy4\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"createdAt\": 1612631323680,\n    \"updatedAt\": 1612631323680,\n    \"id\": 1,\n    \"orderId\": \"CmBb5LcTF8lda3tH_0IZ4\",\n    \"status\": \"pending\",\n    \"items\": [\n      {\n        \"createdAt\": 1612628176712,\n        \"updatedAt\": 1612628176712,\n        \"id\": 2,\n        \"name\": \"Chicken\",\n        \"price\": 20000,\n        \"image\": null,\n        \"size\": \"25kg\",\n        \"category\": 1,\n        \"quantity\": 1,\n        \"amount\": 40000\n      },\n      {\n        \"createdAt\": 1612628158158,\n        \"updatedAt\": 1612628158158,\n        \"id\": 1,\n        \"name\": \"Rice\",\n        \"price\": 20000,\n        \"image\": null,\n        \"size\": \"25kg\",\n        \"category\": 1,\n        \"quantity\": 1,\n        \"amount\": 20000\n      }\n    ],\n    \"amount\": 60000,\n    \"receiver\": null,\n    \"sender\": 2\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all orders (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}api/v1/orders/level-up",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"orders",
+								"level-up"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all orders (Admin)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/orders/level-up",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"orders",
+										"level-up"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive",
+									"name": "connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "content-length",
+									"value": "885",
+									"name": "content-length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 08 Feb 2021 20:43:24 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"375-t1RnZKyqlJNY5EhcbvFPLv73YkU\"",
+									"name": "etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Sails <sailsjs.com>",
+									"name": "x-powered-by",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"createdAt\": 1612631323680,\n      \"updatedAt\": 1612631323680,\n      \"id\": 1,\n      \"orderId\": \"CmBb5LcTF8lda3tH_0IZ4\",\n      \"status\": \"pending\",\n      \"items\": [\n        {\n          \"createdAt\": 1612628176712,\n          \"updatedAt\": 1612628176712,\n          \"id\": 2,\n          \"name\": \"Chicken\",\n          \"price\": 20000,\n          \"image\": null,\n          \"size\": \"25kg\",\n          \"category\": 1,\n          \"quantity\": 1,\n          \"amount\": 40000\n        },\n        {\n          \"createdAt\": 1612628158158,\n          \"updatedAt\": 1612628158158,\n          \"id\": 1,\n          \"name\": \"Rice\",\n          \"price\": 20000,\n          \"image\": null,\n          \"size\": \"25kg\",\n          \"category\": 1,\n          \"quantity\": 1,\n          \"amount\": 20000\n        }\n      ],\n      \"amount\": 60000,\n      \"receiver\": null,\n      \"sender\": 2\n    }\n  ]\n}"
+						},
+						{
+							"name": "Get all orders (Admin)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/orders/level-up",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"orders",
+										"level-up"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1037"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"40d-dj/XpKhQvZVbAAq0T/Jm5wb7f64\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Feb 2021 09:08:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"createdAt\": 1613293365112,\n            \"updatedAt\": 1613293365112,\n            \"id\": 1,\n            \"orderId\": \"1sCcuePj2V9remPIyrMRM\",\n            \"status\": \"processing\",\n            \"items\": [\n                {\n                    \"createdAt\": 1613288321431,\n                    \"updatedAt\": 1613290470759,\n                    \"id\": 3,\n                    \"name\": \"Rice\",\n                    \"price\": 20000,\n                    \"images\": [],\n                    \"size\": \"25kg\",\n                    \"category\": 1,\n                    \"quantity\": 1,\n                    \"amount\": 40000\n                }\n            ],\n            \"amount\": 40000,\n            \"receiver\": {\n                \"email\": \"testReceiver@mail.com\",\n                \"phoneNumber\": \"2340000000001\",\n                \"fullname\": \"Receiver tester\",\n                \"state\": \"AK\",\n                \"city\": \"Uyo\"\n            },\n            \"sender\": {\n                \"id\": 1,\n                \"fullName\": \"tester de best\",\n                \"emailAddress\": \"tester@mail.com\",\n                \"emailStatus\": \"unconfirmed\",\n                \"role\": \"admin\",\n                \"lastSeenAt\": 1613293714384,\n                \"createdAt\": 1613036375896,\n                \"updatedAt\": 1613293714385\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Grant token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var {_csrf} = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"_csrf\", _csrf);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}grant/csrf-token",
+					"host": [
+						"{{host}}grant"
+					],
+					"path": [
+						"csrf-token"
+					]
+				},
+				"description": "get csurf token from app"
+			},
+			"response": [
+				{
+					"name": "Grant token",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}grant/csrf-token",
+							"host": [
+								"{{host}}grant"
+							],
+							"path": [
+								"csrf-token"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "connection",
+							"value": "keep-alive",
+							"name": "connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "content-length",
+							"value": "122",
+							"name": "content-length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"name": "content-type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "date",
+							"value": "Mon, 08 Feb 2021 07:42:09 GMT",
+							"name": "date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"7a-W/xhYfIR5b6HPDU5GNdo1BFtxHU\"",
+							"name": "etag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Sails <sailsjs.com>",
+							"name": "x-powered-by",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"success\": true,\n  \"_csrf\": \"JHmvzktE-QYvwoN-dJYLYoMlQSaJLbwIFFrI\",\n  \"data\": \"JHmvzktE-QYvwoN-dJYLYoMlQSaJLbwIFFrI\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Email test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}api/v1/test/email",
+					"host": [
+						"{{host}}api"
+					],
+					"path": [
+						"v1",
+						"test",
+						"email"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
