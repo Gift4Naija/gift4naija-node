@@ -35,7 +35,10 @@ module.exports = {
   //  not yet in use
   getOne: async (req, res) => {
     const queryID = req.params.id;
-    const cartItem = await CartItem.findOne().where({ id: queryID });
+    const cartItem = await CartItem.findOne().where({
+      id: queryID,
+      owner: req.me.id,
+    });
 
     if (!cartItem) {
       return res.status(404).json({
@@ -123,7 +126,9 @@ module.exports = {
     const { id } = req.params;
 
     // find cartItem with product and recalculate amount
-    const cartItem = await CartItem.findOne().where({ id }).populate("item");
+    const cartItem = await CartItem.findOne()
+      .where({ id: id, owner: req.me.id })
+      .populate("item");
 
     // check if cartItem exist in DB
     if (!cartItem) {
