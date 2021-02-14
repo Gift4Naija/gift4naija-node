@@ -46,6 +46,9 @@ module.exports.routes = {
   "GET /api/v1/product/:id": "ProductController.getOne",
   "POST /api/v1/product": "ProductController.create",
   "PUT /api/v1/product/:id": "ProductController.update",
+  "PUT /api/v1/product/:id/image/upload":
+    "ProductController.uploadProductImage",
+  "DELETE /api/v1/product/:id/image/": "ProductController.removeProductImage",
   "DELETE /api/v1/product/:id": "ProductController.remove",
 
   // cart item
@@ -65,18 +68,18 @@ module.exports.routes = {
   // order
   // admins
   "GET /api/v1/orders/level-up": "OrderController.getAll",
-  "GET /api/v1/order/level-up/:id": "OrderController.getOne",
+  "GET /api/v1/order/:id/level-up": "OrderController.getOne",
 
   // users
   "GET /api/v1/orders": "OrderController.getUserAll",
-  "GET /api/v1/order/preview": "OrderController.preview",
   "GET /api/v1/order/:id": "OrderController.getUserOne",
+  "GET /api/v1/order/preview": "OrderController.preview",
 
   "POST /api/v1/order": "OrderController.create",
-  "PUT /api/v1/order/:id": "OrderController.update",
+  "PUT /api/v1/order/:id/status-change": "OrderController.update",
   "DELETE /api/v1/order/:id": "OrderController.remove",
 
   // payment test
-  "/api/v1/payment/checkout": "PaymentController.create",
-  "/api/v1/payment/success": "PaymentController.execute",
+  // "/api/v1/payment/checkout": "PaymentController.execute",
+  // "/api/v1/payment/success": "PaymentController.execute",
 };
