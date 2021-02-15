@@ -39,18 +39,17 @@
 								{
 									"key": "_csrf",
 									"value": "{{_csrf}}",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:1337/api/v1/entrance/signup",
+							"raw": "{{host}}api/v1/entrance/signup",
 							"host": [
-								"localhost"
+								"{{host}}api"
 							],
-							"port": "1337",
 							"path": [
-								"api",
 								"v1",
 								"entrance",
 								"signup"
@@ -59,6 +58,98 @@
 						"description": "Register User"
 					},
 					"response": [
+						{
+							"name": "Sign-up (error - missing parameter)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "emailAddress",
+											"value": "tester@mail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "testing123",
+											"type": "text"
+										},
+										{
+											"key": "fullName",
+											"value": "tester de best",
+											"type": "text"
+										},
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/entrance/signup",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"entrance",
+										"signup"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "X-Exit",
+									"value": "error"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "319"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"13f-SMvRPg+E1CKc39fHPwtxMCWOwrI\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Feb 2021 10:45:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"E_MISSING_OR_INVALID_PARAMS\",\n        \"problems\": [\n            \"Invalid \\\"emailAddress\\\":\\n  · Value ('testermail.com') was not a valid email address.\"\n        ],\n        \"message\": \"The server could not fulfill this request (`POST /api/v1/entrance/signup`) due to 1 missing or invalid parameter.\"\n    },\n    \"errorType\": \"Bad Request\"\n}"
+						},
 						{
 							"name": "Sign-up",
 							"originalRequest": {
@@ -163,11 +254,112 @@
 							],
 							"cookie": [],
 							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 2,\n    \"fullName\": \"tester de best\",\n    \"emailAddress\": \"tester@mail.com\",\n    \"emailStatus\": \"unconfirmed\",\n    \"role\": \"buyer\",\n    \"lastSeenAt\": 0,\n    \"createdAt\": 1612627208857,\n    \"updatedAt\": 1612627208857\n  }\n}"
+						},
+						{
+							"name": "Sign-up (error - email conflict)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "emailAddress",
+											"value": "tester@mail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "testing123",
+											"type": "text"
+										},
+										{
+											"key": "fullName",
+											"value": "tester de best",
+											"type": "text"
+										},
+										{
+											"key": "_csrf",
+											"value": "{{_csrf}}",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/entrance/signup",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"entrance",
+										"signup"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"45-Ns58KrnHKDmTgL7u721DUcWbCpk\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Feb 2021 10:51:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"errorType\": \"Conflict\",\n    \"msg\": \"Email already in use\"\n}"
 						}
 					]
 				},
 				{
 					"name": "Sign-in",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "21591828-e469-4325-bca7-3d8492966f7f",
+								"exec": [
+									"var {token} = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"token\", token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -198,7 +390,8 @@
 								{
 									"key": "_csrf",
 									"value": "{{_csrf}}",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -269,62 +462,48 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "connection",
-									"value": "keep-alive",
-									"name": "connection",
-									"description": "Options that are desired for the connection"
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
 								},
 								{
-									"key": "content-length",
-									"value": "275",
-									"name": "content-length",
-									"description": "The length of the response body in octets (8-bit bytes)"
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
 								},
 								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8",
-									"name": "content-type",
-									"description": "The mime type of this content"
+									"key": "X-Exit",
+									"value": "success"
 								},
 								{
-									"key": "date",
-									"value": "Mon, 08 Feb 2021 18:03:46 GMT",
-									"name": "date",
-									"description": "The date and time that the message was sent"
+									"key": "X-Exit-Description",
+									"value": "The requesting user agent has been successfully logged in."
 								},
 								{
-									"key": "etag",
-									"value": "W/\"113-Rf6x6bKKyECT4xvb7/h51IM8kG4\"",
-									"name": "etag",
-									"description": "An identifier for a specific version of a resource, often a message digest"
+									"key": "X-Exit-Extended-Description",
+									"value": "Under the covers, this stores the id of the logged-in user in the session as the `userId` key.  The next time this user agent sends a request, assuming it includes a cookie (like a web browser), Sails will automatically make this user id available as req.session.userId in the corresponding action.  (Also note that, thanks to the included \"custom\" hook, when a relevant request is received from a logged-in user, that user's entire record from the database will be fetched and exposed as `req.me`.)"
 								},
 								{
-									"key": "x-exit",
-									"value": "success",
-									"name": "x-exit",
-									"description": "Custom header"
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
 								},
 								{
-									"key": "x-exit-description",
-									"value": "The requesting user agent has been successfully logged in.",
-									"name": "x-exit-description",
-									"description": "Custom header"
+									"key": "Content-Length",
+									"value": "409"
 								},
 								{
-									"key": "x-exit-extended-description",
-									"value": "Under the covers, this stores the id of the logged-in user in the session as the `userId` key.  The next time this user agent sends a request, assuming it includes a cookie (like a web browser), Sails will automatically make this user id available as req.session.userId in the corresponding action.  (Also note that, thanks to the included \"custom\" hook, when a relevant request is received from a logged-in user, that user's entire record from the database will be fetched and exposed as `req.me`.)",
-									"name": "x-exit-extended-description",
-									"description": "Custom header"
+									"key": "ETag",
+									"value": "W/\"199-MvaCwpggDrgxcUmCL8xENPkSDV0\""
 								},
 								{
-									"key": "x-powered-by",
-									"value": "Sails <sailsjs.com>",
-									"name": "x-powered-by",
-									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+									"key": "Date",
+									"value": "Mon, 15 Feb 2021 07:59:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 2,\n    \"fullName\": \"tester de best\",\n    \"emailAddress\": \"tester@mail.com\",\n    \"emailStatus\": \"unconfirmed\",\n    \"role\": \"buyer\",\n    \"lastSeenAt\": 1612639920172,\n    \"createdAt\": 1612628072230,\n    \"updatedAt\": 1612639920172\n  }\n}"
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 3,\n        \"fullName\": \"tester de best\",\n        \"emailAddress\": \"tester@mail.com\",\n        \"emailStatus\": \"unconfirmed\",\n        \"role\": \"buyer\",\n        \"lastSeenAt\": 1613375859955,\n        \"createdAt\": 1613373747783,\n        \"updatedAt\": 1613375859957\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6MywiaWF0IjoxNjEzMzc1OTY2fQ.R2j9oGA1T8VDpuJHIUZc6OSzBUAtq7bCdNw5sbXyn68\"\n}"
 						},
 						{
 							"name": "Sign-in - wrong or missing CSRF",
@@ -422,6 +601,19 @@
 				},
 				{
 					"name": "Sign-out",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "191a8bf2-fd09-4b25-b136-5b99bef214e0",
+								"exec": [
+									"var {token} = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"token\", token || \"\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -4168,6 +4360,38 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "001bc1bc-e63a-443e-88b9-2488128953fa",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "13dbb4c3-fc4e-40cb-abf4-ffd4a85a6682",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
