@@ -58,36 +58,57 @@ the account verification message.)`,
 
   fn: async function ({ emailAddress, password, fullName }) {
     var newEmailAddress = emailAddress.toLowerCase();
+    const { res } = this;
+
+    if (await User.findOne({ emailAddress: newEmailAddress })) {
+      return res.status(409).json({
+        success: false,
+        errorType: "Conflict",
+        msg: "Email already in use",
+      });
+    }
 
     // Build up data for the new user record and save it to the database.
     // (Also use `fetch` to retrieve the new ID so that we can use it below.)
-    var newUserRecord = await User.create(
-      _.extend(
-        {
-          fullName,
-          emailAddress: newEmailAddress,
-          password: await sails.helpers.passwords.hashPassword(password),
-          tosAcceptedByIp: this.req.ip,
-        },
-        sails.config.custom.verifyEmailAddresses
-          ? {
-              emailProofToken: await sails.helpers.strings.random(
-                "url-friendly"
-              ),
-              emailProofTokenExpiresAt:
-                Date.now() + sails.config.custom.emailProofTokenTTL,
-              emailStatus: "unconfirmed",
-            }
-          : {}
-      )
-    )
-      .intercept("E_UNIQUE", "emailAlreadyInUse")
-      .intercept({ name: "UsageError" }, "invalid")
-      .fetch();
+    var newUserRecord;
+    try {
+      newUserRecord = await User.create(
+        _.extend(
+          {
+            fullName,
+            emailAddress: newEmailAddress,
+            password: await sails.helpers.passwords.hashPassword(password),
+            tosAcceptedByIp: this.req.ip,
+          },
+          sails.config.custom.verifyEmailAddresses
+            ? {
+                emailProofToken: await sails.helpers.strings.random(
+                  "url-friendly"
+                ),
+                emailProofTokenExpiresAt:
+                  Date.now() + sails.config.custom.emailProofTokenTTL,
+                emailStatus: "unconfirmed",
+              }
+            : {}
+        )
+      ).fetch();
+    } catch (err) {
+      return res.negotiate(err);
+    }
+    /*.intercept("E_UNIQUE", () => {
+        res.status(409);
+        res.json({
+          success: false,
+          error: new Error("Email already in use"),
+          errorType: "Conflict",
+        });
+        return;
+      })
+      .intercept({ name: "UsageError" }, "invalid")*/
 
     // If billing feaures are enabled, save a new customer entry in the Stripe API.
     // Then persist the Stripe customer id in the database.
-    if (sails.config.custom.enableBillingFeatures) {
+    /*if (sails.config.custom.enableBillingFeatures) {
       let stripeCustomerId = await sails.helpers.stripe.saveBillingInfo
         .with({
           emailAddress: newEmailAddress,
@@ -97,14 +118,14 @@ the account verification message.)`,
       await User.updateOne({ id: newUserRecord.id }).set({
         stripeCustomerId,
       });
-    }
+    }*/
 
     // Store the user's new id in their session.
     // this.req.session.userId = newUserRecord.id;
     const token = await sails.helpers
       .jwt()
-      .sign({ token: userRecord.id })
-      .catch((err) => this.res.unauthorized(err));
+      .sign({ token: newUserRecord.id })
+      .catch((err) => res.unauthorized(err));
 
     // In case there was an existing session (e.g. if we allow users to go to the signup page
     // when they're already logged in), broadcast a message that we can display in other open tabs.
