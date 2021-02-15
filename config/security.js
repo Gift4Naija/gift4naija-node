@@ -26,14 +26,12 @@ module.exports.security = {
    * https://sailsjs.com/docs/concepts/security/cors                          *
    *                                                                          *
    ***************************************************************************/
-
   // cors: {
   //   allRoutes: false,
   //   allowOrigins: '*',
   //   allowOrigins: ['http://gift2naija.com','http://www.gift2naija.com', 'http://api.gift2naija.com'],
   //   allowCredentials: false,
   // },
-
   /****************************************************************************
    *                                                                           *
    * CSRF protection should be enabled for this application.                   *
@@ -42,6 +40,5 @@ module.exports.security = {
    * https://sailsjs.com/docs/concepts/security/csrf                           *
    *                                                                           *
    ****************************************************************************/
-
-  csrf: true,
+  // csrf: true,
 };
