@@ -180,7 +180,7 @@ will be disabled and/or hidden in the UI.
                   configuredBaseHostname +
                   "`)..."
               );
-              return res.redirect(sails.config.custom.baseUrl + req.url);
+              // return res.redirect(sails.config.custom.baseUrl + req.url);
             } //•
 
             // decode authorization token
@@ -242,7 +242,6 @@ will be disabled and/or hidden in the UI.
               );
             }
             req.me = loggedInUser;
-            console.log(req.me);
 
             // If our "lastSeenAt" attribute for this user is at least a few seconds old, then set it
             // to the current timestamp.
