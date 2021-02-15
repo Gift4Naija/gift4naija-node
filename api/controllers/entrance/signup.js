@@ -100,13 +100,17 @@ the account verification message.)`,
     }
 
     // Store the user's new id in their session.
-    this.req.session.userId = newUserRecord.id;
+    // this.req.session.userId = newUserRecord.id;
+    const token = await sails.helpers
+      .jwt()
+      .sign({ token: userRecord.id })
+      .catch((err) => this.res.unauthorized(err));
 
     // In case there was an existing session (e.g. if we allow users to go to the signup page
     // when they're already logged in), broadcast a message that we can display in other open tabs.
-    if (sails.hooks.sockets) {
-      await sails.helpers.broadcastSessionChange(this.req);
-    }
+    // if (sails.hooks.sockets) {
+    //   await sails.helpers.broadcastSessionChange(this.req);
+    // }
 
     if (sails.config.custom.verifyEmailAddresses) {
       // Send "confirm account" email
@@ -131,6 +135,6 @@ the account verification message.)`,
       );
     }
 
-    return { success: true, data: newUserRecord.toJSON() };
+    return { success: true, data: newUserRecord.toJSON(), token };
   },
 };
