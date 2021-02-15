@@ -1,3 +1,5 @@
+const jwt = require("jsonwebtoken");
+
 module.exports = {
   friendlyName: "Login",
 
@@ -87,21 +89,25 @@ and exposed as \`req.me\`.)`,
             "Please use a traditional HTTP request instead."
         );
       } else {
-        this.req.session.cookie.maxAge =
-          sails.config.custom.rememberMeCookieMaxAge;
+        // this.req.session.cookie.maxAge =
+        // sails.config.custom.rememberMeCookieMaxAge;
       }
     } //ﬁ
 
     // Modify the active session instance.
     // (This will be persisted when the response is sent.)
-    this.req.session.userId = userRecord.id;
+    // this.req.session.userId = userRecord.id;
+    const token = await sails.helpers
+      .jwt()
+      .sign({ token: userRecord.id })
+      .catch((err) => this.res.unauthorized(err));
 
     // In case there was an existing session (e.g. if we allow users to go to the login page
     // when they're already logged in), broadcast a message that we can display in other open tabs.
-    if (sails.hooks.sockets) {
-      await sails.helpers.broadcastSessionChange(this.req);
-    }
+    // if (sails.hooks.sockets) {
+    //   await sails.helpers.broadcastSessionChange(this.req);
+    // }
 
-    return { success: true, data: userRecord.toJSON() };
+    return { success: true, data: userRecord.toJSON(), token: token };
   },
 };
