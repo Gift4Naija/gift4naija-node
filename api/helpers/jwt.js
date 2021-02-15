@@ -6,7 +6,6 @@ function verify(token) {
       token,
       process.env.TOKEN_SECRET,
       async (err, payload) => {
-        console.log(err, payload);
         if (err) {
           return reject(err);
         }
@@ -19,7 +18,6 @@ function verify(token) {
 function sign(data) {
   return new Promise(function (resolve, reject) {
     jsonwebtoken.sign(data, process.env.TOKEN_SECRET, async (err, token) => {
-      console.log(err, token);
       if (err) {
         return reject(err);
       }
