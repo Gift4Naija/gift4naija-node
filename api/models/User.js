@@ -49,7 +49,7 @@ module.exports = {
 
     role: {
       type: "string",
-      isIn: ["admin", "superAdmin", "vendor", "buyer"],
+      isIn: ["admin", "vendor", "buyer"],
       defaultsTo: "buyer",
     },
 
@@ -153,6 +153,13 @@ module.exports = {
       example: 1502844074211,
     },
 
+    city: {
+      type: "string",
+      isIn: ["PORT-HARCOURT", "ABUJA", "LAGOS"],
+      description:
+        "City location of vendor. One of the three options available",
+    },
+
     // Assoc.
     orders: {
       collection: "order",
@@ -162,6 +169,11 @@ module.exports = {
     cart: {
       collection: "cartItem",
       via: "owner",
+    },
+
+    products: {
+      collection: "product",
+      via: "vendor",
     },
   },
 
@@ -173,8 +185,9 @@ module.exports = {
       "emailAddress",
       "emailStatus",
       "role",
-      // "cart",
+      "cart",
       "orders",
+      "products",
       "lastSeenAt",
       "createdAt",
       "updatedAt",
