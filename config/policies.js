@@ -16,7 +16,11 @@ module.exports.policies = {
     updateStatus: "is-admin",
   },
 
-  UserController: { getAll: "is-admin", getOne: "is-admin" },
+  UserController: {
+    getAll: "is-admin",
+    getOne: "is-admin",
+    promoteUser: "is-admin",
+  },
 
   ProductController: {
     create: "is-admin-vendor",
