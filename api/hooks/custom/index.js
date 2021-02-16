@@ -189,7 +189,7 @@ will be disabled and/or hidden in the UI.
             );
 
             // No authorization token? Proceed as usual.
-            if (!req.user) {
+            if (!req.userId) {
               return next();
             }
 
@@ -205,25 +205,23 @@ will be disabled and/or hidden in the UI.
             // }
 
             // Otherwise, look up the logged-in user.
-            // var loggedInUser = await User.findOne({
-            //   id: req.session.userId,
-            // });
-
-            var loggedInUser = req.user;
-            delete req.user;
+            var loggedInUser = await User.findOne({
+              id: req.userId,
+            });
+            delete req.userId;
 
             // If the logged-in user has gone missing, log a warning,
             // wipe the user id from the requesting user agent's session,
             // and then send the "unauthorized" response.
-            // if (!loggedInUser) {
-            //   sails.log.warn(
-            //     "Somehow, the user record for the logged-in user (`" +
-            //       req.session.userId +
-            //       "`) has gone missing...."
-            //   );
-            //   delete req.session.userId;
-            //   return res.unauthorized();
-            // }
+            if (!loggedInUser) {
+              sails.log.warn(
+                "Somehow, the user record for the logged-in user (`" +
+                  req.session.userId +
+                  "`) has gone missing...."
+              );
+              // delete req.session.userId;
+              return res.unauthorized();
+            }
 
             // Add additional information for convenience when building top-level navigation.
             // (i.e. whether to display "Dashboard", "My Account", etc.)
