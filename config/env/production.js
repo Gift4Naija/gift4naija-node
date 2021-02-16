@@ -55,7 +55,6 @@ module.exports = {
       //  sails_datastores__default__url=mysql://admin:myc00lpAssw2D@db.example.com:3306/my_prod_db
       //  ```
       //--------------------------------------------------------------------------
-
       /****************************************************************************
        *                                                                           *
        * More adapter-specific options                                             *
@@ -136,7 +135,12 @@ module.exports = {
     cors: {
       //   allRoutes: false,
       //   allowOrigins: '*',
-      //   allowOrigins: ['http://gift2naija.com','http://www.gift2naija.com', 'http://api.gift2naija.com'],
+      allowOrigins: [
+        "https://gift2naija.com",
+        "https://www.gift2naija.com",
+        "https://api.gift2naija.com",
+        "https://www.api.gift2naija.com",
+      ],
       //   allowCredentials: false,
     },
   },
@@ -227,10 +231,12 @@ module.exports = {
      * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
      *                                                                          *
      ***************************************************************************/
-    // onlyAllowOrigins: [
-    //   'https://example.com',
-    //   'https://staging.example.com',
-    // ],
+    onlyAllowOrigins: [
+      "https://gift2naija.com",
+      "https://www.gift2naija.com",
+      "https://api.gift2naija.com",
+      "https://www.api.gift2naija.com",
+    ],
     /***************************************************************************
      *                                                                          *
      * If you are deploying a cluster of multiple servers and/or processes,     *
@@ -294,7 +300,7 @@ module.exports = {
      * (https://sailsjs.com/config/http)                                        *
      *                                                                          *
      ***************************************************************************/
-    // trustProxy: true,
+    trustProxy: true,
   },
 
   /**************************************************************************
@@ -336,7 +342,7 @@ module.exports = {
    *                                                                         *
    ***************************************************************************/
   custom: {
-    baseUrl: process.env.BASE_URL,
+    baseUrl: "api.gift2naija.com",
     internalEmailAddress: process.env.INTERNAL_EMAIL_ADDRESS,
     internalEmailPassword: process.env.INTERNAL_EMAIL_PASSWORD,
 
