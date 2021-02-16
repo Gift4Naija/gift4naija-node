@@ -56,8 +56,8 @@ module.exports = {
     await EmailService({
       to: emailAddress,
       subject: "Password reset instructions",
-      text: `Password reset - Dear ${user.fullName} password reset token ${token}`,
-    }).catch((err) => res.negotiate(err));
+      text: `Password reset - Dear ${userRecord.fullName} password reset token ${token}`,
+    }).catch((err) => console.log(err));
 
     return res.json({
       success: true,
