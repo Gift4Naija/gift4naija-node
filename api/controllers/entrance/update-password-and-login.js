@@ -75,7 +75,7 @@ module.exports = {
     return this.res.json({
       success: true,
       data: userRecord,
-      authToken,
+      token: authToken,
     });
   },
 };
