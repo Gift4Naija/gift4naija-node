@@ -28,6 +28,9 @@ module.exports.routes = {
   "POST  /api/v1/entrance/send-password-recovery-email": {
     action: "entrance/send-password-recovery-email",
   },
+  "POST  /api/v1/entrance/send-email-confirmation": {
+    action: "entrance/send-email-confirmation",
+  },
   "POST  /api/v1/entrance/update-password-and-login": {
     action: "entrance/update-password-and-login",
   },
