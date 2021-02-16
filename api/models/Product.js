@@ -40,5 +40,9 @@ module.exports = {
     category: {
       model: "category",
     },
+
+    vendor: {
+      model: "user",
+    },
   },
 };
