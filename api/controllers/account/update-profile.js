@@ -21,6 +21,7 @@ module.exports = {
   },
 
   fn: async function ({ fullName, emailAddress }) {
+    const { res } = this;
     var newEmailAddress = emailAddress;
     if (newEmailAddress !== undefined) {
       newEmailAddress = newEmailAddress.toLowerCase();
@@ -71,14 +72,17 @@ module.exports = {
         ],
       });
       if (conflictingUser) {
-        throw "emailAlreadyInUse";
+        return res.status(409).json({
+          success: false,
+          msg: "The email address is no longer available.",
+        });
       }
     }
 
     // Start building the values to set in the db.
     // (We always set the fullName if provided.)
     var valuesToSet = {
-      fullName,
+      fullName: fullName || this.req.me.fullName,
     };
 
     switch (desiredEmailEffect) {
@@ -156,7 +160,7 @@ module.exports = {
       desiredEmailEffect === "begin-change" ||
       desiredEmailEffect === "modify-pending-change"
     ) {
-      await sails.helpers.sendTemplateEmail.with({
+      /*await sails.helpers.sendTemplateEmail.with({
         to: newEmailAddress,
         subject: "Your account has been updated",
         template: "email-verify-new-email",
@@ -164,7 +168,13 @@ module.exports = {
           fullName: fullName || this.req.me.fullName,
           token: valuesToSet.emailProofToken,
         },
-      });
+      });*/
+
+      await EmailService({
+        to: newEmailAddress,
+        subject: "Your account has been updated",
+        text: `email-verify-account - Dear ${fullName} confirm your email ${newUserRecord.emailProofToken}`,
+      }).catch((err) => console.log(err));
     }
   },
 };
