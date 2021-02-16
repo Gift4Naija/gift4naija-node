@@ -125,7 +125,7 @@ the account verification message.)`,
     const token = await sails.helpers
       .jwt()
       .sign({ token: newUserRecord.id })
-      .catch((err) => res.unauthorized(err));
+      .catch((err) => res.negotiate(err));
 
     // In case there was an existing session (e.g. if we allow users to go to the signup page
     // when they're already logged in), broadcast a message that we can display in other open tabs.
