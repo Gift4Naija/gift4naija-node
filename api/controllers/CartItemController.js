@@ -56,7 +56,8 @@ module.exports = {
 
   /*
    * productId - req.body.product
-   * userId - req.user.id
+   * quantity - req.body.quantity
+   * userId - req.me.id
    */
   create: async (req, res) => {
     // grab <productId> and <quantity>
@@ -74,8 +75,6 @@ module.exports = {
     cartItemArray = cartItemArray.filter(({ item }) => {
       return item.id === parseInt(productId);
     });
-
-    console.log(cartItemArray);
 
     if (cartItemArray.length >= 1) {
       return res.badRequest(undefined, "Item already in cart");
@@ -103,7 +102,7 @@ module.exports = {
     }
 
     // set cartItem <owner> and cartItem <item>
-    const data = { owner: userId, item: productId, amount };
+    const data = { owner: userId, item: productId, amount, quantity };
 
     // create cart-item
     const newCartItem = await CartItem.create(data)
@@ -155,6 +154,7 @@ module.exports = {
   remove: async (req, res) => {
     const removedCartItem = await CartItem.destroyOne({
       id: req.params.id,
+      owner: req.me.id,
     }).catch((err) => res.badRequest(err));
 
     if (!removedCartItem) {
