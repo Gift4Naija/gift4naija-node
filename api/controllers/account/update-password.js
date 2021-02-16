@@ -20,6 +20,6 @@ module.exports = {
       password: hashed,
     });
 
-    return { success: true };
+    return { success: true, msg: "Password was successfully updated" };
   },
 };
