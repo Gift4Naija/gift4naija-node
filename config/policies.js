@@ -15,21 +15,26 @@ module.exports.policies = {
     getOne: "is-admin",
     updateStatus: "is-admin",
   },
+
   UserController: { getAll: "is-admin", getOne: "is-admin" },
+
   ProductController: {
-    create: "is-admin",
-    update: "is-admin",
-    remove: "is-admin",
-    uploadProductImage: "is-admin",
-    removeProductImage: "is-admin",
+    create: "is-admin-vendor",
+    update: "is-admin-vendor",
+    remove: "is-admin-vendor",
+    uploadProductImage: "is-admin-vendor",
+    removeProductImage: "is-admin-vendor",
   },
+
   CategoryController: {
     create: "is-admin",
     update: "is-admin",
     remove: "is-admin",
   },
+
+  //for dev purpose
   EmailTestController: { "*": true },
-  PaymentController: { "*": true }, //for dev purpose
+  PaymentController: { "*": true },
 
   // Bypass the `is-logged-in` policy for:
   "entrance/*": true,
