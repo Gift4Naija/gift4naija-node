@@ -11,6 +11,8 @@
 module.exports.routes = {
   "/api/v1/account/logout": { action: "account/logout" },
   "GET /api/v1/test/email": "EmailTestController.test",
+
+  // account
   "PUT   /api/v1/account/update-password": {
     action: "account/update-password",
   },
@@ -18,7 +20,10 @@ module.exports.routes = {
   "PUT   /api/v1/account/update-billing-card": {
     action: "account/update-billing-card",
   },
+
+  // entrance
   "PUT   /api/v1/entrance/login": { action: "entrance/login" },
+  "PUT   /api/v1/entrance/confirm-email": { action: "entrance/confirm-email" },
   "POST  /api/v1/entrance/signup": { action: "entrance/signup" },
   "POST  /api/v1/entrance/send-password-recovery-email": {
     action: "entrance/send-password-recovery-email",
@@ -26,9 +31,12 @@ module.exports.routes = {
   "POST  /api/v1/entrance/update-password-and-login": {
     action: "entrance/update-password-and-login",
   },
+
+  // contact
   "POST  /api/v1/deliver-contact-form-message": {
     action: "deliver-contact-form-message",
   },
+
   "POST  /api/v1/observe-my-session": {
     action: "observe-my-session",
     hasSocketFeatures: true,
@@ -40,6 +48,7 @@ module.exports.routes = {
   // user
   "GET /api/v1/users": "UserController.getAll",
   "GET /api/v1/user/:id": "UserController.getOne",
+  "PUT /api/v1/user/:id/level-up": "UserController.promoteUser",
 
   // product
   "GET /api/v1/products": "ProductController.getAll",
@@ -66,11 +75,11 @@ module.exports.routes = {
   "DELETE /api/v1/category/:id": "CategoryController.remove",
 
   // order
-  // admins
+  // @admins
   "GET /api/v1/orders/level-up": "OrderController.getAll",
   "GET /api/v1/order/:id/level-up": "OrderController.getOne",
 
-  // users
+  // @users
   "GET /api/v1/orders": "OrderController.getUserAll",
   "GET /api/v1/order/:id": "OrderController.getUserOne",
   "GET /api/v1/order/preview": "OrderController.preview",
