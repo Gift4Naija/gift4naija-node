@@ -8,7 +8,17 @@
 module.exports = {
   // for admin
   getAll: async (req, res) => {
-    const allOrders = await Order.find().populate("sender");
+    const { query } = req;
+
+    if (!query.id) {
+      query.id = "";
+    }
+
+    const search = {
+      orderId: { contains: query.id },
+    };
+
+    const allOrders = await Order.find(search).populate("sender");
 
     return res.json({
       success: true,
@@ -39,9 +49,17 @@ module.exports = {
 
   // for users
   getUserAll: async (req, res) => {
-    const order = await Order.findOne().where({
+    const { query } = req;
+
+    if (!query.id) {
+      query.id = "";
+    }
+
+    const search = {
+      orderId: { contains: query.id },
       sender: req.me.id,
-    });
+    };
+    const order = await Order.find(search);
 
     return res.json({
       success: true,

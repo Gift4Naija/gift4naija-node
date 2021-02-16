@@ -7,8 +7,17 @@
 
 module.exports = {
   getAll: async (req, res) => {
-    const allCategories = await Category.find();
-    // const cartItemsJsonData = await allCategories.map((user) => user.toJSON());
+    const { query } = req;
+
+    if (!query.name) {
+      query.name = "";
+    }
+
+    const search = {
+      name: { contains: query.name },
+    };
+
+    const allCategories = await Category.find(search);
 
     return res.json({
       success: true,
