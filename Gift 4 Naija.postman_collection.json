@@ -660,62 +660,821 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "cache-control",
-									"value": "no-cache, no-store",
-									"name": "cache-control",
-									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
 								},
 								{
-									"key": "connection",
-									"value": "keep-alive",
-									"name": "connection",
-									"description": "Options that are desired for the connection"
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
 								},
 								{
-									"key": "content-length",
-									"value": "21",
-									"name": "content-length",
-									"description": "The length of the response body in octets (8-bit bytes)"
+									"key": "X-Exit",
+									"value": "success"
 								},
 								{
-									"key": "content-type",
-									"value": "application/json; charset=utf-8",
-									"name": "content-type",
-									"description": "The mime type of this content"
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
 								},
 								{
-									"key": "date",
-									"value": "Mon, 08 Feb 2021 19:52:31 GMT",
-									"name": "date",
-									"description": "The date and time that the message was sent"
+									"key": "Content-Length",
+									"value": "27"
 								},
 								{
-									"key": "etag",
-									"value": "W/\"15-gynjM5+Sj4WRAkuw+TjauZwK1Lg\"",
-									"name": "etag",
-									"description": "An identifier for a specific version of a resource, often a message digest"
+									"key": "ETag",
+									"value": "W/\"1b-LlUmlTJsPfEj2nwnd2R3efOj8n4\""
 								},
 								{
-									"key": "x-exit",
-									"value": "success",
-									"name": "x-exit",
-									"description": "Custom header"
+									"key": "Vary",
+									"value": "Accept-Encoding"
 								},
 								{
-									"key": "x-exit-description",
-									"value": "The requesting user agent has been successfully logged out.",
-									"name": "x-exit-description",
-									"description": "Custom header"
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 19:37:06 GMT"
 								},
 								{
-									"key": "x-powered-by",
-									"value": "Sails <sailsjs.com>",
-									"name": "x-powered-by",
-									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+									"key": "Connection",
+									"value": "keep-alive"
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"success\": true\n}"
+							"body": "{\n    \"success\": true,\n    \"token\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Confirm email",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/entrance/confirm-email",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"entrance",
+								"confirm-email"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Confirm email - expired token",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token",
+											"value": "0ImIO8vCoGM3jUvvLbLg",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/entrance/confirm-email",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"entrance",
+										"confirm-email"
+									]
+								}
+							},
+							"status": "unknown",
+							"code": 498,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-OiWNoOwFO8C4upiKb1mwgfRdqY4\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 18:19:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"msg\": \"Token Expired/Invalid\"\n}"
+						},
+						{
+							"name": "Confirm email",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token",
+											"value": "vZuVXwuJSA9ACk4NmRZjQ",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/entrance/confirm-email",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"entrance",
+										"confirm-email"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "X-Exit",
+									"value": "success"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "238"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ee-hKPYsemUqWLApQsUYKpGx1gVrdE\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 19:11:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"id\": 2,\n        \"fullName\": \"tester de best\",\n        \"emailAddress\": \"tester@mail.com\",\n        \"emailStatus\": \"confirmed\",\n        \"role\": \"admin\",\n        \"lastSeenAt\": 1613502653139,\n        \"createdAt\": 1613388208736,\n        \"updatedAt\": 1613502653191\n    },\n    \"msg\": \"email confirmed\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Send password recovery email",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "emailAddress",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/entrance/send-password-recovery-email",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"entrance",
+								"send-password-recovery-email"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Send password recovery email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "emailAddress",
+											"value": "tester@mail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/entrance/send-password-recovery-email",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"entrance",
+										"send-password-recovery-email"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "65"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"41-Q9QmuYidtuMn8YNr3DzY3CMYiW8\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 18:34:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"msg\": \"Password recovery link was sent to email\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Send email confirmation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "emailAddress",
+									"value": "tester@mail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/entrance/send-email-confirmation",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"entrance",
+								"send-email-confirmation"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Send password recovery email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "emailAddress",
+											"value": "tester@mail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/entrance/send-password-recovery-email",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"entrance",
+										"send-password-recovery-email"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "65"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"41-Q9QmuYidtuMn8YNr3DzY3CMYiW8\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 18:34:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"msg\": \"Password recovery link was sent to email\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update password and login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "password",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/entrance/update-password-and-login",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"entrance",
+								"update-password-and-login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update password and login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "password",
+											"value": "testing1234",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "vTbajyqxLW4nMZDm9jeQpA",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/entrance/update-password-and-login",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"entrance",
+										"update-password-and-login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "347"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15b-3k50K2ppZJ9qlmqRH1nDDcBEnqc\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 19:18:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 2,\n        \"fullName\": \"tester de best\",\n        \"emailAddress\": \"tester@mail.com\",\n        \"emailStatus\": \"confirmed\",\n        \"role\": \"admin\",\n        \"lastSeenAt\": 1613503105111,\n        \"createdAt\": 1613388208736,\n        \"updatedAt\": 1613503105166\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6MiwiaWF0IjoxNjEzNTAzMTM3fQ.6w3P0xQAn39m8Lw05GKLNAM0C5mwaVJdS_JQfmc3vdM\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Update profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fullName",
+									"value": "Naija tester",
+									"type": "text"
+								},
+								{
+									"key": "emailAddress",
+									"value": "testerN@mail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/account/update-profile",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"account",
+								"update-profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update profile",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "fullName",
+											"value": "Naija tester",
+											"type": "text"
+										},
+										{
+											"key": "emailAddress",
+											"value": "testerN@mail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/account/update-profile",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"account",
+										"update-profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "X-Exit",
+									"value": "success"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "264"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"108-FaIfKs0YJm0Rje30wkj8awgM1l0\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 19:32:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 2,\n        \"fullName\": \"Naija tester\",\n        \"emailAddress\": \"tester@mail.com\",\n        \"emailStatus\": \"change-requested\",\n        \"role\": \"admin\",\n        \"lastSeenAt\": 1613503893154,\n        \"createdAt\": 1613388208736,\n        \"updatedAt\": 1613503920409\n    },\n    \"msg\": \"Account has been successfully updated\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "password",
+									"value": "testing1235",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/account/update-password",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"account",
+								"update-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update password",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "password",
+											"value": "testing1235",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/account/update-password",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"account",
+										"update-password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "X-Exit",
+									"value": "success"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "58"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3a-TCCeR/pt0wKYMtrSCkhgeOKdRao\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 19:17:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"msg\": \"Password was successfully updated\"\n}"
 						}
 					]
 				}
@@ -739,23 +1498,96 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{host}}api/v1/users?with=cart",
+							"raw": "{{host}}api/v1/users",
 							"host": [
 								"{{host}}api"
 							],
 							"path": [
 								"v1",
 								"users"
-							],
-							"query": [
-								{
-									"key": "with",
-									"value": "cart"
-								}
 							]
 						}
 					},
 					"response": [
+						{
+							"name": "Get all users with queries",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/users?with=products&with=orders",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"users"
+									],
+									"query": [
+										{
+											"key": "with",
+											"value": "products"
+										},
+										{
+											"key": "with",
+											"value": "orders"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"447-gJEw1vRbB2yT2tr3x6P3Q9vWoLQ\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 08:06:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"fullName\": \"tester de best\",\n            \"emailAddress\": \"tester20@mail.com\",\n            \"emailStatus\": \"unconfirmed\",\n            \"role\": \"buyer\",\n            \"orders\": [],\n            \"products\": [],\n            \"lastSeenAt\": 0,\n            \"createdAt\": 1613388190329,\n            \"updatedAt\": 1613388190329\n        },\n        {\n            \"id\": 2,\n            \"fullName\": \"tester de best\",\n            \"emailAddress\": \"tester@mail.com\",\n            \"emailStatus\": \"unconfirmed\",\n            \"role\": \"admin\",\n            \"orders\": [],\n            \"products\": [],\n            \"lastSeenAt\": 1613462729654,\n            \"createdAt\": 1613388208736,\n            \"updatedAt\": 1613462729654\n        },\n        {\n            \"id\": 3,\n            \"fullName\": \"tester de best\",\n            \"emailAddress\": \"tester-@mail.com\",\n            \"emailStatus\": \"unconfirmed\",\n            \"role\": \"buyer\",\n            \"orders\": [],\n            \"products\": [],\n            \"lastSeenAt\": 0,\n            \"createdAt\": 1613388267392,\n            \"updatedAt\": 1613388267392\n        },\n        {\n            \"id\": 4,\n            \"fullName\": \"tester de best\",\n            \"emailAddress\": \"tester01@mail.com\",\n            \"emailStatus\": \"unconfirmed\",\n            \"role\": \"vendor\",\n            \"orders\": [],\n            \"products\": [\n                {\n                    \"createdAt\": 1613421023082,\n                    \"updatedAt\": 1613461698452,\n                    \"id\": 1,\n                    \"name\": \"Milo\",\n                    \"price\": 10,\n                    \"images\": null,\n                    \"size\": \"25kg\",\n                    \"category\": 2,\n                    \"vendor\": 4\n                },\n                {\n                    \"createdAt\": 1613421071541,\n                    \"updatedAt\": 1613461704295,\n                    \"id\": 2,\n                    \"name\": \"Chiken\",\n                    \"price\": 5,\n                    \"images\": null,\n                    \"size\": \"25kg\",\n                    \"category\": 1,\n                    \"vendor\": 4\n                }\n            ],\n            \"lastSeenAt\": 0,\n            \"createdAt\": 1613388416951,\n            \"updatedAt\": 1613388416951\n        }\n    ]\n}"
+						},
 						{
 							"name": "Get all users",
 							"originalRequest": {
@@ -848,20 +1680,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{host}}api/v1/user/2?pick=cart",
+							"raw": "{{host}}api/v1/user/4",
 							"host": [
 								"{{host}}api"
 							],
 							"path": [
 								"v1",
 								"user",
-								"2"
-							],
-							"query": [
-								{
-									"key": "pick",
-									"value": "cart"
-								}
+								"4"
 							]
 						}
 					},
@@ -941,6 +1767,191 @@
 							],
 							"cookie": [],
 							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 2,\n    \"fullName\": \"tester de best\",\n    \"emailAddress\": \"tester@mail.com\",\n    \"emailStatus\": \"unconfirmed\",\n    \"role\": \"buyer\",\n    \"lastSeenAt\": 1612814256185,\n    \"createdAt\": 1612813720172,\n    \"updatedAt\": 1612814256185\n  }\n}"
+						},
+						{
+							"name": "Get a single users with queries",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/user/4?with=products",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"user",
+										"4"
+									],
+									"query": [
+										{
+											"key": "with",
+											"value": "products"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "496"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f0-riLHUlcapi2jhtpLXA653zdsGJo\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 08:09:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 4,\n        \"fullName\": \"tester de best\",\n        \"emailAddress\": \"tester01@mail.com\",\n        \"emailStatus\": \"unconfirmed\",\n        \"role\": \"vendor\",\n        \"products\": [\n            {\n                \"createdAt\": 1613421023082,\n                \"updatedAt\": 1613461698452,\n                \"id\": 1,\n                \"name\": \"Milo\",\n                \"price\": 10,\n                \"images\": null,\n                \"size\": \"25kg\",\n                \"category\": 2,\n                \"vendor\": 4\n            },\n            {\n                \"createdAt\": 1613421071541,\n                \"updatedAt\": 1613461704295,\n                \"id\": 2,\n                \"name\": \"Chiken\",\n                \"price\": 5,\n                \"images\": null,\n                \"size\": \"25kg\",\n                \"category\": 1,\n                \"vendor\": 4\n            }\n        ],\n        \"lastSeenAt\": 0,\n        \"createdAt\": 1613388416951,\n        \"updatedAt\": 1613388416951\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Promote user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "role",
+									"value": "vendor",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/user/1/level-up",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"user",
+								"1",
+								"level-up"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Promote user",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "role",
+											"value": "vendor",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}api/v1/user/1/level-up",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"user",
+										"1",
+										"level-up"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "206"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ce-1qxWBFAujdEHwTkpi9RhTbzALSc\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 10:08:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"fullName\": \"tester de best\",\n        \"emailAddress\": \"tester20@mail.com\",\n        \"emailStatus\": \"unconfirmed\",\n        \"role\": \"vendor\",\n        \"lastSeenAt\": 0,\n        \"createdAt\": 1613388190329,\n        \"updatedAt\": 1613470096898\n    }\n}"
 						}
 					]
 				}
@@ -970,7 +1981,8 @@
 								{
 									"key": "_csrf",
 									"value": "{{_csrf}}",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -1320,6 +2332,72 @@
 							],
 							"cookie": [],
 							"body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"createdAt\": 1612628117093,\n      \"updatedAt\": 1612628117093,\n      \"id\": 1,\n      \"name\": \"Frozen\"\n    },\n    {\n      \"createdAt\": 1612817727776,\n      \"updatedAt\": 1612817727776,\n      \"id\": 2,\n      \"name\": \"Fabric\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Searching by category name",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/categories?name=Fro",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"categories"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Fro"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "102"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"66-WzXao/NOaZDDcbdQ1smHtMC3s38\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 19:48:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"createdAt\": 1613386491323,\n            \"updatedAt\": 1613386491323,\n            \"id\": 1,\n            \"name\": \"Frozen\"\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -1881,6 +2959,77 @@
 					},
 					"response": [
 						{
+							"name": "Get all Product - search by name",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/products?name=Milo",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"products"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Milo"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "420"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a4-JdC9ggRja3Q/NKGUQ041UqUJ9ng\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 09:26:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"createdAt\": 1613421023082,\n            \"updatedAt\": 1613461698452,\n            \"id\": 1,\n            \"name\": \"Milo\",\n            \"price\": 10,\n            \"images\": null,\n            \"size\": \"25kg\",\n            \"category\": {\n                \"createdAt\": 1613420931037,\n                \"updatedAt\": 1613420931037,\n                \"id\": 2,\n                \"name\": \"Bevrage\"\n            },\n            \"vendor\": {\n                \"id\": 4,\n                \"fullName\": \"tester de best\",\n                \"emailAddress\": \"tester01@mail.com\",\n                \"emailStatus\": \"unconfirmed\",\n                \"role\": \"vendor\",\n                \"lastSeenAt\": 0,\n                \"createdAt\": 1613388416951,\n                \"updatedAt\": 1613388416951\n            }\n        }\n    ]\n}"
+						},
+						{
 							"name": "Get all Product",
 							"originalRequest": {
 								"method": "GET",
@@ -1953,7 +3102,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"createdAt\": 1612628158158,\n      \"updatedAt\": 1612628158158,\n      \"id\": 1,\n      \"name\": \"Rice\",\n      \"price\": 20000,\n      \"image\": null,\n      \"size\": \"25kg\",\n      \"category\": {\n        \"createdAt\": 1612628117093,\n        \"updatedAt\": 1612628117093,\n        \"id\": 1,\n        \"name\": \"Frozen\"\n      }\n    },\n    {\n      \"createdAt\": 1612628176712,\n      \"updatedAt\": 1612628176712,\n      \"id\": 2,\n      \"name\": \"Chicken\",\n      \"price\": 20000,\n      \"image\": null,\n      \"size\": \"25kg\",\n      \"category\": {\n        \"createdAt\": 1612628117093,\n        \"updatedAt\": 1612628117093,\n        \"id\": 1,\n        \"name\": \"Frozen\"\n      }\n    }\n  ]\n}"
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"createdAt\": 1613421023082,\n            \"updatedAt\": 1613461698452,\n            \"id\": 1,\n            \"name\": \"Milo\",\n            \"price\": 10,\n            \"images\": null,\n            \"size\": \"25kg\",\n            \"category\": {\n                \"createdAt\": 1613420931037,\n                \"updatedAt\": 1613420931037,\n                \"id\": 2,\n                \"name\": \"Bevrage\"\n            },\n            \"vendor\": {\n                \"id\": 4,\n                \"fullName\": \"tester de best\",\n                \"emailAddress\": \"tester01@mail.com\",\n                \"emailStatus\": \"unconfirmed\",\n                \"role\": \"vendor\",\n                \"lastSeenAt\": 0,\n                \"createdAt\": 1613388416951,\n                \"updatedAt\": 1613388416951\n            }\n        },\n        {\n            \"createdAt\": 1613421071541,\n            \"updatedAt\": 1613461704295,\n            \"id\": 2,\n            \"name\": \"Chiken\",\n            \"price\": 5,\n            \"images\": null,\n            \"size\": \"25kg\",\n            \"category\": {\n                \"createdAt\": 1613386491323,\n                \"updatedAt\": 1613386491323,\n                \"id\": 1,\n                \"name\": \"Frozen\"\n            },\n            \"vendor\": {\n                \"id\": 4,\n                \"fullName\": \"tester de best\",\n                \"emailAddress\": \"tester01@mail.com\",\n                \"emailStatus\": \"unconfirmed\",\n                \"role\": \"vendor\",\n                \"lastSeenAt\": 0,\n                \"createdAt\": 1613388416951,\n                \"updatedAt\": 1613388416951\n            }\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -2077,25 +3226,24 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Rice",
-									"type": "text",
-									"disabled": true
+									"value": "Chicken",
+									"type": "text"
 								},
 								{
 									"key": "quantity",
-									"value": "50",
-									"type": "text"
+									"value": "6",
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "price",
-									"value": "25000",
+									"value": "8",
 									"type": "text"
 								},
 								{
-									"key": "categories",
-									"value": "cerels",
-									"type": "text",
-									"disabled": true
+									"key": "category",
+									"value": "1",
+									"type": "text"
 								},
 								{
 									"key": "categoryType",
@@ -2111,26 +3259,31 @@
 								},
 								{
 									"key": "size",
-									"value": "25kg",
-									"type": "text",
-									"disabled": true
+									"value": "5kg",
+									"type": "text"
 								},
 								{
 									"key": "_csrf",
 									"value": "{{_csrf}}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "vendor",
+									"value": "4",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{host}}api/v1/product/4",
+							"raw": "{{host}}api/v1/product/2",
 							"host": [
 								"{{host}}api"
 							],
 							"path": [
 								"v1",
 								"product",
-								"4"
+								"2"
 							]
 						}
 					},
@@ -2779,18 +3932,19 @@
 							"urlencoded": [
 								{
 									"key": "product",
-									"value": "1",
+									"value": "2",
 									"type": "text"
 								},
 								{
 									"key": "quantity",
-									"value": "2",
+									"value": "5",
 									"type": "text"
 								},
 								{
 									"key": "_csrf",
 									"value": "{{_csrf}}",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -3701,7 +4855,78 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"createdAt\": 1613293365112,\n        \"updatedAt\": 1613293365112,\n        \"id\": 1,\n        \"orderId\": \"1sCcuePj2V9remPIyrMRM\",\n        \"status\": \"processing\",\n        \"items\": [\n            {\n                \"createdAt\": 1613288321431,\n                \"updatedAt\": 1613290470759,\n                \"id\": 3,\n                \"name\": \"Rice\",\n                \"price\": 20000,\n                \"images\": [],\n                \"size\": \"25kg\",\n                \"category\": 1,\n                \"quantity\": 1,\n                \"amount\": 40000\n            }\n        ],\n        \"amount\": 40000,\n        \"receiver\": {\n            \"email\": \"testReceiver@mail.com\",\n            \"phoneNumber\": \"2340000000001\",\n            \"fullname\": \"Receiver tester\",\n            \"state\": \"AK\",\n            \"city\": \"Uyo\"\n        },\n        \"sender\": 1\n    }\n}"
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"createdAt\": 1613505129845,\n            \"updatedAt\": 1613505129845,\n            \"id\": 1,\n            \"orderId\": \"aQrfBZP3edsv0FCxAXfty\",\n            \"status\": \"processing\",\n            \"items\": [\n                {\n                    \"createdAt\": 1613421071541,\n                    \"updatedAt\": 1613467509524,\n                    \"id\": 2,\n                    \"name\": \"Chicken\",\n                    \"price\": 8,\n                    \"images\": null,\n                    \"size\": \"5kg\",\n                    \"category\": 1,\n                    \"vendor\": 4,\n                    \"quantity\": 5,\n                    \"amount\": 40\n                },\n                {\n                    \"createdAt\": 1613421023082,\n                    \"updatedAt\": 1613461698452,\n                    \"id\": 1,\n                    \"name\": \"Milo\",\n                    \"price\": 10,\n                    \"images\": null,\n                    \"size\": \"25kg\",\n                    \"category\": 2,\n                    \"vendor\": 4,\n                    \"quantity\": 2,\n                    \"amount\": 20\n                }\n            ],\n            \"amount\": 60,\n            \"receiver\": {\n                \"email\": \"testReceiver@mail.com\",\n                \"phoneNumber\": \"2340000000001\",\n                \"fullname\": \"Receiver tester\",\n                \"state\": \"AK\",\n                \"city\": \"Uyo\"\n            },\n            \"sender\": 2\n        },\n        {\n            \"createdAt\": 1613505166833,\n            \"updatedAt\": 1613505166833,\n            \"id\": 2,\n            \"orderId\": \"O4jMW_rqYbVWCyMmPyvuE\",\n            \"status\": \"processing\",\n            \"items\": [\n                {\n                    \"createdAt\": 1613421071541,\n                    \"updatedAt\": 1613467509524,\n                    \"id\": 2,\n                    \"name\": \"Chicken\",\n                    \"price\": 8,\n                    \"images\": null,\n                    \"size\": \"5kg\",\n                    \"category\": 1,\n                    \"vendor\": 4,\n                    \"quantity\": 5,\n                    \"amount\": 40\n                }\n            ],\n            \"amount\": 40,\n            \"receiver\": {\n                \"email\": \"testReceiver@mail.com\",\n                \"phoneNumber\": \"2340000000001\",\n                \"fullname\": \"Receiver tester\",\n                \"state\": \"AK\",\n                \"city\": \"Uyo\"\n            },\n            \"sender\": 2\n        }\n    ]\n}"
+						},
+						{
+							"name": "Searching user order by orderID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/orders?id=aQrfBZP3edsv",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "aQrfBZP3edsv"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "632"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"278-sNaDxYb/6/XEXGnVX+WMJ9SJjjE\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 20:02:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"createdAt\": 1613505129845,\n            \"updatedAt\": 1613505129845,\n            \"id\": 1,\n            \"orderId\": \"aQrfBZP3edsv0FCxAXfty\",\n            \"status\": \"processing\",\n            \"items\": [\n                {\n                    \"createdAt\": 1613421071541,\n                    \"updatedAt\": 1613467509524,\n                    \"id\": 2,\n                    \"name\": \"Chicken\",\n                    \"price\": 8,\n                    \"images\": null,\n                    \"size\": \"5kg\",\n                    \"category\": 1,\n                    \"vendor\": 4,\n                    \"quantity\": 5,\n                    \"amount\": 40\n                },\n                {\n                    \"createdAt\": 1613421023082,\n                    \"updatedAt\": 1613461698452,\n                    \"id\": 1,\n                    \"name\": \"Milo\",\n                    \"price\": 10,\n                    \"images\": null,\n                    \"size\": \"25kg\",\n                    \"category\": 2,\n                    \"vendor\": 4,\n                    \"quantity\": 2,\n                    \"amount\": 20\n                }\n            ],\n            \"amount\": 60,\n            \"receiver\": {\n                \"email\": \"testReceiver@mail.com\",\n                \"phoneNumber\": \"2340000000001\",\n                \"fullname\": \"Receiver tester\",\n                \"state\": \"AK\",\n                \"city\": \"Uyo\"\n            },\n            \"sender\": 2\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -4235,6 +5460,78 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"createdAt\": 1613293365112,\n            \"updatedAt\": 1613293365112,\n            \"id\": 1,\n            \"orderId\": \"1sCcuePj2V9remPIyrMRM\",\n            \"status\": \"processing\",\n            \"items\": [\n                {\n                    \"createdAt\": 1613288321431,\n                    \"updatedAt\": 1613290470759,\n                    \"id\": 3,\n                    \"name\": \"Rice\",\n                    \"price\": 20000,\n                    \"images\": [],\n                    \"size\": \"25kg\",\n                    \"category\": 1,\n                    \"quantity\": 1,\n                    \"amount\": 40000\n                }\n            ],\n            \"amount\": 40000,\n            \"receiver\": {\n                \"email\": \"testReceiver@mail.com\",\n                \"phoneNumber\": \"2340000000001\",\n                \"fullname\": \"Receiver tester\",\n                \"state\": \"AK\",\n                \"city\": \"Uyo\"\n            },\n            \"sender\": {\n                \"id\": 1,\n                \"fullName\": \"tester de best\",\n                \"emailAddress\": \"tester@mail.com\",\n                \"emailStatus\": \"unconfirmed\",\n                \"role\": \"admin\",\n                \"lastSeenAt\": 1613293714384,\n                \"createdAt\": 1613036375896,\n                \"updatedAt\": 1613293714385\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "Get all orders (Admin) - searching by orderID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}api/v1/orders/level-up?id=_rq",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"v1",
+										"orders",
+										"level-up"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "_rq"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Sails <sailsjs.com>"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "656"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"290-w2GkRtCycXlPONgtXcP8Um+3yWU\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 20:05:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"createdAt\": 1613505166833,\n            \"updatedAt\": 1613505166833,\n            \"id\": 2,\n            \"orderId\": \"O4jMW_rqYbVWCyMmPyvuE\",\n            \"status\": \"processing\",\n            \"items\": [\n                {\n                    \"createdAt\": 1613421071541,\n                    \"updatedAt\": 1613467509524,\n                    \"id\": 2,\n                    \"name\": \"Chicken\",\n                    \"price\": 8,\n                    \"images\": null,\n                    \"size\": \"5kg\",\n                    \"category\": 1,\n                    \"vendor\": 4,\n                    \"quantity\": 5,\n                    \"amount\": 40\n                }\n            ],\n            \"amount\": 40,\n            \"receiver\": {\n                \"email\": \"testReceiver@mail.com\",\n                \"phoneNumber\": \"2340000000001\",\n                \"fullname\": \"Receiver tester\",\n                \"state\": \"AK\",\n                \"city\": \"Uyo\"\n            },\n            \"sender\": {\n                \"id\": 2,\n                \"fullName\": \"Naija tester\",\n                \"emailAddress\": \"testern@mail.com\",\n                \"emailStatus\": \"confirmed\",\n                \"role\": \"admin\",\n                \"lastSeenAt\": 1613505910936,\n                \"createdAt\": 1613388208736,\n                \"updatedAt\": 1613505910938\n            }\n        }\n    ]\n}"
 						}
 					]
 				}
