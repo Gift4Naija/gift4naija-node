@@ -59,6 +59,9 @@ module.exports = {
       text: `Password reset - Dear ${user.fullName} password reset token ${token}`,
     }).catch((err) => res.negotiate(err));
 
-    return res.json({ success: true });
+    return res.json({
+      success: true,
+      msg: "Password recovery link was sent to email",
+    });
   },
 };
