@@ -8,8 +8,32 @@ const path = require("path");
 
 module.exports = {
   getAll: async (req, res) => {
-    const allProducts = await Product.find().populate("category");
-    // const productsJsonData = await allProducts.map((goods) => goods.toJSON());
+    const { query } = req;
+
+    if (!query.name) {
+      query.name = "";
+    }
+
+    if (!query.size) {
+      query.size = "";
+    }
+
+    if (!query.category) {
+      query.category = true;
+    } else {
+      const text = query.category;
+      query.category = { name: { contains: text } };
+    }
+
+    const search = {
+      name: { contains: query.name },
+      size: { contains: query.size },
+    };
+
+    const allProducts = await Product.find(search, {
+      category: query.category,
+      vendor: true,
+    });
 
     return res.json({
       success: true,
@@ -19,7 +43,13 @@ module.exports = {
 
   getOne: async (req, res) => {
     const queryID = req.params.id;
-    const productData = await Product.findOne().where({ id: queryID });
+    const productData = await Product.findOne(
+      { id: queryID },
+      {
+        category: true,
+        vendor: true,
+      }
+    );
 
     if (!productData) {
       return res.status(404).json({
@@ -138,9 +168,22 @@ module.exports = {
   },
 
   update: async (req, res) => {
-    const newProduct = await Product.updateOne({ id: req.params.id })
-      .set(req.body)
-      .catch((err) => res.badRequest(err));
+    const { me } = req;
+
+    if (me.role === "vendor") {
+      // vendors can only update products associated with them
+      var newProduct = await Product.updateOne({
+        id: req.params.id,
+        vendor: me.id,
+      })
+        .set(req.body)
+        .catch((err) => res.negotiate(err));
+    } else if (me.role === "admin") {
+      // vendors can update any product
+      var newProduct = await Product.updateOne({ id: req.params.id })
+        .set(req.body)
+        .catch((err) => res.negotiate(err));
+    }
 
     if (!newProduct) {
       return res.badRequest();
@@ -154,9 +197,20 @@ module.exports = {
   },
 
   remove: async (req, res) => {
-    const removedProduct = await Product.destroyOne({
-      id: req.params.id,
-    }).catch((err) => res.badRequest(err));
+    const { me } = req;
+
+    if (me.role === "vendor") {
+      // vendors can only remove products associated with them
+      var removedProduct = await Product.destroyOne({
+        id: req.params.id,
+        vendor: me.id,
+      }).catch((err) => res.negotiate(err));
+    } else if (me.role === "admin") {
+      // vendors can remove any product
+      var removedProduct = await Product.destroyOne({
+        id: req.params.id,
+      }).catch((err) => res.negotiate(err));
+    }
 
     if (!removedProduct) {
       return res.badRequest();
@@ -171,18 +225,17 @@ module.exports = {
 
   /*
    * @categoryId - association for product category
+   * @vendorId - association for product vendor
    */
   create: async (req, res) => {
     // check if category is missing
-    if (!req.body.categoryId) {
+    const { body, me } = req;
+    if (!body.categoryId) {
       return res.badRequest(undefined, "Product category is required");
     }
 
     // parse categoryID as INT
-    const categoryId = parseInt(req.body.categoryId);
-
-    // attach categoryID as category attribute
-    req.body.category = categoryId;
+    const categoryId = parseInt(body.categoryId);
 
     // find category
     const group = await Category.findOne().where({ id: categoryId }); // handle error
@@ -192,10 +245,22 @@ module.exports = {
       return res.badRequest(undefined, "Invalid category");
     }
 
+    // attach categoryID as category attribute
+    body.category = categoryId;
+
+    // attach vendor
+    if (me.role === "vendor") {
+      var vendorId = me.id;
+    } else if (me.role === "admin") {
+      var vendorId = body.vendorId;
+    }
+
+    body.vendor = parseInt(body.vendorId);
+
     // create new product with category
-    const newProduct = await Product.create(req.body)
+    const newProduct = await Product.create(body)
       .fetch()
-      .catch((err) => res.badRequest(err));
+      .catch((err) => res.negotiate(err));
 
     // check for error
     if (!newProduct) {
