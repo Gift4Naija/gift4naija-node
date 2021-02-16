@@ -133,7 +133,7 @@ module.exports = {
      *                                                                          *
      ***************************************************************************/
     cors: {
-      //   allRoutes: false,
+      allRoutes: true,
       //   allowOrigins: '*',
       allowOrigins: [
         "https://gift2naija.com",
