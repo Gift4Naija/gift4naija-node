@@ -81,8 +81,9 @@ module.exports = {
 
     // Start building the values to set in the db.
     // (We always set the fullName if provided.)
+    fullName = fullName || this.req.me.fullName;
     var valuesToSet = {
-      fullName: fullName || this.req.me.fullName,
+      fullName,
     };
 
     switch (desiredEmailEffect) {
@@ -126,7 +127,9 @@ module.exports = {
     }
 
     // Save to the db
-    await User.updateOne({ id: this.req.me.id }).set(valuesToSet);
+    const newUserData = await User.updateOne({ id: this.req.me.id })
+      .set(valuesToSet)
+      .fetch();
 
     // If this is an immediate change, and billing features are enabled,
     // then also update the billing email for this user's linked customer entry
@@ -173,8 +176,14 @@ module.exports = {
       await EmailService({
         to: newEmailAddress,
         subject: "Your account has been updated",
-        text: `email-verify-account - Dear ${fullName} confirm your email ${newUserRecord.emailProofToken}`,
+        text: `email-verify-new-email - Dear ${fullName} confirm your email ${valuesToSet.emailProofToken}`,
       }).catch((err) => console.log(err));
     }
+
+    return {
+      success: true,
+      data: newUserData,
+      msg: "Account has been successfully updated",
+    };
   },
 };
