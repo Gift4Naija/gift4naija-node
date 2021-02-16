@@ -100,7 +100,7 @@ and exposed as \`req.me\`.)`,
     const token = await sails.helpers
       .jwt()
       .sign({ token: userRecord.id })
-      .catch((err) => this.res.unauthorized(err));
+      .catch((err) => this.res.negotiate(err));
 
     // In case there was an existing session (e.g. if we allow users to go to the login page
     // when they're already logged in), broadcast a message that we can display in other open tabs.
