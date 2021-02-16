@@ -35,12 +35,6 @@
 									"key": "fullName",
 									"value": "tester de best",
 									"type": "text"
-								},
-								{
-									"key": "_csrf",
-									"value": "{{_csrf}}",
-									"type": "text",
-									"disabled": true
 								}
 							]
 						},
@@ -386,12 +380,6 @@
 									"value": "tester de best",
 									"type": "text",
 									"disabled": true
-								},
-								{
-									"key": "_csrf",
-									"value": "{{_csrf}}",
-									"type": "text",
-									"disabled": true
 								}
 							]
 						},
@@ -718,7 +706,7 @@
 							"urlencoded": [
 								{
 									"key": "token",
-									"value": "",
+									"value": "vZuVXwuJSA9ACk4NmRZjQ",
 									"type": "text"
 								}
 							]
@@ -907,7 +895,7 @@
 							"urlencoded": [
 								{
 									"key": "emailAddress",
-									"value": "",
+									"value": "tester@mail.com",
 									"type": "text"
 								}
 							]
@@ -1129,12 +1117,12 @@
 							"urlencoded": [
 								{
 									"key": "password",
-									"value": "",
+									"value": "testing1234",
 									"type": "text"
 								},
 								{
 									"key": "token",
-									"value": "",
+									"value": "vTbajyqxLW4nMZDm9jeQpA",
 									"type": "text"
 								}
 							]
@@ -1977,12 +1965,6 @@
 									"key": "name",
 									"value": "Frozen",
 									"type": "text"
-								},
-								{
-									"key": "_csrf",
-									"value": "{{_csrf}}",
-									"type": "text",
-									"disabled": true
 								}
 							]
 						},
@@ -2510,11 +2492,6 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "_csrf",
-									"value": "{{_csrf}}",
-									"type": "text"
-								},
-								{
 									"key": "name",
 									"value": "Frozen food",
 									"type": "text"
@@ -2633,16 +2610,7 @@
 								"value": "application/x-www-form-urlencoded"
 							}
 						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "_csrf",
-									"value": "{{_csrf}}",
-									"type": "text"
-								}
-							]
-						},
+						"body": {},
 						"url": {
 							"raw": "{{host}}api/v1/category/2",
 							"host": [
@@ -2792,11 +2760,6 @@
 								{
 									"key": "size",
 									"value": "25kg",
-									"type": "text"
-								},
-								{
-									"key": "_csrf",
-									"value": "{{_csrf}}",
 									"type": "text"
 								}
 							]
@@ -3263,12 +3226,6 @@
 									"type": "text"
 								},
 								{
-									"key": "_csrf",
-									"value": "{{_csrf}}",
-									"type": "text",
-									"disabled": true
-								},
-								{
 									"key": "vendor",
 									"value": "4",
 									"type": "text"
@@ -3426,11 +3383,6 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "_csrf",
-									"value": "{{_csrf}}",
-									"type": "text"
-								},
-								{
 									"key": "image",
 									"type": "file",
 									"src": ""
@@ -3580,11 +3532,6 @@
 									"value": "25kg",
 									"type": "text",
 									"disabled": true
-								},
-								{
-									"key": "_csrf",
-									"value": "{{_csrf}}",
-									"type": "text"
 								}
 							]
 						},
@@ -3738,11 +3685,6 @@
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
-								{
-									"key": "_csrf",
-									"value": "{{_csrf}}",
-									"type": "text"
-								},
 								{
 									"key": "name",
 									"value": "Rice",
@@ -3939,12 +3881,6 @@
 									"key": "quantity",
 									"value": "5",
 									"type": "text"
-								},
-								{
-									"key": "_csrf",
-									"value": "{{_csrf}}",
-									"type": "text",
-									"disabled": true
 								}
 							]
 						},
@@ -4265,11 +4201,6 @@
 									"value": "3",
 									"type": "text",
 									"disabled": true
-								},
-								{
-									"key": "_csrf",
-									"value": "{{_csrf}}",
-									"type": "text"
 								}
 							]
 						},
@@ -4394,11 +4325,6 @@
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
-								{
-									"key": "_csrf",
-									"value": "{{_csrf}}",
-									"type": "text"
-								},
 								{
 									"key": "description",
 									"value": "test order",
@@ -4566,11 +4492,6 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "_csrf",
-									"value": "{{_csrf}}",
-									"type": "text"
-								},
-								{
 									"key": "status",
 									"value": "cancelled",
 									"type": "text"
@@ -4677,16 +4598,7 @@
 								"value": "application/x-www-form-urlencoded"
 							}
 						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "_csrf",
-									"value": "{{_csrf}}",
-									"type": "text"
-								}
-							]
-						},
+						"body": {},
 						"url": {
 							"raw": "{{host}}api/v1/order/1",
 							"host": [
