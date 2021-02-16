@@ -34,8 +34,9 @@ module.exports = {
   },
 
   fn: async function ({ password, token }) {
+    const { req, res } = this;
     if (!token) {
-      throw "invalidToken";
+      return res.expired();
     }
 
     // Look up the user with this reset token.
@@ -43,7 +44,7 @@ module.exports = {
 
     // If no such user exists, or their token is expired, bail.
     if (!userRecord || userRecord.passwordResetTokenExpiresAt <= Date.now()) {
-      throw "invalidToken";
+      return res.expired();
     }
 
     // Hash the new password.
@@ -56,19 +57,25 @@ module.exports = {
       passwordResetTokenExpiresAt: 0,
     });
 
+    const authToken = await sails.helpers
+      .jwt()
+      .sign({ token: userRecord.id })
+      .catch((err) => res.negotiate(err));
+
     // Log the user in.
     // (This will be persisted when the response is sent.)
-    this.req.session.userId = userRecord.id;
+    // this.req.session.userId = userRecord.id;
 
     // In case there was an existing session, broadcast a message that we can
     // display in other open tabs.
-    if (sails.hooks.sockets) {
-      await sails.helpers.broadcastSessionChange(this.req);
-    }
+    // if (sails.hooks.sockets) {
+    //   await sails.helpers.broadcastSessionChange(this.req);
+    // }
 
     return this.res.json({
       success: true,
       data: userRecord,
+      authToken,
     });
   },
 };
