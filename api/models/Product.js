@@ -30,7 +30,7 @@ module.exports = {
 */
     images: {
       type: "json",
-      columnType: "array",
+      // columnType: "array",
     },
 
     size: {

@@ -26,7 +26,7 @@ module.exports = {
 
     items: {
       type: "json",
-      columnType: "array",
+      // columnType: "array",
     },
 
     amount: {
