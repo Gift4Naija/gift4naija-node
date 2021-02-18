@@ -155,7 +155,7 @@ module.exports = {
 
     city: {
       type: "string",
-      isIn: ["PORT-HARCOURT", "ABUJA", "LAGOS"],
+      isIn: ["port-harcourt", "abuja", "lagos"],
       description:
         "City location of vendor. One of the three options available",
     },
@@ -184,6 +184,7 @@ module.exports = {
       "fullName",
       "emailAddress",
       "emailStatus",
+      "city",
       "role",
       "cart",
       "orders",
