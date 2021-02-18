@@ -20,7 +20,7 @@ module.exports = {
     },
   },
 
-  fn: async function ({ fullName, emailAddress }) {
+  fn: async function ({ fullName, emailAddress, city }) {
     const { res } = this;
     var newEmailAddress = emailAddress;
     if (newEmailAddress !== undefined) {
@@ -85,6 +85,10 @@ module.exports = {
     var valuesToSet = {
       fullName,
     };
+
+    if (city && this.req.me.role === "vendor") {
+      valuesToSet.city = city;
+    }
 
     switch (desiredEmailEffect) {
       // Change now
