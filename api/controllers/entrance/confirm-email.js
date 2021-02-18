@@ -62,7 +62,7 @@ then redirect to either a special landing page (for newly-signed up users), or t
       // then just update the state of their user record in the database,
       // store their user id in the session (just in case they aren't logged
       // in already), and then redirect them to the "email confirmed" page.
-      await User.updateOne({ id: user.id }).set({
+      const userConfirmed = await User.updateOne({ id: user.id }).set({
         emailStatus: "confirmed",
         emailProofToken: "",
         emailProofTokenExpiresAt: 0,
@@ -75,12 +75,22 @@ then redirect to either a special landing page (for newly-signed up users), or t
       //   await sails.helpers.broadcastSessionChange(this.req);
       // }
 
+      const token = await sails.helpers
+        .jwt()
+        .sign({ token: user.id })
+        .catch((err) => res.negotiate(err));
+
       // if (this.req.wantsJSON) {
       //   return;
       // } else {
       //   throw { redirect: '/email/confirmed' };
       // }
-      return { status: true, data: user, msg: "email confirmed" };
+      return {
+        status: true,
+        data: userConfirmed,
+        msg: "email confirmed",
+        token,
+      };
     } else if (user.emailStatus === "change-requested") {
       //  ┌─┐┌─┐┌┐┌┌─┐┬┬─┐┌┬┐┬┌┐┌┌─┐  ╔═╗╦ ╦╔═╗╔╗╔╔═╗╔═╗╔╦╗  ┌─┐┌┬┐┌─┐┬┬
       //  │  │ ││││├┤ │├┬┘││││││││ ┬  ║  ╠═╣╠═╣║║║║ ╦║╣  ║║  ├┤ │││├─┤││
@@ -130,7 +140,7 @@ then redirect to either a special landing page (for newly-signed up users), or t
       // Finally update the user in the database, store their id in the session
       // (just in case they aren't logged in already), then redirect them to
       // their "my account" page so they can see their updated email address.
-      await User.updateOne({ id: user.id }).set({
+      const userConfirmed = await User.updateOne({ id: user.id }).set({
         emailStatus: "confirmed",
         emailProofToken: "",
         emailProofTokenExpiresAt: 0,
@@ -155,7 +165,12 @@ then redirect to either a special landing page (for newly-signed up users), or t
         throw { redirect: '/account' };
       }*/
 
-      return { status: true, data: user, msg: "email confirmed", token };
+      return {
+        status: true,
+        data: userConfirmed,
+        msg: "email confirmed",
+        token,
+      };
     } else {
       return res.serverError(
         undefined,
