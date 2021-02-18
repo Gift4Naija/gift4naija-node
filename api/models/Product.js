@@ -13,24 +13,13 @@ module.exports = {
       unique: true,
     },
 
-    /*    quantity: {
-      type: "number",
-      required: true,
-    },*/
-
     price: {
       type: "number",
       required: true,
     },
-    /*
-    subCategory: {
-      type: "json",
-      columnType: "array",
-    },
-*/
+
     images: {
       type: "json",
-      // columnType: "array",
     },
 
     size: {
