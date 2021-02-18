@@ -76,7 +76,7 @@ module.exports = {
    * @role - ["admin", "vendor", "buyer"]
    */
   promoteUser: async (req, res) => {
-    const { role } = req.body;
+    const role = req.body.role.toLowerCase();
     const promotedUser = await User.updateOne({ id: req.params.id })
       .set({ role })
       .catch((err) => res.negotiate(err));
