@@ -11,15 +11,19 @@ module.exports = {
     const { query } = req;
 
     if (!query.name) {
-      query.name = "";
+      query.name = ""; // product name
     }
 
     if (!query.size) {
-      query.size = "";
+      query.size = ""; // product size
+    }
+
+    if (!query.loc) {
+      query.loc = ""; // product size
     }
 
     if (!query.category) {
-      query.category = true;
+      query.category = true; // category
     } else {
       const text = query.category;
       query.category = { name: { contains: text } };
@@ -32,12 +36,16 @@ module.exports = {
 
     const allProducts = await Product.find(search, {
       category: query.category,
-      vendor: true,
+      vendor: true, // vendors location [ABJ, LAG, PH]
     });
+
+    const filtedByLocation = allProducts.filter(({ vendor }) =>
+      vendor.city.includes(query.loc.toLowerCase())
+    );
 
     return res.json({
       success: true,
-      data: allProducts,
+      data: filtedByLocation,
     });
   },
 
@@ -58,7 +66,6 @@ module.exports = {
       });
     }
 
-    // const productJsonData = productData.toJSON();
     return res.json({
       success: true,
       data: productData,
