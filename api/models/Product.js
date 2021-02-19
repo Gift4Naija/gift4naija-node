@@ -26,6 +26,10 @@ module.exports = {
       type: "string",
     },
 
+    description: {
+      type: "string",
+    },
+
     category: {
       model: "category",
     },
