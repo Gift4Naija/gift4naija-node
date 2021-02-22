@@ -19,10 +19,10 @@ module.exports = async function EmailService(options) {
     },
   };
 
-  console.log(transportOptions);
+  // console.log(transportOptions);
 
   const transporter = mailMan.createTransport(transportOptions);
-  console.log(await transporter.verify(), "wait");
+  // console.log(await transporter.verify(), "wait");
 
   const { from, to, cc, bcc, subject, text, html, attachments } = options;
 
@@ -38,8 +38,8 @@ module.exports = async function EmailService(options) {
   };
   let info = await transporter.sendMail(message);
 
-  console.log("email sent");
-  console.log(mailMan.getTestMessageUrl(info));
+  // console.log("email sent");
+  // console.log(mailMan.getTestMessageUrl(info));
 
   return transporter.close();
 };
