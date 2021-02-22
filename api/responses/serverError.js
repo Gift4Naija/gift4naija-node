@@ -24,13 +24,11 @@ module.exports = function serverError(err, msg) {
   var req = this.req;
   var res = this.res;
 
-  // Get access to `sails`
-  var sails = req._sails;
-
   // Set status code
   res.status(500);
 
   return res.json({
+    status: false,
     errorType: "Server Error",
     error: err,
     msg: msg,
