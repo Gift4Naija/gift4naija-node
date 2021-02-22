@@ -23,14 +23,19 @@ module.exports.policies = {
   },
 
   ProductController: {
+    getAll: true,
+    getOne: true,
     create: "is-admin-vendor",
     update: "is-admin-vendor",
     remove: "is-admin-vendor",
+    viewProductImages: true,
     uploadProductImage: "is-admin-vendor",
     removeProductImage: "is-admin-vendor",
   },
 
   CategoryController: {
+    getAll: true,
+    getOne: true,
     create: "is-admin",
     update: "is-admin",
     remove: "is-admin",
