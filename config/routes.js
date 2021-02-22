@@ -58,6 +58,8 @@ module.exports.routes = {
   "GET /api/v1/product/:id": "ProductController.getOne",
   "POST /api/v1/product": "ProductController.create",
   "PUT /api/v1/product/:id": "ProductController.update",
+  "GET /api/v1/product/image/:image/view":
+    "ProductController.viewProductImages",
   "PUT /api/v1/product/:id/image/upload":
     "ProductController.uploadProductImage",
   "DELETE /api/v1/product/:id/image/": "ProductController.removeProductImage",
