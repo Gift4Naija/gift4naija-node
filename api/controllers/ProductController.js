@@ -133,13 +133,6 @@ module.exports = {
       })
     );
 
-    if (uploadedFile.length <= 0) {
-      return res.badRequest(undefined, "No file was uploaded");
-    }
-
-    // get base name of all files
-    const filesBaseName = uploadedFile.map((file) => path.parse(file.fd).base);
-
     let productImages = productData.images;
 
     // check if product images is empty
@@ -147,12 +140,22 @@ module.exports = {
       productImages = [];
     }
 
+    try {
+      // validate upload and get base name of all files
+      var filesBaseName = await sails.helpers.validateUpload(
+        uploadedFile,
+        6,
+        true
+      );
+    } catch (err) {
+      return res.badRequest(err, err.msg);
+    }
+
     // check for duplicate image names
     filesBaseName.forEach((item) => {
-      if (productImages.includes(item)) {
-        return;
+      if (!productImages.includes(item)) {
+        productImages.push(item);
       }
-      productImages.push(item);
     });
 
     // update product with new images array
@@ -172,6 +175,11 @@ module.exports = {
       data: productUpdate,
       msg: "Successfully uploaded product image(s)",
     });
+  },
+
+  viewProductImages: async (req, res) => {
+    const imageFilePath = path.resolve(`assets/uploads/${req.params.image}`);
+    return res.sendFile(imageFilePath);
   },
 
   update: async (req, res) => {
@@ -263,6 +271,25 @@ module.exports = {
     }
 
     body.vendor = parseInt(body.vendorId);
+
+    // upload product images
+    // check for image upload
+    const uploadedFile = await sails.upload(req.file("image")).catch((err) =>
+      res.status(500).json({
+        status: false,
+        error: err,
+        msg: "An error occured while uploading image",
+      })
+    );
+
+    // validate upload
+    try {
+      var filesBaseName = await sails.helpers.validateUpload(uploadedFile);
+    } catch (err) {
+      return res.badRequest(err, err.msg);
+    }
+
+    body.images = filesBaseName;
 
     // create new product with category
     const newProduct = await Product.create(body)
