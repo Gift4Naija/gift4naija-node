@@ -13,11 +13,19 @@ module.exports = {
       query.name = "";
     }
 
+    if (query.products === "on") {
+      query.products = true;
+    } else {
+      query.products = false;
+    }
+
     const search = {
       name: { contains: query.name },
     };
 
-    const allCategories = await Category.find(search);
+    const allCategories = await Category.find(search, {
+      items: query.products,
+    });
 
     return res.json({
       success: true,
@@ -27,7 +35,20 @@ module.exports = {
 
   getOne: async (req, res) => {
     const queryID = req.params.id;
-    const category = await Category.findOne().where({ id: queryID });
+    const { query } = req;
+
+    if (query.products === "on") {
+      query.products = true;
+    } else {
+      query.products = false;
+    }
+
+    const category = await Category.findOne(
+      { where: { id: queryID } },
+      {
+        items: query.products,
+      }
+    );
 
     if (!category) {
       return res.status(404).json({
