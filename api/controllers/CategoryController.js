@@ -27,6 +27,12 @@ module.exports = {
       items: query.products,
     });
 
+    if (query.products) {
+      allCategories.forEach((category) => {
+        category.total = category.items.length;
+      });
+    }
+
     return res.json({
       success: true,
       data: allCategories,
@@ -55,6 +61,10 @@ module.exports = {
         success: false,
         msg: "NotFound",
       });
+    }
+
+    if (query.products) {
+      category.total = category.items.length;
     }
 
     // const cartItemJsonData = cartItem.toJSON();
