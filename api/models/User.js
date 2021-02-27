@@ -153,11 +153,15 @@ module.exports = {
       example: 1502844074211,
     },
 
-    city: {
+    state: {
       type: "string",
       isIn: ["port-harcourt", "abuja", "lagos"],
-      description:
-        "City location of vendor. One of the three options available",
+      description: "State. One of the three options available",
+    },
+
+    city: {
+      type: "string",
+      description: "City location of user",
     },
 
     // Assoc.
@@ -184,6 +188,7 @@ module.exports = {
       "fullName",
       "emailAddress",
       "emailStatus",
+      "state",
       "city",
       "role",
       "cart",
