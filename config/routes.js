@@ -74,10 +74,17 @@ module.exports.routes = {
 
   // category
   "GET /api/v1/categories": "CategoryController.getAll",
+  // "GET /api/v1/categories/sub": "CategoryController.getSubCategory",
   "GET /api/v1/category/:id": "CategoryController.getOne",
+  // "GET /api/v1/category/:id/sub": "CategoryController.getOne",
   "POST /api/v1/category": "CategoryController.create",
   "PUT /api/v1/category/:id": "CategoryController.update",
   "DELETE /api/v1/category/:id": "CategoryController.remove",
+
+  // sub-category
+  "POST /api/v1/sub-category": "SubCategoryController.create",
+  "PUT /api/v1/sub-category/:id": "SubCategoryController.update",
+  "DELETE /api/v1/sub-category/:id": "SubCategoryController.remove",
 
   // order
   // @admins
