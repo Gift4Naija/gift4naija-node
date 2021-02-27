@@ -34,6 +34,10 @@ module.exports = {
       model: "category",
     },
 
+    subCategory: {
+      model: "subCategory",
+    },
+
     vendor: {
       model: "user",
     },

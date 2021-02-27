@@ -18,5 +18,10 @@ module.exports = {
       collection: "product",
       via: "category",
     },
+
+    subCategory: {
+      collection: "subCategory",
+      via: "category",
+    },
   },
 };
