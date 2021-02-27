@@ -19,12 +19,19 @@ module.exports = {
       query.products = false;
     }
 
+    if (query.sub === "on") {
+      query.sub = true;
+    } else {
+      query.sub = false;
+    }
+
     const search = {
       name: { contains: query.name },
     };
 
     const allCategories = await Category.find(search, {
       items: query.products,
+      subCategory: query.sub,
     });
 
     if (query.products) {
@@ -49,10 +56,17 @@ module.exports = {
       query.products = false;
     }
 
+    if (query.sub === "on") {
+      query.sub = true;
+    } else {
+      query.sub = false;
+    }
+
     const category = await Category.findOne(
       { where: { id: queryID } },
       {
         items: query.products,
+        subCategory: query.sub,
       }
     );
 
@@ -73,6 +87,36 @@ module.exports = {
       data: category,
     });
   },
+
+  /*  getSubCategory: async (req, res) => {
+    // const categoryId = req.params.category;
+    // const subId = req.params.sub;
+    const { query } = req;
+
+    if (query.products === "on") {
+      query.products = true;
+    } else {
+      query.products = false;
+    }
+
+    const category = await Category.findOne(
+      { where: { id: queryID } },
+      {
+        subCategory: true,
+        items: query.products,
+      }
+    );
+
+    // if (query.products) {
+    //   category.total = category.items.length;
+    // }
+
+    // const cartItemJsonData = cartItem.toJSON();
+    return res.json({
+      success: true,
+      data: category,
+    });
+  },*/
 
   update: async (req, res) => {
     const categoryUpdate = await Category.updateOne({ id: req.params.id }).set(
