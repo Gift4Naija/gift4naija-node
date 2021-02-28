@@ -93,8 +93,12 @@ module.exports = {
       return res.badRequest(undefined, "Quantity must be specified");
     }
 
+    // price and discount
+    const pricePercentDiscount = _product.price * _product.discount; // %age discount
+    const actualPrice = _product - pricePercentDiscount;
+
     // calculate price
-    const amount = parseFloat(quantity * _product.price);
+    const amount = parseFloat(quantity * actualPrice);
 
     // check if amount is valid
     if (!amount) {
