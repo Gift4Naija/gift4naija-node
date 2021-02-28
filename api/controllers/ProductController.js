@@ -297,6 +297,11 @@ module.exports = {
     body.category = categoryId;
     body.subCategory = subCategoryId;
 
+    // discount
+    if (body.discount && body.discount > 1) {
+      return res.badRequest(undefined, "Invalid discount rate");
+    }
+
     // attach vendor
     if (me.role === "vendor") {
       var vendorId = me.id;
