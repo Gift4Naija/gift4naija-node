@@ -13,8 +13,7 @@ module.exports = {
     orderId: { type: "string" },
     category: { type: "string" },
     subCategory: { type: "string" },
-    product: {
-      type: "string",
-    },
+    product: { type: "string" },
+    owner: { model: "user" },
   },
 };
