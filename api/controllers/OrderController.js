@@ -243,6 +243,33 @@ module.exports = {
     });
   },
 
+  cancel: async (req, res) => {
+    const orderId = req.params.id;
+    const orderTime = (await Order.findOne({ orderId })).createdAt;
+    const threeDaysMillisec = 1000 * 60 * 60 * 24 * 3;
+    if (Date.now() >= orderTime + threeDaysMillisec) {
+      return res.badRequest(
+        undefined,
+        `You cannot cancel this order ${orderId}, check T&C`
+      );
+    }
+
+    const newOrder = await Order.updateOne({
+      orderId,
+      sender: req.me.id,
+    }).set({ status: "cancelled" });
+
+    if (!newOrder) {
+      return res.badRequest();
+    }
+
+    return res.json({
+      success: true,
+      data: newOrder,
+      msg: "Successfully updated order status",
+    });
+  },
+
   updateStatus: async (req, res) => {
     const { status } = req.body;
     const newOrder = await Order.updateOne({
@@ -259,6 +286,36 @@ module.exports = {
       data: newOrder,
       msg: "Successfully updated order status",
     });
+
+    if (status === "completed") {
+      // add to kpi
+      // quantity,
+      // price,
+      // amount,
+      // orderId,
+      // category,
+      // subCategory,
+      // product
+
+      newOrder.items.map(async (_prod) => {
+        const selectName = { select: ["name"] };
+        const { name: product } = await Product.findOne(selectName);
+        const { name: category } = await Category.findOne(selectName);
+        const { name: subCategory } = await SubCategory.findOne(selectName);
+
+        const _kpi = {
+          product,
+          category,
+          subCategory,
+          orderId: newOrder.orderId,
+          amount: _prod.amount,
+          quantity: _prod.quantity,
+          price: _prod.price,
+        };
+
+        await Kpi.create(_kpi);
+      });
+    }
   },
 
   remove: async (req, res) => {
