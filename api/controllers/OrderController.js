@@ -299,7 +299,9 @@ module.exports = {
 
       newOrder.items.map(async (_prod) => {
         const selectName = { select: ["name"] };
-        const { name: product } = await Product.findOne(selectName);
+        const { name: product, vendor } = await Product.findOne(selectName, {
+          vendor: true,
+        });
         const { name: category } = await Category.findOne(selectName);
         const { name: subCategory } = await SubCategory.findOne(selectName);
 
@@ -311,9 +313,10 @@ module.exports = {
           amount: _prod.amount,
           quantity: _prod.quantity,
           price: _prod.price,
+          owner: vendor.id,
         };
 
-        await Kpi.create(_kpi);
+        await Kpi.create(_kpi).catch((err) => console.log(err));
       });
     }
   },
