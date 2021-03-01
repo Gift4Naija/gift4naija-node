@@ -23,19 +23,20 @@ module.exports = {
       name: { contains: query.name },
     };
 
-    const allCategories = await SubCategory.find(search, {
+    const allSubCategories = await SubCategory.find(search, {
       items: query.products,
     });
 
     if (query.products) {
-      allCategories.forEach((category) => {
-        category.total = category.items.length;
+      allSubCategories.forEach((sub) => {
+        sub.total = sub.items.length;
       });
     }
 
     return res.json({
       success: true,
-      data: allCategories,
+      data: allSubCategories,
+      total: allSubCategories.length,
     });
   },
 
@@ -49,14 +50,14 @@ module.exports = {
       query.products = false;
     }
 
-    const category = await SubCategory.findOne(
+    const subCategory = await SubCategory.findOne(
       { where: { id: queryID } },
       {
         items: query.products,
       }
     );
 
-    if (!category) {
+    if (!subCategory) {
       return res.status(404).json({
         success: false,
         msg: "NotFound",
@@ -64,13 +65,12 @@ module.exports = {
     }
 
     if (query.products) {
-      category.total = category.items.length;
+      subCategory.total = subCategory.items.length;
     }
 
-    // const cartItemJsonData = cartItem.toJSON();
     return res.json({
       success: true,
-      data: category,
+      data: subCategory,
     });
   },
 
@@ -104,9 +104,10 @@ module.exports = {
     });
   },
 
+  // @params category
+  // @body name
   create: async (req, res) => {
-    const { category } = req.body;
-
+    const { category } = req.params;
     if (!category) {
       return res.badRequest(undefined, "Category is required");
     }
@@ -116,6 +117,9 @@ module.exports = {
     if (!categoryFound) {
       return res.badRequest(undefined, "Invalid category");
     }
+
+    // attach @params to body
+    req.body.category = category;
 
     const newSubCategory = await SubCategory.create(req.body)
       .fetch()
