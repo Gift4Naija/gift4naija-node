@@ -19,9 +19,9 @@ module.exports = {
       query.products = false;
     }*/
 
-    /*const search = {
-      name: { contains: query.name },
-    };*/
+    const search = {
+      // name: { contains: query.name },
+    };
 
     const allKpis = await Kpi.find(search, {
       owner: true,
