@@ -11,6 +11,7 @@ module.exports = {
     price: { type: "string" },
     amount: { type: "string" },
     orderId: { type: "string" },
+    discount: { type: "string" },
     category: { type: "string" },
     subCategory: { type: "string" },
     product: { type: "string" },
