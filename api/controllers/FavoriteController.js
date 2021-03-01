@@ -9,9 +9,9 @@ module.exports = {
   getAll: async (req, res) => {
     const { query } = req;
     if (query.product === "on") {
-      query.product = false;
-    } else {
       query.product = true;
+    } else {
+      query.product = false;
     }
 
     const favoriteItems = await Favorite.find(
@@ -24,12 +24,20 @@ module.exports = {
     return res.json({
       success: true,
       data: favoriteItems,
+      total: favoriteItems.length,
     });
   },
 
-  //  not yet in use
   getOne: async (req, res) => {
     const queryID = req.params.id;
+    const { query } = req;
+
+    if (query.product === "on") {
+      query.product = true;
+    } else {
+      query.product = false;
+    }
+
     const favoriteItem = await Favorite.findOne().where({
       id: queryID,
       owner: req.me.id,
@@ -52,11 +60,19 @@ module.exports = {
    */
   create: async (req, res) => {
     // grab <productId> and <quantity>
-    const { product, productName } = req.body;
+    const { product } = req.body;
     // grab <userId>
     const owner = req.me.id;
 
-    const data = { owner, product, productName };
+    // find product
+    const _product = await Product.findOne(product);
+
+    // check if product exist in DB
+    if (!_product) {
+      return res.badRequest(undefined, "Invalid Item");
+    }
+
+    const data = { owner, product };
 
     // create fav-item
     const newFavItem = await Favorite.create(data)
