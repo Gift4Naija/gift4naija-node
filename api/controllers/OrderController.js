@@ -209,7 +209,6 @@ module.exports = {
 
     const payment = await PaymentService.execute(paymentJson, paymentId).catch(
       (err) => {
-        console.log(err);
         return res.negotiate(err);
       }
     );
@@ -230,17 +229,17 @@ module.exports = {
       res.negotiate(err)
     );
 
-    await EmailService({
-      to: user.emailAddress,
-      subject: "Order confirmation",
-      text: `Order confirmation - Dear ${user.fullName} order id ${newOrder.orderId}`,
-    }).catch((err) => console.log(err));
-
     return res.status(201).json({
       success: true,
       data: newOrder,
       msg: "Successfully created an order",
     });
+
+    EmailService({
+      to: user.emailAddress,
+      subject: "Order confirmation",
+      text: `Order confirmation - Dear ${user.fullName} order id ${newOrder.orderId}`,
+    }).catch((err) => console.log(err));
   },
 
   cancel: async (req, res) => {
@@ -281,13 +280,18 @@ module.exports = {
       return res.status(400).json({ success: false, msg: "Bad Request" });
     }
 
-    return res.json({
+    res.json({
       success: true,
       data: newOrder,
       msg: "Successfully updated order status",
     });
 
     if (status === "completed") {
+      EmailService({
+        to: user.emailAddress,
+        subject: "Order completed",
+        text: `Dear ${user.fullName} order id ${newOrder.orderId} has been completed`,
+      }).catch((err) => console.log(err));
       // add to kpi
       // quantity,
       // price,
@@ -298,18 +302,23 @@ module.exports = {
       // product
 
       newOrder.items.map(async (_prod) => {
-        const selectName = { select: ["name"] };
-        const { name: product, vendor } = await Product.findOne(selectName, {
-          vendor: true,
+        const { name: product, vendor } = await Product.findOne(
+          { id: _prod.id },
+          { vendor: true }
+        );
+        const { name: category } = await Category.findOne({
+          id: _prod.category,
         });
-        const { name: category } = await Category.findOne(selectName);
-        const { name: subCategory } = await SubCategory.findOne(selectName);
+        const { name: subCategory } = await SubCategory.findOne({
+          id: _prod.subCategory,
+        });
 
         const _kpi = {
           product,
           category,
           subCategory,
           orderId: newOrder.orderId,
+          discount: _prod.discount,
           amount: _prod.amount,
           quantity: _prod.quantity,
           price: _prod.price,
