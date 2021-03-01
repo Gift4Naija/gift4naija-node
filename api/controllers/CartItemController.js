@@ -94,8 +94,13 @@ module.exports = {
     }
 
     // price and discount
-    const pricePercentDiscount = _product.price * _product.discount; // %age discount
-    const actualPrice = _product - pricePercentDiscount;
+    let actualPrice;
+    if (_product.discount < 1) {
+      const pricePercentDiscount = _product.price * _product.discount; // %age discount
+      actualPrice = _product.price - pricePercentDiscount;
+    } else {
+      actualPrice = _product.price;
+    }
 
     // calculate price
     const amount = parseFloat(quantity * actualPrice);
