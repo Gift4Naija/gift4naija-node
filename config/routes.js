@@ -72,6 +72,12 @@ module.exports.routes = {
   "PUT /api/v1/cart-item/:id": "CartItemController.update",
   "DELETE /api/v1/cart-item/:id": "CartItemController.remove",
 
+  // favorite
+  "GET /api/v1/products/favorite": "FavoriteController.getAll",
+  "GET /api/v1/products/favorite/:id": "FavoriteController.getOne",
+  "POST /api/v1/products/favorite": "FavoriteController.create",
+  "DELETE /api/v1/products/favorite/:id": "FavoriteController.remove",
+
   // category
   "GET /api/v1/categories": "CategoryController.getAll",
   "GET /api/v1/category/:id": "CategoryController.getOne",
