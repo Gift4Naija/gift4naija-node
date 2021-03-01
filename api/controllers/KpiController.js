@@ -7,32 +7,57 @@
 
 module.exports = {
   getAll: async (req, res) => {
+    const { query } = req;
+
+    /*if (!query.name) {
+      query.name = "";
+    }
+
+    if (query.products === "on") {
+      query.products = true;
+    } else {
+      query.products = false;
+    }*/
+
+    /*const search = {
+      name: { contains: query.name },
+    };*/
+
+    const allKpis = await Kpi.find(search, {
+      owner: true,
+    });
+
+    /*    if (query.products) {
+      allKpis.forEach((category) => {
+        category.total = category.items.length;
+      });
+    }*/
+
     return res.json({
       success: true,
-      // data: itemsWithCategory,
+      data: allKpis,
     });
   },
 
   //  not yet in use
   getOne: async (req, res) => {
-    /*    const queryID = req.params.id;
-    const cartItem = await CartItem.findOne().where({
-      id: queryID,
-      owner: req.me.id,
-    });
+    const queryID = req.params.id;
+    const kpi = await Kpi.findOne(
+      {
+        id: queryID,
+        // owner: req.me.id,
+      },
+      { owner: true }
+    );
 
-    if (!cartItem) {
-      return res.status(404).json({
-        success: false,
-        msg: "NotFound",
-      });
+    if (!kpi) {
+      return res.notFound();
     }
 
-    // const cartItemJsonData = cartItem.toJSON();
     return res.json({
       success: true,
-      data: cartItem,
-    });*/
+      data: kpi,
+    });
   },
 
   /*
