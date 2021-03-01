@@ -13,18 +13,16 @@ module.exports = {
       query.with = [];
     }
 
-    if (!query.level) {
-      query.level = "";
-    }
-
     const populate = {
       products: query.with.includes("products"),
       orders: query.with.includes("orders"),
     };
 
-    const search = {
-      role: query.level,
-    };
+    const search = {};
+
+    if (query.level) {
+      search.role = query.level;
+    }
 
     const allUsers = await User.find(search, populate).catch((err) =>
       res.negotiate(err)
@@ -33,6 +31,7 @@ module.exports = {
     return res.json({
       success: true,
       data: allUsers,
+      total: allUsers.length,
     });
   },
 
