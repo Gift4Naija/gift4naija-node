@@ -74,17 +74,17 @@ module.exports.routes = {
 
   // category
   "GET /api/v1/categories": "CategoryController.getAll",
-  // "GET /api/v1/categories/sub": "CategoryController.getSubCategory",
   "GET /api/v1/category/:id": "CategoryController.getOne",
-  // "GET /api/v1/category/:id/sub": "CategoryController.getOne",
   "POST /api/v1/category": "CategoryController.create",
   "PUT /api/v1/category/:id": "CategoryController.update",
   "DELETE /api/v1/category/:id": "CategoryController.remove",
 
   // sub-category
-  "POST /api/v1/sub-category": "SubCategoryController.create",
-  "PUT /api/v1/sub-category/:id": "SubCategoryController.update",
-  "DELETE /api/v1/sub-category/:id": "SubCategoryController.remove",
+  "GET /api/v1/category/:category/sub": "SubCategoryController.getAll",
+  "GET /api/v1/category/:category/sub/:id": "SubCategoryController.getOne",
+  "POST /api/v1/category/:category/sub": "SubCategoryController.create",
+  "PUT /api/v1/category/:category/sub/:id": "SubCategoryController.update",
+  "DELETE /api/v1/category/:category/sub/:id": "SubCategoryController.remove",
 
   // order
   // @admins
@@ -99,6 +99,10 @@ module.exports.routes = {
   "POST /api/v1/order": "OrderController.create",
   "PUT /api/v1/order/:id/status-change": "OrderController.updateStatus",
   "DELETE /api/v1/order/:id": "OrderController.remove",
+
+  // kpi
+  "GET /api/v1/kpis": "KpiController.getAll",
+  "GET /api/v1/kpi/:id": "KpiController.getOne",
 
   // payment test
   // "/api/v1/payment/checkout": "PaymentController.execute",

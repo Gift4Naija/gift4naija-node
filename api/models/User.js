@@ -201,7 +201,6 @@ module.exports = {
       "state",
       "city",
       "role",
-
       "lastSeenAt",
       "createdAt",
       "updatedAt",
