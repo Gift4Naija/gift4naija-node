@@ -7,10 +7,6 @@
 
 module.exports = {
   attributes: {
-    productName: {
-      type: "number",
-    },
-
     product: {
       // one way association
       model: "product",
