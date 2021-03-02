@@ -15,19 +15,23 @@ module.exports = {
 
     const populate = {
       products: query.with.includes("products"),
+      orders: query.with.includes("orders"),
     };
 
-    if (req.me.role === "admin") {
-      populate.orders = query.with.includes("orders");
+    const search = {};
+
+    if (query.level) {
+      search.role = query.level;
     }
 
-    const allUsers = await User.find({}, populate).catch((err) =>
+    const allUsers = await User.find(search, populate).catch((err) =>
       res.negotiate(err)
     );
 
     return res.json({
       success: true,
       data: allUsers,
+      total: allUsers.length,
     });
   },
 

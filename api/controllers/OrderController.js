@@ -209,7 +209,6 @@ module.exports = {
 
     const payment = await PaymentService.execute(paymentJson, paymentId).catch(
       (err) => {
-        console.log(err);
         return res.negotiate(err);
       }
     );
@@ -230,16 +229,43 @@ module.exports = {
       res.negotiate(err)
     );
 
-    await EmailService({
-      to: user.emailAddress,
-      subject: "Order confirmation",
-      text: `Order confirmation - Dear ${user.fullName} order id ${newOrder.orderId}`,
-    }).catch((err) => console.log(err));
-
     return res.status(201).json({
       success: true,
       data: newOrder,
       msg: "Successfully created an order",
+    });
+
+    EmailService({
+      to: user.emailAddress,
+      subject: "Order confirmation",
+      text: `Order confirmation - Dear ${user.fullName} order id ${newOrder.orderId}`,
+    }).catch((err) => console.log(err));
+  },
+
+  cancel: async (req, res) => {
+    const orderId = req.params.id;
+    const orderTime = (await Order.findOne({ orderId })).createdAt;
+    const threeDaysMillisec = 1000 * 60 * 60 * 24 * 3;
+    if (Date.now() >= orderTime + threeDaysMillisec) {
+      return res.badRequest(
+        undefined,
+        `You cannot cancel this order ${orderId}, check T&C`
+      );
+    }
+
+    const newOrder = await Order.updateOne({
+      orderId,
+      sender: req.me.id,
+    }).set({ status: "cancelled" });
+
+    if (!newOrder) {
+      return res.badRequest();
+    }
+
+    return res.json({
+      success: true,
+      data: newOrder,
+      msg: "Successfully updated order status",
     });
   },
 
@@ -254,11 +280,54 @@ module.exports = {
       return res.status(400).json({ success: false, msg: "Bad Request" });
     }
 
-    return res.json({
+    res.json({
       success: true,
       data: newOrder,
       msg: "Successfully updated order status",
     });
+
+    if (status === "completed") {
+      EmailService({
+        to: user.emailAddress,
+        subject: "Order completed",
+        text: `Dear ${user.fullName} order id ${newOrder.orderId} has been completed`,
+      }).catch((err) => console.log(err));
+      // add to kpi
+      // quantity,
+      // price,
+      // amount,
+      // orderId,
+      // category,
+      // subCategory,
+      // product
+
+      newOrder.items.map(async (_prod) => {
+        const { name: product, vendor } = await Product.findOne(
+          { id: _prod.id },
+          { vendor: true }
+        );
+        const { name: category } = await Category.findOne({
+          id: _prod.category,
+        });
+        const { name: subCategory } = await SubCategory.findOne({
+          id: _prod.subCategory,
+        });
+
+        const _kpi = {
+          product,
+          category,
+          subCategory,
+          orderId: newOrder.orderId,
+          discount: _prod.discount,
+          amount: _prod.amount,
+          quantity: _prod.quantity,
+          price: _prod.price,
+          owner: vendor.id,
+        };
+
+        await Kpi.create(_kpi).catch((err) => console.log(err));
+      });
+    }
   },
 
   remove: async (req, res) => {

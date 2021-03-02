@@ -1,5 +1,5 @@
 /**
- * CartItemController
+ * KpiController
  *
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
@@ -7,50 +7,56 @@
 
 module.exports = {
   getAll: async (req, res) => {
-    const allCartItems = await CartItem.find({
-      owner: req.me.id,
-    }); /*.populate(
-      "item"
-    )*/
-    const productIds = allCartItems.map(({ item }) => item);
+    const { query } = req;
 
-    const products = await Product.find({ id: productIds }).populate(
-      "category"
-    );
+    /*if (!query.name) {
+      query.name = "";
+    }
 
-    const itemsWithCategory = allCartItems.map((cartItem) => {
-      const cartProduct = products.find((elt) => elt.id === cartItem.item);
-      // slice out cartProduct for optimization
+    if (query.products === "on") {
+      query.products = true;
+    } else {
+      query.products = false;
+    }*/
 
-      cartItem.item = cartProduct;
-      return cartItem;
+    const search = {
+      // name: { contains: query.name },
+    };
+
+    const allKpis = await Kpi.find(search, {
+      owner: true,
     });
+
+    /*    if (query.products) {
+      allKpis.forEach((category) => {
+        category.total = category.items.length;
+      });
+    }*/
 
     return res.json({
       success: true,
-      data: itemsWithCategory,
+      data: allKpis,
     });
   },
 
   //  not yet in use
   getOne: async (req, res) => {
     const queryID = req.params.id;
-    const cartItem = await CartItem.findOne().where({
-      id: queryID,
-      owner: req.me.id,
-    });
+    const kpi = await Kpi.findOne(
+      {
+        id: queryID,
+        // owner: req.me.id,
+      },
+      { owner: true }
+    );
 
-    if (!cartItem) {
-      return res.status(404).json({
-        success: false,
-        msg: "NotFound",
-      });
+    if (!kpi) {
+      return res.notFound();
     }
 
-    // const cartItemJsonData = cartItem.toJSON();
     return res.json({
       success: true,
-      data: cartItem,
+      data: kpi,
     });
   },
 
@@ -60,7 +66,7 @@ module.exports = {
    * userId - req.me.id
    */
   create: async (req, res) => {
-    // grab <productId> and <quantity>
+    /*    // grab <productId> and <quantity>
     const { product: productId, quantity } = req.body;
     // grab <userId>
     const userId = req.me.id;
@@ -93,17 +99,8 @@ module.exports = {
       return res.badRequest(undefined, "Quantity must be specified");
     }
 
-    // price and discount
-    let actualPrice;
-    if (_product.discount < 1) {
-      const pricePercentDiscount = _product.price * _product.discount; // %age discount
-      actualPrice = _product.price - pricePercentDiscount;
-    } else {
-      actualPrice = _product.price;
-    }
-
     // calculate price
-    const amount = parseFloat(quantity * actualPrice);
+    const amount = parseFloat(quantity * _product.price);
 
     // check if amount is valid
     if (!amount) {
@@ -126,11 +123,11 @@ module.exports = {
       success: true,
       data: newCartItem,
       msg: "Successfully created a cart item",
-    });
+    });*/
   },
 
   update: async (req, res) => {
-    const { quantity } = req.body;
+    /*const { quantity } = req.body;
     const { id } = req.params;
 
     // find cartItem with product and recalculate amount
@@ -157,11 +154,11 @@ module.exports = {
       success: true,
       data: cartItemUpdate,
       msg: "Successfully updated a cart item",
-    });
+    });*/
   },
 
   remove: async (req, res) => {
-    const removedCartItem = await CartItem.destroyOne({
+    /*const removedCartItem = await CartItem.destroyOne({
       id: req.params.id,
       owner: req.me.id,
     }).catch((err) => res.badRequest(err));
@@ -174,6 +171,6 @@ module.exports = {
       success: true,
       data: removedCartItem,
       msg: "Successfully removed a cart item",
-    });
+    });*/
   },
 };

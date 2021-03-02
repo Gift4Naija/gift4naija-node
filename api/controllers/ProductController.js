@@ -18,8 +18,16 @@ module.exports = {
       query.size = ""; // product size
     }
 
-    if (!query.loc) {
-      query.loc = ""; // product size
+    if (!query.state) {
+      query.state = ""; // product's vendor state
+    }
+
+    if (!query.city) {
+      query.city = ""; // product's vendor city
+    }
+
+    if (!query.price) {
+      query.price = [">=", 0]; // product's vendor city
     }
 
     if (!query.category) {
@@ -30,6 +38,7 @@ module.exports = {
     }
 
     const search = {
+      price: { [decodeURIComponent(query.price[0])]: query.price[1] },
       name: { contains: query.name },
       size: { contains: query.size },
     };
@@ -39,9 +48,18 @@ module.exports = {
       vendor: true, // vendors location [ABJ, LAG, PH]
     });
 
-    const filtedByLocation = allProducts.filter(({ vendor }) =>
-      vendor.city.includes(query.loc.toLowerCase())
-    );
+    allProducts.forEach((_prod) => {
+      const { vendor } = _prod;
+      const filteredVendor = _.pick(vendor, "state", "city");
+      _prod.vendor = filteredVendor;
+    });
+
+    const filtedByLocation = allProducts.filter((_prod) => {
+      return (
+        _prod.vendor.state.includes(query.state.toLowerCase()) &&
+        _prod.vendor.city.includes(query.city.toLowerCase())
+      );
+    });
 
     return res.json({
       success: true,
@@ -243,25 +261,46 @@ module.exports = {
    * @vendorId - association for product vendor
    */
   create: async (req, res) => {
-    // check if category is missing
     const { body, me } = req;
+
+    // check if category is missing
     if (!body.categoryId) {
       return res.badRequest(undefined, "Product category is required");
     }
 
+    // check if sub-category is missing
+    if (!body.subCategoryId) {
+      return res.badRequest(undefined, "Product sub-category is required");
+    }
+
     // parse categoryID as INT
     const categoryId = parseInt(body.categoryId);
+    const subCategoryId = parseInt(body.subCategoryId);
 
     // find category
     const group = await Category.findOne().where({ id: categoryId }); // handle error
+
+    // find category
+    const subGroup = await SubCategory.findOne().where({ id: categoryId }); // handle error
 
     // check if category exist
     if (!group) {
       return res.badRequest(undefined, "Invalid category");
     }
 
+    // check if sub-category exist
+    if (!subGroup) {
+      return res.badRequest(undefined, "Invalid sub-category");
+    }
+
     // attach categoryID as category attribute
     body.category = categoryId;
+    body.subCategory = subCategoryId;
+
+    // discount
+    if (body.discount && body.discount > 1) {
+      return res.badRequest(undefined, "Invalid discount rate");
+    }
 
     // attach vendor
     if (me.role === "vendor") {

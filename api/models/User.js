@@ -153,11 +153,15 @@ module.exports = {
       example: 1502844074211,
     },
 
-    city: {
+    state: {
       type: "string",
       isIn: ["port-harcourt", "abuja", "lagos"],
-      description:
-        "City location of vendor. One of the three options available",
+      description: "State. One of the three options available",
+    },
+
+    city: {
+      type: "string",
+      description: "City location of user",
     },
 
     // Assoc.
@@ -171,6 +175,16 @@ module.exports = {
       via: "owner",
     },
 
+    favorite: {
+      collection: "favorite",
+      via: "owner",
+    },
+
+    kpi: {
+      collection: "kpi",
+      via: "owner",
+    },
+
     products: {
       collection: "product",
       via: "vendor",
@@ -179,20 +193,28 @@ module.exports = {
 
   // methods
   customToJSON() {
-    return _.pick(this, [
+    const dataArray = [
       "id",
       "fullName",
       "emailAddress",
       "emailStatus",
+      "state",
       "city",
       "role",
-      "cart",
-      "orders",
-      "products",
       "lastSeenAt",
       "createdAt",
       "updatedAt",
-    ]);
+    ];
+
+    if (this.role === "vendor") {
+      dataArray.push("products", "kpi");
+    }
+
+    if (this.role === "buyer") {
+      dataArray.push("cart", "orders");
+    }
+
+    return _.pick(this, dataArray);
   },
 };
 /*

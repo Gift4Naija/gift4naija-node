@@ -1,5 +1,5 @@
 /**
- * Category.js
+ * SubCategory.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -10,18 +10,17 @@ module.exports = {
     name: {
       type: "string",
       required: true,
-      unique: true,
+      // unique: true,
     },
 
     //Assoc.
-    items: {
-      collection: "product",
-      via: "category",
+    category: {
+      model: "category",
     },
 
-    subCategory: {
-      collection: "subCategory",
-      via: "category",
+    items: {
+      collection: "product",
+      via: "subCategory",
     },
   },
 };
