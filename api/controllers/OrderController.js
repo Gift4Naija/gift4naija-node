@@ -229,13 +229,13 @@ module.exports = {
       res.negotiate(err)
     );
 
-    return res.status(201).json({
+    res.status(201).json({
       success: true,
       data: newOrder,
       msg: "Successfully created an order",
     });
 
-    EmailService({
+    await EmailService({
       to: user.emailAddress,
       subject: "Order confirmation",
       text: `Order confirmation - Dear ${user.fullName} order id ${newOrder.orderId}`,
@@ -287,7 +287,7 @@ module.exports = {
     });
 
     if (status === "completed") {
-      EmailService({
+      await EmailService({
         to: user.emailAddress,
         subject: "Order completed",
         text: `Dear ${user.fullName} order id ${newOrder.orderId} has been completed`,
