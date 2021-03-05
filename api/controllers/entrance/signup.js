@@ -34,6 +34,13 @@ the account verification message.)`,
       example: "Frida Kahlo de Rivera",
       description: "The user's full name.",
     },
+
+    phoneNumber: {
+      required: true,
+      type: "string",
+      example: "08123456789",
+      description: "The user's phone number.",
+    },
   },
 
   exits: {
@@ -56,7 +63,7 @@ the account verification message.)`,
     },
   },
 
-  fn: async function ({ emailAddress, password, fullName }) {
+  fn: async function ({ emailAddress, password, fullName, phoneNumber }) {
     var newEmailAddress = emailAddress.toLowerCase();
     const { res } = this;
 
@@ -76,6 +83,7 @@ the account verification message.)`,
         _.extend(
           {
             fullName,
+            phoneNumber,
             emailAddress: newEmailAddress,
             password: await sails.helpers.passwords.hashPassword(password),
             tosAcceptedByIp: this.req.ip,
