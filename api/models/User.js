@@ -15,6 +15,13 @@ module.exports = {
       example: "mary.sue@example.com",
     },
 
+    phoneNumber: {
+      type: "string",
+      required: true,
+      minLength: 11,
+      example: "08123456789",
+    },
+
     emailStatus: {
       type: "string",
       isIn: ["unconfirmed", "change-requested", "confirmed"],
@@ -197,6 +204,7 @@ module.exports = {
       "id",
       "fullName",
       "emailAddress",
+      "phoneNumber",
       "emailStatus",
       "state",
       "city",
