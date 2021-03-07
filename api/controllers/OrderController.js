@@ -138,9 +138,13 @@ module.exports = {
     const { body } = req;
     const { me: user } = req;
 
+    if (user.emailStatus !== "confirmed") {
+      return res.badRequest(undefined, "User is not verified");
+    }
+
     // get products from user cart,
     const orderCartItem = await CartItem.find({
-      owner: req.me.id,
+      owner: user.id,
     })
       .populate("item")
       .catch((err) => res.negotiate(err));
@@ -170,7 +174,7 @@ module.exports = {
      */
     body.orderId = await sails.helpers.genOrderId(); // generate order id
     body.items = orderProducts;
-    body.sender = req.me.id;
+    body.sender = user.id;
     body.amount = amount;
 
     /*
@@ -238,7 +242,9 @@ module.exports = {
     await EmailService({
       to: user.emailAddress,
       subject: "Order confirmation",
-      text: `Order confirmation - Dear ${user.fullName} order id ${newOrder.orderId}`,
+      html: `Dear ${user.fullName}<br /> your order with order id ${newOrder.orderId} is being processed.
+
+      Gift2Naija`,
     }).catch((err) => console.log(err));
   },
 

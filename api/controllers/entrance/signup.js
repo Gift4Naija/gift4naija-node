@@ -141,6 +141,8 @@ the account verification message.)`,
     //   await sails.helpers.broadcastSessionChange(this.req);
     // }
 
+    res.json({ success: true, data: newUserRecord.toJSON(), token });
+
     if (sails.config.custom.verifyEmailAddresses) {
       // Send "confirm account" email
       /*await sails.helpers.sendTemplateEmail.with({
@@ -155,15 +157,17 @@ the account verification message.)`,
 
       await EmailService({
         to: newEmailAddress,
-        subject: "Please confirm your account",
-        text: `email-verify-account - Dear ${fullName} confirm your email ${newUserRecord.emailProofToken}`,
+        subject: "Verify Email",
+        html: `Dear ${fullName}, <br />
+        you successfully created you account, to complete this step, click <a href="${process.env.BASE_URL}/api/v1/account/verify/${newUserRecord.emailProofToken}">here</a> to verify your account. Ignore this message if you think its a mistake. <br />
+
+        Gift2Naija.
+        `,
       }).catch((err) => console.log(err));
     } else {
       sails.log.info(
         "Skipping new account email verification... (since `verifyEmailAddresses` is disabled)"
       );
     }
-
-    return { success: true, data: newUserRecord.toJSON(), token };
   },
 };
