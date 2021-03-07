@@ -20,8 +20,8 @@ module.exports = {
     },
   },
 
-  fn: async function ({ fullName, emailAddress, city }) {
-    const { res } = this;
+  fn: async function ({ fullName, emailAddress, phoneNumber, city, state }) {
+    const { req, res } = this;
     var newEmailAddress = emailAddress;
     if (newEmailAddress !== undefined) {
       newEmailAddress = newEmailAddress.toLowerCase();
@@ -81,13 +81,20 @@ module.exports = {
 
     // Start building the values to set in the db.
     // (We always set the fullName if provided.)
-    fullName = fullName || this.req.me.fullName;
+    fullName = fullName || req.me.fullName;
+    phoneNumber = phoneNumber || req.me.phoneNumber;
+    fullName = fullName || req.me.fullName;
     var valuesToSet = {
       fullName,
+      phoneNumber,
     };
 
-    if (city && this.req.me.role === "vendor") {
-      valuesToSet.city = city;
+    if (city && req.me.role === "vendor") {
+      valuesToSet.city = city || req.me.city;
+    }
+
+    if (state && req.me.role === "vendor") {
+      valuesToSet.state = req.me.state;
     }
 
     switch (desiredEmailEffect) {
@@ -161,6 +168,12 @@ module.exports = {
       }
     }
 
+    res.json({
+      success: true,
+      data: newUserData,
+      msg: "Account has been successfully updated",
+    });
+
     // If an email address change was requested, and re-confirmation is required,
     // send the "confirm account" email.
     if (
@@ -183,11 +196,5 @@ module.exports = {
         text: `email-verify-new-email - Dear ${fullName} confirm your email ${valuesToSet.emailProofToken}`,
       }).catch((err) => console.log(err));
     }
-
-    return {
-      success: true,
-      data: newUserData,
-      msg: "Account has been successfully updated",
-    };
   },
 };

@@ -185,7 +185,7 @@ will be disabled and/or hidden in the UI.
 
             // decode authorization token
             await decodeJwtAuthorization(req, res).catch((err) =>
-              res.next(err)
+              res.unauthorized(err)
             );
 
             // No authorization token? Proceed as usual.
