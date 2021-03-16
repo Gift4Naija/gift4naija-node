@@ -18,8 +18,7 @@ module.exports = {
     phoneNumber: {
       type: "string",
       required: true,
-      minLength: 11,
-      example: "08123456789",
+      example: "+2348123456789",
     },
 
     emailStatus: {
@@ -44,14 +43,23 @@ module.exports = {
         "Securely hashed representation of the user's login password.",
       protect: true,
       example: "2$28a8eabna301089103-13948134nad",
+      regex: /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/,
     },
 
-    fullName: {
+    firstName: {
       type: "string",
       required: true,
-      description: "Full representation of the user's name.",
+      description: "First representation of the user's name.",
       maxLength: 120,
-      example: "Mary Sue van der McHenst",
+      example: "Mary",
+    },
+
+    lastName: {
+      type: "string",
+      required: true,
+      description: "Last representation of the user's name.",
+      maxLength: 120,
+      example: "McHenst",
     },
 
     role: {
@@ -202,7 +210,8 @@ module.exports = {
   customToJSON() {
     const dataArray = [
       "id",
-      "fullName",
+      "firstName",
+      "lastName",
       "emailAddress",
       "phoneNumber",
       "emailStatus",
