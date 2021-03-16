@@ -88,6 +88,14 @@ the account verification message.)`,
       });
     }
 
+    if (
+      !/^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/.test(
+        password
+      )
+    ) {
+      return res.badRequest(undefined, "Password failed validation");
+    }
+
     // Build up data for the new user record and save it to the database.
     // (Also use `fetch` to retrieve the new ID so that we can use it below.)
     var newUserRecord;

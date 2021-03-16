@@ -43,7 +43,6 @@ module.exports = {
         "Securely hashed representation of the user's login password.",
       protect: true,
       example: "2$28a8eabna301089103-13948134nad",
-      regex: /^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/,
     },
 
     firstName: {
