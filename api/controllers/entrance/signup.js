@@ -28,11 +28,18 @@ the account verification message.)`,
       description: "The unencrypted password to use for the new account.",
     },
 
-    fullName: {
+    firstName: {
       required: true,
       type: "string",
-      example: "Frida Kahlo de Rivera",
-      description: "The user's full name.",
+      example: "Frida",
+      description: "The user's first name from Frida Rivera",
+    },
+
+    lastName: {
+      required: true,
+      type: "string",
+      example: "Rivera",
+      description: "The user's last name. from Frida Rivera",
     },
 
     phoneNumber: {
@@ -63,7 +70,13 @@ the account verification message.)`,
     },
   },
 
-  fn: async function ({ emailAddress, password, fullName, phoneNumber }) {
+  fn: async function ({
+    emailAddress,
+    password,
+    firstName,
+    lastName,
+    phoneNumber,
+  }) {
     var newEmailAddress = emailAddress.toLowerCase();
     const { res } = this;
 
@@ -82,7 +95,8 @@ the account verification message.)`,
       newUserRecord = await User.create(
         _.extend(
           {
-            fullName,
+            firstName,
+            lastName,
             phoneNumber,
             emailAddress: newEmailAddress,
             password: await sails.helpers.passwords.hashPassword(password),
@@ -158,7 +172,7 @@ the account verification message.)`,
       await EmailService({
         to: newEmailAddress,
         subject: "Verify Email",
-        html: `Dear ${fullName}, <br />
+        html: `Dear ${firstName} ${lastName}, <br />
         you successfully created you account, to complete this step, click <a href="${process.env.BASE_URL}/api/v1/account/verify/${newUserRecord.emailProofToken}">here</a> to verify your account. Ignore this message if you think its a mistake. <br />
 
         Gift2Naija.
