@@ -20,7 +20,14 @@ module.exports = {
     },
   },
 
-  fn: async function ({ fullName, emailAddress, phoneNumber, city, state }) {
+  fn: async function ({
+    firstName,
+    lastName,
+    emailAddress,
+    phoneNumber,
+    city,
+    state,
+  }) {
     const { req, res } = this;
     var newEmailAddress = emailAddress;
     if (newEmailAddress !== undefined) {

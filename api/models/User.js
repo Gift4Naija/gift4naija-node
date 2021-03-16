@@ -18,8 +18,7 @@ module.exports = {
     phoneNumber: {
       type: "string",
       required: true,
-      minLength: 11,
-      example: "08123456789",
+      example: "+2348123456789",
     },
 
     emailStatus: {
@@ -46,12 +45,20 @@ module.exports = {
       example: "2$28a8eabna301089103-13948134nad",
     },
 
-    fullName: {
+    firstName: {
       type: "string",
       required: true,
-      description: "Full representation of the user's name.",
+      description: "First representation of the user's name.",
       maxLength: 120,
-      example: "Mary Sue van der McHenst",
+      example: "Mary",
+    },
+
+    lastName: {
+      type: "string",
+      required: true,
+      description: "Last representation of the user's name.",
+      maxLength: 120,
+      example: "McHenst",
     },
 
     role: {
@@ -202,7 +209,8 @@ module.exports = {
   customToJSON() {
     const dataArray = [
       "id",
-      "fullName",
+      "firstName",
+      "lastName",
       "emailAddress",
       "phoneNumber",
       "emailStatus",
@@ -222,7 +230,10 @@ module.exports = {
       dataArray.push("cart", "orders");
     }
 
-    return _.pick(this, dataArray);
+    const _userDate = _.pick(this, dataArray);
+    _userDate.fullName = `${_userDate.firstName} ${_userDate.lastName}`;
+
+    return _userDate;
   },
 };
 /*
