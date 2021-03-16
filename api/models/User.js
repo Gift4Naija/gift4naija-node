@@ -231,7 +231,10 @@ module.exports = {
       dataArray.push("cart", "orders");
     }
 
-    return _.pick(this, dataArray);
+    const _userDate = _.pick(this, dataArray);
+    _userDate.fullName = `${_userDate.firstName} ${_userDate.lastName}`;
+
+    return _userDate;
   },
 };
 /*
