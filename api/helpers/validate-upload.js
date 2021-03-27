@@ -42,7 +42,7 @@ module.exports = {
     if (uploadedFileLength > max) {
       files.forEach(async (item) => {
         const fileName = path.parse(item.fd).base;
-        const filePath = path.resolve(`assets/uploads/${filesBaseName}`);
+        const filePath = path.resolve(`assets/uploads/${fileName}`);
         return await sails.rm(filePath);
       });
       throw { msg: `The maximum number of ${max} images has been uploaded` };
