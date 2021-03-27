@@ -89,6 +89,17 @@ module.exports = {
     });
   },
 
+  getClientToken: async (req, res) => {
+    const clientToken = await sails.helpers
+      .paymentGateway()
+      .getClientToken(req.me ? req.me.id : 1);
+
+    return res.json({
+      success: true,
+      data: clientToken,
+    });
+  },
+
   // for user
   // get preview of order from cart
   preview: async (req, res) => {
@@ -198,24 +209,40 @@ module.exports = {
      * @payerId => @payer_id
      * @paymentId
      */
-    const { paymentId, payerId: payer_id } = body;
-    const paymentJson = {
-      payer_id,
-      transactions: [
-        {
-          amount: {
-            currency: "USD",
-            total: amount,
+    /*
+      const { paymentId, payerId: payer_id } = body;
+      const paymentJson = {
+        payer_id,
+        transactions: [
+          {
+            amount: {
+              currency: "USD",
+              total: amount,
+            },
           },
-        },
-      ],
-    };
+        ],
+      };
 
-    const payment = await PaymentService.execute(paymentJson, paymentId).catch(
-      (err) => {
-        return res.negotiate(err);
-      }
-    );
+      const payment = await PaymentService.execute(paymentJson, paymentId).catch(
+        (err) => {
+          return res.negotiate(err);
+        }
+      );
+    */
+
+    const transactionResultObj = await sails.helpers
+      .paymentGateway()
+      .createTransaction(body.nonce, body.deviceData, body.amount, body.orderId)
+      .catch((err) =>
+        res.serverError(err, "An error occured while processing payment")
+      );
+
+    if (!transactionResultObj.success) {
+      return res.serverError(
+        undefined,
+        "An error occured while processing payment"
+      );
+    }
 
     body.status = "processing";
 
@@ -224,11 +251,14 @@ module.exports = {
       .catch((err) => res.negotiate(err));
 
     if (!newOrder) {
-      return res.badRequest(undefined, "You cannot order from an empty cart");
+      return res.serverError(
+        undefined,
+        "An error occured while creating order"
+      );
     }
 
     // empty user cart
-    const itemsToRemove = orderProducts.map(({ id }) => id);
+    // const itemsToRemove = orderProducts.map(({ id }) => id);
     await CartItem.destroy({ owner: user.id }).catch((err) =>
       res.negotiate(err)
     );
@@ -242,7 +272,7 @@ module.exports = {
     await EmailService({
       to: user.emailAddress,
       subject: "Order confirmation",
-      html: `Dear ${user.fullName}<br /> your order with order id ${newOrder.orderId} is being processed.
+      html: `Dear ${user.firstName} ${user.lastName}<br /> your order with order id ${newOrder.orderId} is being processed.
 
       Gift2Naija`,
     }).catch((err) => console.log(err));
