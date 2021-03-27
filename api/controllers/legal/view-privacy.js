@@ -1,16 +1,16 @@
 module.exports = {
 
 
-  friendlyName: 'View privacy',
+  friendlyName: "View privacy",
 
 
-  description: 'Display "Privacy policy" page.',
+  description: "Display \"Privacy policy\" page.",
 
 
   exits: {
 
     success: {
-      viewTemplatePath: 'pages/legal/privacy'
+      viewTemplatePath: "pages/legal/privacy"
     }
 
   },

@@ -1,16 +1,16 @@
 module.exports = {
 
 
-  friendlyName: 'View terms',
+  friendlyName: "View terms",
 
 
-  description: 'Display "Legal terms" page.',
+  description: "Display \"Legal terms\" page.",
 
 
   exits: {
 
     success: {
-      viewTemplatePath: 'pages/legal/terms'
+      viewTemplatePath: "pages/legal/terms"
     }
 
   },

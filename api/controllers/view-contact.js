@@ -1,27 +1,16 @@
 module.exports = {
-
-
-  friendlyName: 'View contact',
-
+  friendlyName: "View contact",
 
   description: 'Display "Contact" page.',
 
-
   exits: {
-
     success: {
-      viewTemplatePath: 'pages/contact'
-    }
-
+      viewTemplatePath: "pages/contact",
+    },
   },
 
-
   fn: async function () {
-
     // Respond with view.
     return {};
-
-  }
-
-
+  },
 };
