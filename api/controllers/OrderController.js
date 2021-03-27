@@ -263,9 +263,11 @@ module.exports = {
       res.negotiate(err)
     );
 
+    const responseData = { order: newOrder, transaction: transactionResultObj };
+
     res.status(201).json({
       success: true,
-      data: newOrder,
+      data: responseData,
       msg: "Successfully created an order",
     });
 
