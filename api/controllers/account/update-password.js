@@ -12,6 +12,14 @@ module.exports = {
   },
 
   fn: async function ({ password }) {
+    if (
+      !/^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/.test(
+        password
+      )
+    ) {
+      return this.res.badRequest(undefined, "Password failed validation");
+    }
+
     // Hash the new password.
     var hashed = await sails.helpers.passwords.hashPassword(password);
 
