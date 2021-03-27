@@ -34,7 +34,7 @@ module.exports = {
   },
 
   fn: async function ({ password, token }) {
-    const { req, res } = this;
+    const { res } = this;
     if (!token) {
       return res.expired();
     }
@@ -45,6 +45,14 @@ module.exports = {
     // If no such user exists, or their token is expired, bail.
     if (!userRecord || userRecord.passwordResetTokenExpiresAt <= Date.now()) {
       return res.expired();
+    }
+
+    if (
+      !/^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/.test(
+        password
+      )
+    ) {
+      return res.badRequest(undefined, "Password failed validation");
     }
 
     // Hash the new password.
