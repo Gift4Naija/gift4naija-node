@@ -1,10 +1,13 @@
 const braintree = require("braintree");
 
+const { Sandbox, Production } = braintree.Environment;
+const codeEnv = process.env.NODE_ENV === "development" ? Sandbox : Production;
+
 const gateway = new braintree.BraintreeGateway({
-  environment: braintree.Environment.Sandbox,
-  merchantId: "useYourMerchantId",
-  publicKey: "useYourPublicKey",
-  privateKey: "useYourPrivateKey",
+  environment: codeEnv,
+  merchantId: process.env.BRAINTREE_MERCHANT_ID,
+  publicKey: process.env.BRAINTREE_PUBLIC_KEY,
+  privateKey: process.env.BRAINTREE_PRIVATE_KEY,
 });
 
 async function getClientToken(customerId) {
