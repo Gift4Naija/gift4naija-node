@@ -1,16 +1,16 @@
 module.exports = {
 
 
-  friendlyName: 'View edit profile',
+  friendlyName: "View edit profile",
 
 
-  description: 'Display "Edit profile" page.',
+  description: "Display \"Edit profile\" page.",
 
 
   exits: {
 
     success: {
-      viewTemplatePath: 'pages/account/edit-profile',
+      viewTemplatePath: "pages/account/edit-profile",
     }
 
   },

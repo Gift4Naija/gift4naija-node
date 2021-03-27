@@ -1,16 +1,16 @@
 module.exports = {
 
 
-  friendlyName: 'View account overview',
+  friendlyName: "View account overview",
 
 
-  description: 'Display "Account Overview" page.',
+  description: "Display \"Account Overview\" page.",
 
 
   exits: {
 
     success: {
-      viewTemplatePath: 'pages/account/account-overview',
+      viewTemplatePath: "pages/account/account-overview",
     }
 
   },

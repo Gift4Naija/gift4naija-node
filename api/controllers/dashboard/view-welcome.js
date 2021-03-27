@@ -1,17 +1,17 @@
 module.exports = {
 
 
-  friendlyName: 'View welcome page',
+  friendlyName: "View welcome page",
 
 
-  description: 'Display the dashboard "Welcome" page.',
+  description: "Display the dashboard \"Welcome\" page.",
 
 
   exits: {
 
     success: {
-      viewTemplatePath: 'pages/dashboard/welcome',
-      description: 'Display the welcome page for authenticated users.'
+      viewTemplatePath: "pages/dashboard/welcome",
+      description: "Display the welcome page for authenticated users."
     },
 
   },
