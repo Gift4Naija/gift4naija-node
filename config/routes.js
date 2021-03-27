@@ -102,6 +102,10 @@ module.exports.routes = {
   "GET /api/v1/order/:id": "OrderController.getUserOne",
   "GET /api/v1/order/preview": "OrderController.preview",
 
+  // :payment
+  "GET /api/v1/order/payment/client-token": "OrderController.getClientToken",
+  "POST /api/v1/order/checkout": "OrderController.create",
+
   "POST /api/v1/order": "OrderController.create",
   "PUT /api/v1/order/:id/status-change": "OrderController.updateStatus",
   "DELETE /api/v1/order/:id": "OrderController.remove",
