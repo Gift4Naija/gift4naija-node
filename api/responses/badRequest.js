@@ -28,7 +28,6 @@
 
 module.exports = function badRequest(err, msg) {
   // Get access to `req` and `res`
-  var req = this.req;
   var res = this.res;
 
   const resData = {

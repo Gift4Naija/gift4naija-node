@@ -1,11 +1,4 @@
 /**
- * Module dependencies
- */
-
-var _ = require("@sailshq/lodash");
-var flaverr = require("flaverr");
-
-/**
  * 500 (Server Error) Response
  *
  * Usage:
@@ -21,8 +14,9 @@ var flaverr = require("flaverr");
 
 module.exports = function serverError(err, msg) {
   // Get access to `req` and `res`
-  var req = this.req;
   var res = this.res;
+
+  console.log(err);
 
   // Set status code
   res.status(500);
