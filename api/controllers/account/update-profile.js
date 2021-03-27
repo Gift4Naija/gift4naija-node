@@ -87,12 +87,13 @@ module.exports = {
     }
 
     // Start building the values to set in the db.
-    // (We always set the fullName if provided.)
-    fullName = fullName || req.me.fullName;
+    // (We always set the firstName lastName if provided.)
+    firstName = firstName || req.me.firstName;
     phoneNumber = phoneNumber || req.me.phoneNumber;
-    fullName = fullName || req.me.fullName;
+    lastName = lastName || req.me.lastName;
     var valuesToSet = {
-      fullName,
+      firstName,
+      lastName,
       phoneNumber,
     };
 
@@ -200,7 +201,7 @@ module.exports = {
       await EmailService({
         to: newEmailAddress,
         subject: "Your account has been updated",
-        text: `email-verify-new-email - Dear ${fullName} confirm your email ${valuesToSet.emailProofToken}`,
+        text: `email-verify-new-email - Dear ${firstName} ${lastName} confirm your email ${valuesToSet.emailProofToken}`,
       }).catch((err) => console.log(err));
     }
   },
