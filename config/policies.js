@@ -41,10 +41,6 @@ module.exports.policies = {
     remove: "is-admin",
   },
 
-  //for dev purpose
-  EmailTestController: { "*": true },
-  PaymentController: { "*": true },
-
   // Bypass the `is-logged-in` policy for:
   "entrance/*": true,
   "security/grant-csrf-token": true,
