@@ -5,7 +5,9 @@ async function genOrderId() {
   const order = await Order.find({ orderId: id });
 
   // check for existing orders
-  if (order.length) return genOrderId();
+  if (order.length) {
+    return genOrderId();
+  }
 
   // return new id
   return id;
