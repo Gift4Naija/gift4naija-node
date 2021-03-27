@@ -101,7 +101,7 @@ module.exports = {
 
     // remove image
     const fd = path.resolve(`assets/uploads/${image}`);
-    const rmFile = await sails.rm(fd);
+    await sails.rm(fd);
 
     // pluk removed image from array
     const newImages = productData.images;
