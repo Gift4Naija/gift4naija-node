@@ -39,7 +39,7 @@ then redirect to either a special landing page (for newly-signed up users), or t
   },
 
   fn: async function ({ token }) {
-    const { req, res } = this;
+    const { res } = this;
 
     // If no token was provided, this is automatically invalid.
     if (!token) {

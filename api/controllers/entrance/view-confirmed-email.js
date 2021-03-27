@@ -1,16 +1,16 @@
 module.exports = {
 
 
-  friendlyName: 'View confirmed email',
+  friendlyName: "View confirmed email",
 
 
-  description: 'Display "Confirmed email" page.',
+  description: "Display \"Confirmed email\" page.",
 
 
   exits: {
 
     success: {
-      viewTemplatePath: 'pages/entrance/confirmed-email'
+      viewTemplatePath: "pages/entrance/confirmed-email"
     }
 
   },

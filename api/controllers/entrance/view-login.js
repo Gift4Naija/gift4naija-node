@@ -1,21 +1,21 @@
 module.exports = {
 
 
-  friendlyName: 'View login',
+  friendlyName: "View login",
 
 
-  description: 'Display "Login" page.',
+  description: "Display \"Login\" page.",
 
 
   exits: {
 
     success: {
-      viewTemplatePath: 'pages/entrance/login',
+      viewTemplatePath: "pages/entrance/login",
     },
 
     redirect: {
-      description: 'The requesting user is already logged in.',
-      responseType: 'redirect'
+      description: "The requesting user is already logged in.",
+      responseType: "redirect"
     }
 
   },
@@ -24,7 +24,7 @@ module.exports = {
   fn: async function () {
 
     if (this.req.me) {
-      throw {redirect: '/'};
+      throw {redirect: "/"};
     }
 
     return {};
