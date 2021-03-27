@@ -34,7 +34,14 @@
     "_": true,
 
     // Models:
-    "User": true
+    "CartItem": true,
+    "Category": true,
+    "Favorite": true,
+    "Kpi": true,
+    "Order": true,
+    "Product": true,
+    "SubCategory": true,
+    "User": true,
     
     // …and any others.
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -76,7 +83,7 @@
     "no-use-before-define":         ["error", {"functions":false}],
     "one-var":                      ["warn", "never"],
     "prefer-arrow-callback":        ["warn", {"allowNamedFunctions":true}],
-    "quotes":                       ["warn", "single", {"avoidEscape":false, "allowTemplateLiterals":true}],
+    "quotes":                       ["warn", "double", {"avoidEscape":false, "allowTemplateLiterals":true}],
     "semi":                         ["warn", "always"],
     "semi-spacing":                 ["warn", {"before":false, "after":true}],
     "semi-style":                   ["warn", "last"]
