@@ -4,6 +4,7 @@
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
+const stripe = require("stripe")(process.env.STRIPE_KEY);
 
 module.exports = {
   create: async (req, res) => {
@@ -60,4 +61,25 @@ module.exports = {
 
     res.json({ success: true, data: payment });
   },
+};
+
+module.exports.intent = async function (req, res) {
+  const intentData = {
+    amount: req.body.amount,
+    currency: "usd",
+    setup_future_usage: "off_session",
+  };
+
+  if (!req.body.amount) {
+    return res.badRequest(undefined, "Amount must be specified");
+  }
+
+  const intent = await stripe.paymentIntents.create(intentData).catch((err) => {
+    return res.serverError(err, "An error occured while processing payment");
+  });
+
+  return res.json({
+    success: true,
+    data: intent,
+  });
 };
