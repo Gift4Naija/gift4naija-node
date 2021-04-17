@@ -41,6 +41,10 @@ module.exports.policies = {
     remove: "is-admin",
   },
 
+  PaymentController: {
+    intent: true,
+  },
+
   // Bypass the `is-logged-in` policy for:
   "entrance/*": true,
   "security/grant-csrf-token": true,
