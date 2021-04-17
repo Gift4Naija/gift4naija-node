@@ -117,4 +117,5 @@ module.exports.routes = {
   // payment test
   // "/api/v1/payment/checkout": "PaymentController.execute",
   // "/api/v1/payment/success": "PaymentController.execute",
+  "/api/v1/payment/intent": "PaymentController.intent",
 };
